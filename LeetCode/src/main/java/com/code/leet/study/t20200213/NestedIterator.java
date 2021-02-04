@@ -5,7 +5,7 @@ package com.code.leet.study.t20200213;
  * @Date: 2020-02-13 19:17
  */
 
-import entiy.NestedInteger;
+import com.code.leet.entiy.NestedInteger;
 
 import java.util.ArrayList;
 import java.util.Iterator;

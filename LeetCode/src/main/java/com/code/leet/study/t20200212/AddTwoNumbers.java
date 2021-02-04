@@ -1,6 +1,6 @@
 package com.code.leet.study.t20200212;
 
-import entiy.ListNode;
+import com.code.leet.entiy.ListNode;
 
 /**
  * 2. 两数相加

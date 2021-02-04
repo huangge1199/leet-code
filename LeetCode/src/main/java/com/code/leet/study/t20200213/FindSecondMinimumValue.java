@@ -1,6 +1,7 @@
 package com.code.leet.study.t20200213;
 
-import entiy.TreeNode;
+
+import com.code.leet.entiy.TreeNode;
 
 /**
  * @Author: hyy
