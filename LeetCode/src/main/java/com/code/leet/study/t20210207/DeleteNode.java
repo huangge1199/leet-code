@@ -10,4 +10,28 @@ public class DeleteNode {
         node.val = node.next.val;
         node.next = node.next.next;
     }
+
+    /**
+     * 剑指 Offer 18. 删除链表的节点
+     * @param head
+     * @param val
+     * @return
+     */
+    public ListNode deleteNode(ListNode head, int val) {
+        ListNode temp = head;
+        ListNode pro = head;
+        while (temp.val == val) {
+            head = pro = temp = head.next;
+        }
+        temp = temp.next;
+        while (temp != null) {
+            if (temp.val == val) {
+                pro.next = temp.next;
+            }else{
+                pro = temp;
+            }
+            temp = temp.next;
+        }
+        return head;
+    }
 }
