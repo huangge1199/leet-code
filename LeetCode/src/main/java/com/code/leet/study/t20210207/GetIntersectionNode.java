@@ -6,6 +6,9 @@ import com.code.leet.entiy.ListNode;
  * 找到两个单链表相交的起始节点。
  */
 public class GetIntersectionNode {
+    /**
+     * 剑指 Offer 52. 两个链表的第一个公共节点
+     */
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode pA = headA, pB = headB;
         if(pA == null || pB == null){
