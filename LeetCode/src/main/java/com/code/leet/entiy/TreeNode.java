@@ -1,6 +1,8 @@
 package com.code.leet.entiy;
 
 
+import java.util.List;
+
 /**
  * @Author: hyy
  * @Date: 2020-02-13 18:25
@@ -21,5 +23,9 @@ public class TreeNode {
         this.val = val;
         this.left = left;
         this.right = right;
+    }
+
+    public TreeNode(List<Integer> list){
+        
     }
 }
