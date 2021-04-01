@@ -54,29 +54,75 @@ public class MinStack {
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
     class MinStack {
-        Stack<Integer> stack;
-        Stack<Integer> min;
+        //        Stack<Integer> stack;
+//        Stack<Integer> min;
+//        public MinStack() {
+//            stack = new Stack<>();
+//            min = new Stack<>();
+//        }
+//        public void push(int val) {
+//            if (stack.isEmpty()) {
+//                min.push(val);
+//            } else {
+//                min.push(Math.min(min.peek(),val));
+//            }
+//            stack.push(val);
+//        }
+//        public void pop() {
+//            stack.pop();
+//            min.pop();
+//        }
+//        public int top() {
+//            return stack.peek();
+//        }
+//        public int getMin() {
+//            return min.peek();
+//        }
+        class Data{
+            int num;
+            int min;
+            public Data(int num, int min) {
+                this.num = num;
+                this.min = min;
+            }
+            public int getNum() {
+                return num;
+            }
+            public void setNum(int num) {
+                this.num = num;
+            }
+            public int getMin() {
+                return min;
+            }
+
+            public void setMin(int min) {
+                this.min = min;
+            }
+        }
+        Stack<Data> stack;
+
         public MinStack() {
             stack = new Stack<>();
-            min = new Stack<>();
         }
+
         public void push(int val) {
             if (stack.isEmpty()) {
-                min.push(val);
+                stack.push(new Data(val,val));
             } else {
-                min.push(Math.min(min.peek(),val));
+                stack.push(new Data(val,Math.min(val,stack.peek().min)));
             }
-            stack.push(val);
         }
+
         public void pop() {
             stack.pop();
-            min.pop();
         }
+
         public int top() {
-            return stack.peek();
+            return stack.peek().num;
         }
+
         public int getMin() {
-            return min.peek();
+            return stack.peek().min;
         }
     }
 
