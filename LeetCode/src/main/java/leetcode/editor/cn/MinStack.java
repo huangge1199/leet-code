@@ -47,13 +47,13 @@ import java.util.Stack;
 public class MinStack {
     public static void main(String[] args) {
         //测试代码
-//        Solution solution = new MinStack().new Solution();
+//        Solution solution = new MinStack1().new Solution();
 
     }
 
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-    class MinStack {
+    class MinStack1 {
         //        Stack<Integer> stack;
 //        Stack<Integer> min;
 //        public MinStack() {
@@ -101,7 +101,7 @@ public class MinStack {
         }
         Stack<Data> stack;
 
-        public MinStack() {
+        public MinStack1() {
             stack = new Stack<>();
         }
 
