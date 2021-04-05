@@ -68,7 +68,7 @@ public class FuZaLianBiaoDeFuZhiLcof {
         List<Integer> var = Arrays.asList(7, 13, 11, 10, 1);
         List<Integer> random = Arrays.asList(null, 0, 4, 2, 0);
         Node head = new Node(0);
-        head = head.setHead(var, random);
+//        head = head.setHead(var, random);
         solution.copyRandomList(head);
     }
 
