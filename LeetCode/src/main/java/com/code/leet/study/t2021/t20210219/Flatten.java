@@ -22,25 +22,25 @@ public class Flatten {
     /**
      * 430. 扁平化多级双向链表
      */
-    public Node flatten(Node head) {
-        Node temp = head;
-        while (temp != null) {
-            if (temp.child != null) {
-                Node next = temp.next;
-                Node mid = flatten(temp.child);
-                temp.child = null;
-                temp.next = mid;
-                mid.prev = temp;
-                while (temp.next != null) {
-                    temp = temp.next;
-                }
-                temp.next = next;
-                if (next != null) {
-                    next.prev = temp;
-                }
-            }
-            temp = temp.next;
-        }
-        return head;
-    }
+//    public Node flatten(Node head) {
+//        Node temp = head;
+//        while (temp != null) {
+//            if (temp.child != null) {
+//                Node next = temp.next;
+//                Node mid = flatten(temp.child);
+//                temp.child = null;
+//                temp.next = mid;
+//                mid.prev = temp;
+//                while (temp.next != null) {
+//                    temp = temp.next;
+//                }
+//                temp.next = next;
+//                if (next != null) {
+//                    next.prev = temp;
+//                }
+//            }
+//            temp = temp.next;
+//        }
+//        return head;
+//    }
 }
