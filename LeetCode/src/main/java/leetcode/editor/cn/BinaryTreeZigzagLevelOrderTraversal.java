@@ -28,6 +28,7 @@ package leetcode.editor.cn;
 import com.code.leet.entiy.TreeNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
@@ -36,6 +37,8 @@ public class BinaryTreeZigzagLevelOrderTraversal {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new BinaryTreeZigzagLevelOrderTraversal().new Solution();
+        List<Integer> list = Arrays.asList(3,9,20,null,null,15,7);
+        solution.zigzagLevelOrder(new TreeNode(list));
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
