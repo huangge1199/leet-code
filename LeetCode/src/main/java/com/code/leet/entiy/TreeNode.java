@@ -32,11 +32,13 @@ public class TreeNode {
         }
         List<TreeNode> treeNodeList = new ArrayList<>();
         int index = 0;
+        int size = 0;
         for (int i = 0; i < list.size(); i++) {
             if (treeNodeList.size() == 0) {
                 this.val = list.get(i);
                 treeNodeList.add(this);
                 index = 0;
+                size = 1;
             } else {
                 TreeNode root = treeNodeList.get(index);
                 treeNodeList.remove(index);
@@ -56,13 +58,14 @@ public class TreeNode {
                         right = new TreeNode(list.get(i));
                         root.right = right;
                         treeNodeList.add(index, right);
-                    }else{
+                    } else {
                         treeNodeList.add(index, null);
                     }
                     index++;
                 }
-                if (index == treeNodeList.size()*2) {
+                if (treeNodeList.size() == size * 2) {
                     index = 0;
+                    size = treeNodeList.size();
                 }
             }
         }
