@@ -11,11 +11,11 @@ import java.util.stream.Collectors;
 public class LcpSolution {
     public static void main(String[] args) {
         LcpSolution solution = new LcpSolution();
-        System.out.println(solution.orchestraLayout(4, 1, 2));
+//        System.out.println(solution.orchestraLayout(4, 1, 2));
 
-//        int[] nums = {2, 2, 1, 9};
-//        int target = 10;
-//        System.out.println(solution.purchasePlans(nums, target));
+        int[] nums = {2, 2, 3, 5};
+        int target = 6;
+        System.out.println(solution.purchasePlans(nums, target));
     }
 
     public int magicTower(int[] nums) {
@@ -67,34 +67,56 @@ public class LcpSolution {
         return result % 9;
     }
 
+    //    public int purchasePlans(int[] nums, int target) {
+//        long count = 0;
+//        List<Integer> numList = Arrays.stream(nums).boxed().collect(Collectors.toList());
+//        Collections.sort(numList);
+//        Map<Integer, Long> map = new HashMap<>();
+//        int temp = -1;
+//        for (int num : numList) {
+//            if (num >= target) {
+//                break;
+//            }
+//            if (temp == -1) {
+//                for (int i = 1; i < num; i++) {
+//                    map.put(i, Long.parseLong("0"));
+//                }
+//                map.put(num, Long.parseLong("1"));
+//            } else {
+//                if (map.containsKey(target - num)) {
+//                    count += map.get(target - num);
+//                } else {
+//                    count += map.get(temp);
+//                }
+//                for (int i = temp + 1; i < num; i++) {
+//                    map.put(i, map.get(temp));
+//                }
+//                map.put(num, map.get(temp) + 1);
+//            }
+//            temp = num;
+//        }
+//        return (int) (count % (Math.pow(10, 9) + 7));
+//    }
     public int purchasePlans(int[] nums, int target) {
-        long count = 0;
-        List<Integer> numList = Arrays.stream(nums).boxed().collect(Collectors.toList());
-        Collections.sort(numList);
-        Map<Integer, Long> map = new HashMap<>();
-        int temp = -1;
-        for (int num : numList) {
-            if (num >= target) {
-                break;
+        int[] sort = new int[target];
+        long[] count = new long[target];
+        for (int num : nums) {
+            if (num < target) {
+                sort[num] += 1;
             }
-            if (temp == -1) {
-                for (int i = 1; i < num; i++) {
-                    map.put(i, Long.parseLong("0"));
-                }
-                map.put(num, Long.parseLong("1"));
-            } else {
-                if (map.containsKey(target - num)) {
-                    count += map.get(target - num);
-                } else {
-                    count += map.get(temp);
-                }
-                for (int i = temp + 1; i < num; i++) {
-                    map.put(i, map.get(temp));
-                }
-                map.put(num, map.get(temp) + 1);
-            }
-            temp = num;
         }
-        return (int) (count % (Math.pow(10, 9) + 7));
+        long sum = 0;
+        for (int i = 1; i < target; i++) {
+            sum += sort[i];
+            count[i] = sum;
+        }
+        long result = 0;
+        for (int num : nums) {
+            if (target > num) {
+                result += num <= target - num ? count[target - num] - 1 : count[target - num];
+            }
+        }
+        Calendar calendar = Calendar.getInstance();
+        return (int) (result / 2 % (Math.pow(10, 9) + 7));
     }
 }
