@@ -67,18 +67,18 @@ public class MinimumDistanceBetweenBstNodes {
     class Solution {
         public int minDiffInBST(TreeNode root) {
             int min = Integer.MAX_VALUE;
-            TreeNode pre = null;
-            Deque<TreeNode> stk = new LinkedList<>();
-            while (root != null || !stk.isEmpty()) {
+            TreeNode temp = null;
+            Deque<TreeNode> deque = new LinkedList<>();
+            while (root != null || !deque.isEmpty()) {
                 while (root != null) {
-                    stk.offerLast(root);
+                    deque.offerLast(root);
                     root = root.left;
                 }
-                root = stk.pollLast();
-                if (pre != null) {
-                    min = Math.min(min, root.val - pre.val);
+                root = deque.pollLast();
+                if (temp != null) {
+                    min = Math.min(min, root.val - temp.val);
                 }
-                pre = root;
+                temp = root;
                 root = root.right;
             }
             return min;
