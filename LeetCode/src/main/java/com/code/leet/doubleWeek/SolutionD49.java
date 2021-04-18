@@ -1,4 +1,4 @@
-package com.code.leet.week;
+package com.code.leet.doubleWeek;
 
 import java.util.HashMap;
 import java.util.List;

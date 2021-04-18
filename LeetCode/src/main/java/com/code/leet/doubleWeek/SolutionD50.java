@@ -1,7 +1,4 @@
-package com.code.leet.week;
-
-import java.math.BigDecimal;
-import java.util.*;
+package com.code.leet.doubleWeek;
 
 /**
  * @Author: 轩辕龙儿
@@ -120,40 +117,39 @@ public class SolutionD50 {
         }
 
         int[] cnt = new int[26];
-        int n = s.length();
-        for (int i = 0; i < n; i++) {
+        int length = s.length();
+        for (int i = 0; i < length; i++) {
             cnt[s.charAt(i) - 'a']++;
         }
 
         long res = 0;
-        for (int i = 0; i < n; i++) {
-            int x = s.charAt(i) - 'a';
-            for (int j = 0; j < x; j++) {
+        for (int i = 0; i < length; i++) {
+            int ch = s.charAt(i) - 'a';
+            for (int j = 0; j < ch; j++) {
                 if (cnt[j] == 0) {
                     continue;
                 }
-
                 cnt[j]--;
-                long num = mul[n - 1 - i];
+                long num = mul[length - 1 - i];
                 for (int k = 0; k < 26; k++) {
                     num = num * div[cnt[k]] % mode;
                 }
                 res = (res + num) % mode;
                 cnt[j]++;
             }
-            cnt[x]--;
+            cnt[ch]--;
         }
         return (int) res;
     }
 
-    public long power(long x, int i, int mode) {
-        if (i == 0) {
+    public long power(long num, int index, int mode) {
+        if (index == 0) {
             return 1;
         }
-        long res = power(x, i / 2, mode);
+        long res = power(num, index / 2, mode);
         res = res * res % mode;
-        if (i % 2 == 1) {
-            res = res * x % mode;
+        if (index % 2 == 1) {
+            res = res * num % mode;
         }
         return res;
     }
