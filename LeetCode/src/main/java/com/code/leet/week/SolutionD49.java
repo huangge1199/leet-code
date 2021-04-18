@@ -9,9 +9,9 @@ import java.util.Map;
  * @Date: 2021/4/3 22:33
  * @Description:
  */
-public class Solution49 {
+public class SolutionD49 {
     public static void main(String[] args) {
-        Solution49 solution49 = new Solution49();
+        SolutionD49 solutionD49 = new SolutionD49();
 //        System.out.println(solution.squareIsWhite("a1"));
     }
 
