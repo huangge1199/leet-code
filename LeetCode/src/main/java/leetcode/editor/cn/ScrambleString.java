@@ -91,10 +91,6 @@ public class ScrambleString {
                 return false;
             }
             int length = s1.length();
-
-            if (map.containsKey(s1) && map.get(s1).containsKey(s2)) {
-                return map.get(s1).get(s2);
-            }
             Map<String, Boolean> temp;
             for (int i = 1; i < length; i++) {
                 if (isScramble(s1.substring(0, i), s2.substring(0, i)) && isScramble(s1.substring(i), s2.substring(i))
