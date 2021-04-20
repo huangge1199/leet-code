@@ -46,19 +46,57 @@
 // 👍 800 👎 0
 
 package leetcode.editor.cn;
+
 //28:实现 strStr()
-public class ImplementStrstr{
+public class ImplementStrstr {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new ImplementStrstr().new Solution();
+//        solution.strStr("aaaaa", "bba");
+//        solution.strStr("mississippi", "mississippi");
+        System.out.println(solution.strStr("mississippi", "issip"));
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int strStr(String haystack, String needle) {
-        return haystack.indexOf(needle);
+    class Solution {
+        public int strStr(String haystack, String needle) {
+//        return haystack.indexOf(needle);
+            if ("".equals(needle)) {
+                return 0;
+            }
+            if ("".equals(haystack)) {
+                return -1;
+            }
+            char[] hay = haystack.toCharArray();
+            char[] need = needle.toCharArray();
+            int hSize = hay.length;
+            int nSize = need.length;
+            int result = 0;
+            int index = -1;
+            for (int i = 0; i <= hSize - nSize; i++) {
+                int temp = i;
+                for (char c : need) {
+                    if (hay[i] == c) {
+                        if (result == 0) {
+                            index = i;
+                        }
+                        result++;
+                        i++;
+                    } else {
+                        result = 0;
+                        index = -1;
+                        break;
+                    }
+                }
+                i = temp;
+                if (result == nSize) {
+                    break;
+                }
+            }
+            return index;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
