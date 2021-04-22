@@ -34,4 +34,4 @@
 <p> </p>
 
 <p><strong>进阶：</strong>如果行数远大于列数，该如何设计解决方案？</p>
-<div><div>Related Topics</div><div><li>队列</li><li>二分查找</li><li>动态规划</li></div></div>\n<div><li>👍 225</li><li>👎 0</li></div>
+<div><div>Related Topics</div><div><li>队列</li><li>二分查找</li><li>动态规划</li></div></div>\n<div><li>👍 194</li><li>👎 0</li></div>
