@@ -41,6 +41,7 @@ package leetcode.editor.cn;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 //363:矩形区域不超过 K 的最大数值和
 public class MaxSumOfRectangleNoLargerThanK {
@@ -61,29 +62,28 @@ public class MaxSumOfRectangleNoLargerThanK {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int maxSumSubmatrix(int[][] matrix, int k) {
-            int xLength = matrix.length;
-            int yLength = matrix[0].length;
-            int[][] sums = new int[xLength][yLength];
-            for (int i = 0; i < xLength; i++) {
-                int sum = 0;
-                for (int j = 0; j < yLength; j++) {
-                    sum += matrix[i][j];
-                    sums[i][j] = sum;
-                }
-            }
-            int max = Integer.MIN_VALUE;
-            for (int i = yLength - 1; i >= 0; i--) {
-                for (int l = 0; l <= i; l++) {
-                    int sum = 0;
-                    for (int j = 0; j < xLength; j++) {
-                        sum += l == 0 ? sums[j][i] : sums[j][i] - sums[j][i-l];
-                        if (sum <= k) {
-                            max = Math.max(max, sum);
+            int ans = Integer.MIN_VALUE;
+            int m = matrix.length, n = matrix[0].length;
+            for (int i = 0; i < m; ++i) { // 枚举上边界
+                int[] sum = new int[n];
+                for (int j = i; j < m; ++j) { // 枚举下边界
+                    for (int c = 0; c < n; ++c) {
+                        sum[c] += matrix[j][c]; // 更新每列的元素和
+                    }
+                    TreeSet<Integer> sumSet = new TreeSet<Integer>();
+                    sumSet.add(0);
+                    int s = 0;
+                    for (int v : sum) {
+                        s += v;
+                        Integer ceil = sumSet.ceiling(s - k);
+                        if (ceil != null) {
+                            ans = Math.max(ans, s - ceil);
                         }
+                        sumSet.add(s);
                     }
                 }
             }
-            return max;
+            return ans;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
