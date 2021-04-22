@@ -2,3 +2,4 @@
 /**/*.iml
 /**/src/test/
 /LeetCode/target/
+/LeetCode/src/main/java/leetcode/editor/cn/doc/
