@@ -47,12 +47,10 @@ public class DecodeString {
         System.out.println(solution.decodeString("3[a2[c]]"));
         //aaabcbc
         System.out.println(solution.decodeString("3[a]2[bc]"));
-//        //accaccacc
-//        System.out.println(solution.decodeString("3[a2[c]]"));
-//        //abcabccdcdcdef
-//        System.out.println(solution.decodeString("2[abc]3[cd]ef"));
-//        //abccdcdcdxyz
-//        System.out.println(solution.decodeString("abc3[cd]xyz"));
+        //abcabccdcdcdef
+        System.out.println(solution.decodeString("2[abc]3[cd]ef"));
+        //abccdcdcdxyz
+        System.out.println(solution.decodeString("abc3[cd]xyz"));
     }
 
     //力扣代码
@@ -61,16 +59,35 @@ public class DecodeString {
         public String decodeString(String s) {
             Stack<String> stack = new Stack<>();
             StringBuilder str = new StringBuilder();
-            while (s.charAt(0) >= 'a' && s.charAt(0) <= 'z') {
-                str.append(s.charAt(0));
-                if (s.length() == 1) {
-                    return str.toString();
-                }
-                s = s.substring(1);
+            if (s.length() == 0) {
+                return "";
             }
-            int num = Integer.parseInt(s.substring(0, s.indexOf("[")));
-            for (int i = 0; i < num; i++) {
-                str.append(decodeString(s.substring(s.indexOf("[") + 1, s.lastIndexOf("]"))));
+            for (int i = 0; i < s.length(); i++) {
+                if (stack.isEmpty() && s.charAt(i) >= 'a' && s.charAt(i) <= 'z') {
+                    str.append(s.charAt(i));
+                } else if (s.charAt(i) == ']') {
+                    StringBuilder temp = new StringBuilder();
+                    while (!"[".equals(stack.peek())) {
+                        temp.insert(0, stack.pop());
+                    }
+                    stack.pop();
+                    String numString = "";
+                    while (!stack.isEmpty() && Character.isDigit(stack.peek().charAt(0))) {
+                        numString = stack.pop() + numString;
+                    }
+                    int num = Integer.parseInt(numString);
+                    String shortStr = "";
+                    for (int j = 0; j < num; j++) {
+                        shortStr = temp + shortStr;
+                    }
+                    if (stack.isEmpty()) {
+                        str.append(shortStr);
+                    } else {
+                        stack.push(shortStr);
+                    }
+                } else {
+                    stack.push(s.substring(i, i + 1));
+                }
             }
             return str.toString();
         }
