@@ -43,11 +43,12 @@ public class SumOfDigitsInBaseK{
 class Solution {
     public int sumBase(int n, int k) {
         int sum = 0;
-        String str = "";
-        while (n > 0) {
-            str += n % k;
-            n /= k;
-        }
+//        StringBuilder str = new StringBuilder();
+//        while (n > 0) {
+//            str.append(n % k);
+//            n /= k;
+//        }
+        String str = Integer.toString(n,k);
         for (int i = 0; i < str.length(); i++) {
             sum += str.charAt(i) - '0';
         }
