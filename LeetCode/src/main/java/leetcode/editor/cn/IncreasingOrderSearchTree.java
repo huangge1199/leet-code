@@ -34,48 +34,50 @@ import com.code.leet.entiy.TreeNode;
 import java.util.Stack;
 
 //897:递增顺序搜索树
-public class IncreasingOrderSearchTree{
+public class IncreasingOrderSearchTree {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new IncreasingOrderSearchTree().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
-    private TreeNode temp;
-    public TreeNode increasingBST(TreeNode root) {
-        TreeNode treeNode = new TreeNode(0);
-        temp = treeNode;
-        bst(root);
-        return treeNode.right;
-    }
 
-    private void bst(TreeNode node){
-        if (node == null) {
-            return ;
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     * int val;
+     * TreeNode left;
+     * TreeNode right;
+     * TreeNode() {}
+     * TreeNode(int val) { this.val = val; }
+     * TreeNode(int val, TreeNode left, TreeNode right) {
+     * this.val = val;
+     * this.left = left;
+     * this.right = right;
+     * }
+     * }
+     */
+    class Solution {
+        private TreeNode temp;
+
+        public TreeNode increasingBST(TreeNode root) {
+            TreeNode treeNode = new TreeNode(0);
+            temp = treeNode;
+            bst(root);
+            return treeNode.right;
         }
-        bst(node.left);
-        temp.right = node;
-        node.left=null;
-        temp = node;
-        bst(node.right);
+
+        private void bst(TreeNode node) {
+            if (node == null) {
+                return;
+            }
+            bst(node.left);
+            temp.right = node;
+            node.left = null;
+            temp = node;
+            bst(node.right);
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
