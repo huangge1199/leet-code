@@ -67,8 +67,9 @@ public class RemoveKDigits {
             for (; i < num.length() - 1; i++) {
                 while (i + 1 < num.length() && num.charAt(i) > num.charAt(i + 1) && remove < k) {
                     num = num.substring(i + 1);
+                    i=0;
                     remove++;
-                    while (!stack.isEmpty() && i + 1 < num.length() && stack.peek() > num.charAt(i + 1) && remove < k) {
+                    while (!stack.isEmpty() && i < num.length() && stack.peek() > num.charAt(i) && remove < k) {
                         stack.pop();
                         remove++;
                     }
@@ -80,6 +81,7 @@ public class RemoveKDigits {
                     stack.push(num.charAt(i));
                 }
             }
+            num = num.substring(i);
             while (!stack.isEmpty()) {
                 num = stack.pop() + num;
             }
