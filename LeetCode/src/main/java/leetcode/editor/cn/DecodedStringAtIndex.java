@@ -70,24 +70,50 @@ public class DecodedStringAtIndex {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public String decodeAtIndex(String S, int K) {
-            StringBuilder str = new StringBuilder();
-            for (int i = 0; i < S.length(); i++) {
+//            StringBuilder str = new StringBuilder();
+//            for (int i = 0; i < S.length(); i++) {
+//                if (Character.isDigit(S.charAt(i))) {
+//                    String temp = str.toString();
+//                    for (int j = 0; j < S.charAt(i) - '0' - 1; j++) {
+//                        str.append(temp);
+//                        if (str.length() >= K) {
+//                            return "" + str.charAt(K - 1);
+//                        }
+//                    }
+//                } else {
+//                    str.append(S.charAt(i));
+//                    if (str.length() >= K) {
+//                        break;
+//                    }
+//                }
+//            }
+//            return "" + str.charAt(K - 1);
+            long size = 0;
+            int length = S.length();
+
+            // Find size = length of decoded string
+            for (int i = 0; i < length; ++i) {
                 if (Character.isDigit(S.charAt(i))) {
-                    String temp = str.toString();
-                    for (int j = 0; j < S.charAt(i) - '0' - 1; j++) {
-                        str.append(temp);
-                        if (str.length() >= K) {
-                            return "" + str.charAt(K - 1);
-                        }
-                    }
+                    size *= S.charAt(i) - '0';
                 } else {
-                    str.append(S.charAt(i));
-                    if (str.length() >= K) {
-                        break;
-                    }
+                    size++;
                 }
             }
-            return "" + str.charAt(K - 1);
+
+            for (int i = length-1; i >= 0; --i) {
+                K %= size;
+                if (K == 0 && Character.isLetter(S.charAt(i))) {
+                    return Character.toString(S.charAt(i));
+                }
+
+                if (Character.isDigit(S.charAt(i))) {
+                    size /= S.charAt(i) - '0';
+                } else {
+                    size--;
+                }
+            }
+
+            return null;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
