@@ -1,2 +1,0 @@
-# 链表 LinkNode
-
