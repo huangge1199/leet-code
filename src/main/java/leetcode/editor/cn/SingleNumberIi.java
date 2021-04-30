@@ -50,22 +50,23 @@ public class SingleNumberIi {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int singleNumber(int[] nums) {
-//            Map<Integer, Integer> map = new HashMap<>();
-//            for (int num : nums) {
-//                map.put(num, map.getOrDefault(num, 0) + 1);
-//            }
-//            for (int num : map.keySet()) {
-//                if (map.get(num) == 1) {
-//                    return num;
-//                }
-//            }
-//            return 0;
-            int ones = 0, twos = 0;
-            for(int num : nums){
-                ones = ones ^ num & ~twos;
-                twos = twos ^ num & ~ones;
+            Map<Integer, Integer> map = new HashMap<>();
+            for (int num : nums) {
+                map.put(num, map.getOrDefault(num, 0) + 1);
             }
-            return ones;
+            for (int num : map.keySet()) {
+                if (map.get(num) == 1) {
+                    return num;
+                }
+            }
+            return 0;
+//            // 官方
+//            int ones = 0, twos = 0;
+//            for(int num : nums){
+//                ones = ones ^ num & ~twos;
+//                twos = twos ^ num & ~ones;
+//            }
+//            return ones;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
