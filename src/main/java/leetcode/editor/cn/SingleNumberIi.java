@@ -40,27 +40,35 @@ import java.util.HashMap;
 import java.util.Map;
 
 //137:只出现一次的数字 II
-public class SingleNumberIi{
+public class SingleNumberIi {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new SingleNumberIi().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int singleNumber(int[] nums) {
-        Map<Integer,Integer> map = new HashMap<>();
-        for (int num :nums){
-            map.put(num,map.getOrDefault(num,0)+1);
-        }
-        for (int num:map.keySet()){
-            if(map.get(num)==1){
-                return num;
+    class Solution {
+        public int singleNumber(int[] nums) {
+            Map<Integer, Integer> map = new HashMap<>();
+            for (int num : nums) {
+                map.put(num, map.getOrDefault(num, 0) + 1);
             }
+            for (int num : map.keySet()) {
+                if (map.get(num) == 1) {
+                    return num;
+                }
+            }
+            return 0;
+//            // 官方
+//            int ones = 0, twos = 0;
+//            for(int num : nums){
+//                ones = ones ^ num & ~twos;
+//                twos = twos ^ num & ~ones;
+//            }
+//            return ones;
         }
-        return 0;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
