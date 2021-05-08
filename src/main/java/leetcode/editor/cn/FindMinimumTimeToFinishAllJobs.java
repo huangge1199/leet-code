@@ -38,7 +38,9 @@
 
 package leetcode.editor.cn;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //1723:完成所有工作的最短时间
@@ -56,35 +58,84 @@ public class FindMinimumTimeToFinishAllJobs {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
 
+        //        public int minimumTimeRequired(int[] jobs, int k) {
+//            List<Integer> list = new ArrayList<>();
+//            return dfs(0, 0, list, 0, Integer.MAX_VALUE, jobs, k);
+//        }
+//
+//        int dfs(int index, int kIndex, List<Integer> list, int max, int ans, int[] jobs, int k) {
+//            if (kIndex < k) {
+//                list.add(kIndex, jobs[index]);
+//                if (Math.max(list.get(kIndex), max) < ans) {
+//                    if (index == jobs.length - 1) {
+//                        ans = Math.max(list.get(kIndex), max);
+//                    } else {
+//                        ans = dfs(index + 1, kIndex + 1, list, Math.max(list.get(kIndex), max), ans, jobs, k);
+//                    }
+//                }
+//                list.add(kIndex, 0);
+//            }
+//            for (int i = 0; i < kIndex; i++) {
+//                list.set(i, list.get(i) + jobs[index]);
+//                if (Math.max(list.get(i), max) < ans) {
+//                    if (index == jobs.length - 1) {
+//                        ans = Math.max(list.get(i), max);
+//                    } else {
+//                        ans = dfs(index + 1, kIndex, list, Math.max(list.get(i), max), ans, jobs, k);
+//                    }
+//                }
+//                list.set(i, list.get(i) - jobs[index]);
+//            }
+//            return ans;
+//        }
         public int minimumTimeRequired(int[] jobs, int k) {
-            List<Integer> list = new ArrayList<>();
-            return dfs(0, 0, list, 0, Integer.MAX_VALUE, jobs, k);
+            Arrays.sort(jobs);
+            int low = 0, high = jobs.length - 1;
+            while (low < high) {
+                int temp = jobs[low];
+                jobs[low] = jobs[high];
+                jobs[high] = temp;
+                low++;
+                high--;
+            }
+            int l = jobs[0], r = Arrays.stream(jobs).sum();
+            while (l < r) {
+                int mid = (l + r) >> 1;
+                if (check(jobs, k, mid)) {
+                    r = mid;
+                } else {
+                    l = mid + 1;
+                }
+            }
+            return l;
         }
 
-        int dfs(int index, int kIndex, List<Integer> list, int max, int ans, int[] jobs, int k) {
-            if (kIndex < k) {
-                list.add(kIndex, jobs[index]);
-                if (Math.max(list.get(kIndex), max) < ans) {
-                    if (index == jobs.length - 1) {
-                        ans = Math.max(list.get(kIndex), max);
-                    } else {
-                        ans = dfs(index + 1, kIndex + 1, list, Math.max(list.get(kIndex), max), ans, jobs, k);
-                    }
-                }
-                list.add(kIndex, 0);
+        public boolean check(int[] jobs, int k, int limit) {
+            int[] workloads = new int[k];
+            return backtrack(jobs, workloads, 0, limit);
+        }
+
+        public boolean backtrack(int[] jobs, int[] workloads, int i, int limit) {
+            if (i >= jobs.length) {
+                return true;
             }
-            for (int i = 0; i < kIndex; i++) {
-                list.set(i, list.get(i) + jobs[index]);
-                if (Math.max(list.get(i), max) < ans) {
-                    if (index == jobs.length - 1) {
-                        ans = Math.max(list.get(i), max);
-                    } else {
-                        ans = dfs(index + 1, kIndex, list, Math.max(list.get(i), max), ans, jobs, k);
+            int cur = jobs[i];
+            for (int j = 0; j < workloads.length; ++j) {
+                if (workloads[j] + cur <= limit) {
+                    workloads[j] += cur;
+                    if (backtrack(jobs, workloads, i + 1, limit)) {
+                        return true;
                     }
+                    workloads[j] -= cur;
                 }
-                list.set(i, list.get(i) - jobs[index]);
+                // 如果当前工人未被分配工作，那么下一个工人也必然未被分配工作
+                // 或者当前工作恰能使该工人的工作量达到了上限
+                // 这两种情况下我们无需尝试继续分配工作
+                if (workloads[j] == 0 || workloads[j] + cur == limit) {
+                    break;
+                }
             }
-            return ans;
+            return false;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
