@@ -71,10 +71,11 @@ public class NumberOfWaysToStayInTheSamePlaceAfterSomeSteps {
             result[0][1] = 1;
             for (int i = 1; i <= steps; i++) {
                 for (int j = 1; j <= min; j++) {
-                    result[i % 2][j] = ((result[(1 - i % 2) & 1][j - 1] + result[(1 - i % 2) & 1][j]) % (1000000007) + result[(1 - i % 2) & 1][j + 1]) % (1000000007);
+//                    result[i % 2][j] = ((result[1 - i % 2][j - 1] + result[1 - i % 2][j]) % (1000000007) + result[1 - i % 2][j + 1]) % (1000000007);
+                    result[i & 1][j] = ((result[(i - 1) & 1][j - 1] + result[(i - 1) & 1][j]) % (1000000007) + result[(i - 1) & 1][j + 1]) % (1000000007);
                 }
             }
-            return result[steps % 2][1];
+            return result[steps & 1][1];
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
