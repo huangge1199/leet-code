@@ -71,25 +71,23 @@ public class MaximumXorOfTwoNumbersInAnArray {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int findMaximumXOR(int[] nums) {
-            int x = 0;
-            for (int k = 30; k >= 0; k--) {
+            int result = 0;
+            for (int i = 30; i >= 0; i--) {
                 Set<Integer> set = new HashSet<>();
-                boolean found = false;
-
+                boolean isHave = false;
                 for (int num : nums) {
-                    set.add(num >> k);
-                    if (set.contains(((x << 1) + 1) ^ (num >> k))) {
-                        found = true;
+                    set.add(num >> i);
+                    if (set.contains(((result << 1) + 1) ^ (num >> i))) {
+                        isHave = true;
                         break;
                     }
                 }
-
-                x <<= 1;
-                if (found) {
-                    x++;
+                result <<= 1;
+                if (isHave) {
+                    result++;
                 }
             }
-            return x;
+            return result;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
