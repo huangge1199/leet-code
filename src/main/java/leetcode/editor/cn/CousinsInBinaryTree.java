@@ -75,11 +75,11 @@ public class CousinsInBinaryTree {
      */
     class Solution {
         public boolean isCousins(TreeNode root, int x, int y) {
-            int[][] paraent = getParent(root, x, y, new int[2][2], 1);
+            int[][] paraent = getParent(root, x, y, new int[2][2], 1,-1);
             return paraent[0][0] != paraent[1][0] && paraent[0][1] == paraent[1][1];
         }
 
-        private int[][] getParent(TreeNode root, int x, int y, int[][] paraent, int deep) {
+        private int[][] getParent(TreeNode root, int x, int y, int[][] paraent, int deep,int before) {
             if (paraent[1][1] > 0) {
                 return paraent;
             }
@@ -87,21 +87,21 @@ public class CousinsInBinaryTree {
                 x = root.val == x ? 0 : x;
                 y = root.val == y ? 0 : y;
                 if (paraent[0][1] > 0) {
-                    paraent[1][0] = root.val;
+                    paraent[1][0] = before;
                     paraent[1][1] = deep;
                 } else {
-                    paraent[0][0] = root.val;
+                    paraent[0][0] = before;
                     paraent[0][1] = deep;
                 }
             }
             if (root.left != null) {
-                paraent = getParent(root.left, x, y, paraent, deep + 1);
+                paraent = getParent(root.left, x, y, paraent, deep + 1,root.val);
             }
             if (paraent[1][1] > 0) {
                 return paraent;
             }
             if (root.right != null) {
-                paraent = getParent(root.right, x, y, paraent, deep + 1);
+                paraent = getParent(root.right, x, y, paraent, deep + 1,root.val);
             }
             return paraent;
         }
