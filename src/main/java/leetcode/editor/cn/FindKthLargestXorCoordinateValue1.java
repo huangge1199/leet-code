@@ -47,13 +47,13 @@
 
 package leetcode.editor.cn;
 
-import java.util.*;
+import java.util.PriorityQueue;
 
 //1738:找出第 K 大的异或坐标值
-public class FindKthLargestXorCoordinateValue {
+public class FindKthLargestXorCoordinateValue1 {
     public static void main(String[] args) {
         //测试代码
-        Solution solution = new FindKthLargestXorCoordinateValue().new Solution();
+        Solution solution = new FindKthLargestXorCoordinateValue1().new Solution();
         solution.kthLargestValue(new int[][]{{5, 2}, {1, 6}}, 1);
     }
 
@@ -64,23 +64,27 @@ public class FindKthLargestXorCoordinateValue {
             int xLength = matrix.length;
             int yLength = matrix[0].length;
             int[][] result = new int[xLength][yLength];
-            List<Integer> xor = new ArrayList<>();
-            for (int i = 0; i < xLength; i++) {
-                for (int j = 0; j < yLength; j++) {
-                    if (i == 0 && j == 0) {
-                        result[0][0] = matrix[0][0];
-                    } else if (i > 0 && j > 0) {
-                        result[i][j] = result[i - 1][j] ^ result[i][j - 1] ^ result[i - 1][j - 1] ^ matrix[i][j];
-                    } else if (i == 0) {
-                        result[i][j] = result[i][j - 1] ^ matrix[i][j];
-                    } else {
-                        result[i][j] = result[i - 1][j] ^ matrix[i][j];
-                    }
+            PriorityQueue<Integer> xor = new PriorityQueue<>((o1, o2) -> o2 - o1);
+            result[0][0] = matrix[0][0];
+            xor.add(result[0][0]);
+            for (int i = 1; i < xLength; i++) {
+                result[i][0] = result[i - 1][0] ^ matrix[i][0];
+                xor.add(result[i][0]);
+            }
+            for (int i = 1; i < yLength; i++) {
+                result[0][i] = result[0][i - 1] ^ matrix[0][i];
+                xor.add(result[0][i]);
+            }
+            for (int i = 1; i < xLength; i++) {
+                for (int j = 1; j < yLength; j++) {
+                    result[i][j] = result[i - 1][j] ^ result[i][j - 1] ^ result[i - 1][j - 1] ^ matrix[i][j];
                     xor.add(result[i][j]);
                 }
             }
-            Collections.sort(xor);
-            return xor.get(xLength * yLength - k);
+            for (int i = 0; i < k - 1; i++) {
+                xor.poll();
+            }
+            return xor.peek();
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
