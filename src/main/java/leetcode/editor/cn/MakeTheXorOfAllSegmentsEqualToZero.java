@@ -65,6 +65,7 @@ public class MakeTheXorOfAllSegmentsEqualToZero {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int minChanges(int[] nums, int k) {
+            int numCount = 1 << 10;
             List<Map<Integer, Integer>> list = new ArrayList<>();
             for (int i = 0; i < k; i++) {
                 list.add(new HashMap<>());
@@ -75,16 +76,16 @@ public class MakeTheXorOfAllSegmentsEqualToZero {
                 map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
                 list.set(index, map);
             }
-            int[] flag = new int[1 << 10];
+            int[] flag = new int[numCount];
             Arrays.fill(flag, Integer.MAX_VALUE / 2);
             flag[0] = 0;
             int length = nums.length % k == 0 ? nums.length / k : nums.length / k + 1;
             for (int i = 0; i < k; i++) {
                 Map<Integer, Integer> map = list.get(i);
                 int min = Arrays.stream(flag).min().getAsInt();
-                int[] temp = new int[1 << 10];
+                int[] temp = new int[numCount];
                 Arrays.fill(temp, min);
-                for (int j = 0; j < (1 << 10); j++) {
+                for (int j = 0; j < numCount; j++) {
                     for (int key : map.keySet()) {
                         temp[j] = Math.min(temp[j], flag[j ^ key] - map.get(key));
                     }
