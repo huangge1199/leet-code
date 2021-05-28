@@ -23,19 +23,21 @@
 // 👍 426 👎 0
 
 package leetcode.editor.cn;
+
 //461:汉明距离
-public class HammingDistance{
+public class HammingDistance {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new HammingDistance().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int hammingDistance(int x, int y) {
-        return Integer.bitCount(x ^ y);
+    class Solution {
+        public int hammingDistance(int x, int y) {
+            return Integer.bitCount(x ^ y);
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
