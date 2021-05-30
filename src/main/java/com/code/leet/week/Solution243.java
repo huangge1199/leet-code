@@ -59,15 +59,6 @@ public class Solution243 {
         int index = 0;
         int count = 0;
         List<Integer> list = new ArrayList<>();
-//        for (int i = 0; i < sLength; i++) {
-//            int j = 0;
-//            for (; j < list.size(); j++) {
-//                if (servers[list.get(j)] > servers[i]) {
-//                    break;
-//                }
-//            }
-//            list.add(j, i);
-//        }
         Map<Integer, List<Integer>> map = new HashMap<>();
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
