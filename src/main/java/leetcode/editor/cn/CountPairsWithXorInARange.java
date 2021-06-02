@@ -57,6 +57,7 @@ public class CountPairsWithXorInARange {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int countPairs(int[] nums, int low, int high) {
+            // xors[index] ： nums[0]^数组中其他值=index
             int[] xors = new int[32768];
             int count = 0;
             for (int i = 1; i < nums.length; i++) {
@@ -66,6 +67,10 @@ public class CountPairsWithXorInARange {
                 }
                 xors[num]++;
             }
+            // xor ^ j = index = nums[0] ^ 数组中其他值
+            // xor ^ j = nums[0] ^ 数组中其他值
+            // xor ^ j ^ (nums[0] ^ 数组中其他值 ^ j) = nums[0] ^ 数组中其他值 ^ (nums[0] ^ 数组中其他值 ^ j)
+            // nums[i] ^ 数组中其他值 = j
             for (int i = 1; i < nums.length; i++) {
                 int xor = nums[0] ^ nums[i];
                 xors[xor]--;
