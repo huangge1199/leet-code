@@ -6,7 +6,7 @@ public class SolutionD54 {
 //        System.out.println(solution.isCovered(new int[][]{{1, 2}, {3, 4}, {5, 6}}, 2, 5));
 //        System.out.println(solution.chalkReplacer(new int[]{3, 4, 1, 2}, 25));
         System.out.println(solution.largestMagicSquare(new int[][]{{7, 1, 4, 5, 6}, {2, 5, 1, 6, 4}, {1, 5, 4, 3, 2}, {1, 2, 7, 3, 4}}));
-//        System.out.println(solution.largestMagicSquare(new int[][]{{8,1,6}, {3,5,7}, {4,9,2}, {7,10,9}}));
+        System.out.println(solution.largestMagicSquare(new int[][]{{8,1,6}, {3,5,7}, {4,9,2}, {7,10,9}}));
     }
 
     public boolean isCovered(int[][] ranges, int left, int right) {
