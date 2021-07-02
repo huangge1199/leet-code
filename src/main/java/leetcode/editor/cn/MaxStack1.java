@@ -61,7 +61,7 @@ package leetcode.editor.cn;
 import java.util.Stack;
 
 //716:最大栈
-public class MaxStack {
+public class MaxStack1 {
     public static void main(String[] args) {
         //测试代码
 //        Solution solution = new MaxStack().new Solution();
