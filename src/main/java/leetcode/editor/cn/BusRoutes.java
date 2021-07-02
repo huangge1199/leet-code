@@ -43,10 +43,7 @@
 
 package leetcode.editor.cn;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 //815:公交路线
 public class BusRoutes {
@@ -59,45 +56,89 @@ public class BusRoutes {
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+        //        public int numBusesToDestination(int[][] routes, int source, int target) {
+//            Map<Integer, List<Integer>> site = new HashMap<>();
+//            Map<Integer, List<Integer>> bus = new HashMap<>();
+//            for (int i = 0; i < routes.length; i++) {
+//                List<Integer> busList = new ArrayList<>();
+//                for (int j = 0; j < routes[i].length; j++) {
+//                    List<Integer> list = site.getOrDefault(routes[i][j], new ArrayList<>());
+//                    list.add(i);
+//                    site.put(routes[i][j], list);
+//                    busList.add(routes[i][j]);
+//                }
+//                bus.put(i, busList);
+//            }
+//            int count = minCount(site, bus, source, target, 0, new ArrayList<>());
+//            return count == Integer.MAX_VALUE ? -1 : count;
+//        }
+//
+//        private int minCount(Map<Integer, List<Integer>> map, Map<Integer, List<Integer>> bus, int source, int target, int count, List<Integer> use) {
+//            if (source == target) {
+//                return count;
+//            }
+//            if (map.get(source).size() == 1 && use.contains(map.get(source).get(0))) {
+//                return Integer.MAX_VALUE;
+//            }
+//            int min = Integer.MAX_VALUE;
+//            for (int busIndex : map.get(source)) {
+//                if (use.contains(busIndex)) {
+//                    continue;
+//                }
+//                for (int stata : bus.get(busIndex)) {
+//                    if (stata == source) {
+//                        continue;
+//                    }
+//                    use.add(busIndex);
+//                    min = Math.min(min, minCount(map, bus, stata, target, count + 1, use));
+//                    use.remove(use.size() - 1);
+//                }
+//            }
+//            return min;
+//        }
         public int numBusesToDestination(int[][] routes, int source, int target) {
-            Map<Integer, List<Integer>> site = new HashMap<>();
-            Map<Integer, List<Integer>> bus = new HashMap<>();
-            for (int i = 0; i < routes.length; i++) {
-                List<Integer> busList = new ArrayList<>();
-                for (int j = 0; j < routes[i].length; j++) {
-                    List<Integer> list = site.getOrDefault(routes[i][j], new ArrayList<>());
-                    list.add(i);
-                    site.put(routes[i][j], list);
-                    busList.add(routes[i][j]);
-                }
-                bus.put(i, busList);
-            }
-            int count = minCount(site, bus, source, target, 0, new ArrayList<>());
-            return count == Integer.MAX_VALUE ? -1 : count;
-        }
-
-        private int minCount(Map<Integer, List<Integer>> map, Map<Integer, List<Integer>> bus, int source, int target, int count, List<Integer> use) {
             if (source == target) {
-                return count;
+                return 0;
             }
-            if (map.get(source).size() == 1 && use.contains(map.get(source).get(0))) {
-                return Integer.MAX_VALUE;
-            }
-            int min = Integer.MAX_VALUE;
-            for (int busIndex : map.get(source)) {
-                if (use.contains(busIndex)) {
-                    continue;
-                }
-                for (int stata : bus.get(busIndex)) {
-                    if (stata == source) {
-                        continue;
+
+            int n = routes.length;
+            boolean[][] edge = new boolean[n][n];
+            Map<Integer, List<Integer>> rec = new HashMap<Integer, List<Integer>>();
+            for (int i = 0; i < n; i++) {
+                for (int site : routes[i]) {
+                    List<Integer> list = rec.getOrDefault(site, new ArrayList<Integer>());
+                    for (int j : list) {
+                        edge[i][j] = edge[j][i] = true;
                     }
-                    use.add(busIndex);
-                    min = Math.min(min, minCount(map, bus, stata, target, count + 1, use));
-                    use.remove(use.size() - 1);
+                    list.add(i);
+                    rec.put(site, list);
                 }
             }
-            return min;
+
+            int[] dis = new int[n];
+            Arrays.fill(dis, -1);
+            Queue<Integer> que = new LinkedList<Integer>();
+            for (int bus : rec.getOrDefault(source, new ArrayList<Integer>())) {
+                dis[bus] = 1;
+                que.offer(bus);
+            }
+            while (!que.isEmpty()) {
+                int x = que.poll();
+                for (int y = 0; y < n; y++) {
+                    if (edge[x][y] && dis[y] == -1) {
+                        dis[y] = dis[x] + 1;
+                        que.offer(y);
+                    }
+                }
+            }
+
+            int ret = Integer.MAX_VALUE;
+            for (int bus : rec.getOrDefault(target, new ArrayList<Integer>())) {
+                if (dis[bus] != -1) {
+                    ret = Math.min(ret, dis[bus]);
+                }
+            }
+            return ret == Integer.MAX_VALUE ? -1 : ret;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
