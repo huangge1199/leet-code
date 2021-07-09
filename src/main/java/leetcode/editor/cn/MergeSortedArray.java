@@ -35,6 +35,8 @@
 
 package leetcode.editor.cn;
 
+import java.util.Arrays;
+
 //88:合并两个有序数组
 public class MergeSortedArray {
     public static void main(String[] args) {
@@ -49,29 +51,8 @@ public class MergeSortedArray {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public void merge(int[] nums1, int m, int[] nums2, int n) {
-            int i = 0, j = 0;
-            if (m == 0) {
-                nums1 = nums2;
-                return;
-            }
-            if (n == 0) {
-                return;
-            }
-            while (j < n) {
-                if (i >= m) {
-                    nums1[i] = nums2[j];
-                    j++;
-                } else if (nums1[i] > nums2[j]) {
-                    if (m - i - i >= 0) {
-                        if (m + n - 1 - i - i >= 0) {
-                            System.arraycopy(nums1, i, nums1, i + 1, m + n - 1 - i - i);
-                        }
-                    }
-                    nums1[i] = nums2[j];
-                    j++;
-                }
-                i++;
-            }
+            if (m + n - m >= 0) System.arraycopy(nums2, 0, nums1, m, m + n - m);
+            Arrays.sort(nums1);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
