@@ -39,19 +39,34 @@
 // 👍 416 👎 0
 
 package leetcode.editor.cn;
+
 //260:只出现一次的数字 III
-class SingleNumberIii{
+class SingleNumberIii {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new SingleNumberIii().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] singleNumber(int[] nums) {
-        return null;
+    class Solution {
+        public int[] singleNumber(int[] nums) {
+            int xor = 0;
+            for (int i = 0; i < nums.length; i++) {
+                xor ^= nums[i];
+            }
+            xor &= -xor;
+            int[] result = new int[2];
+            for (int num : nums) {
+                if ((num & xor) == 0) {
+                    result[0] ^= num;
+                } else {
+                    result[1] ^= num;
+                }
+            }
+            return result;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
