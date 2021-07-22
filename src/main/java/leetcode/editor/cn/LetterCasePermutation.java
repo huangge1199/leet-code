@@ -61,8 +61,8 @@ class Solution {
             list = temp;
         }
         List<String> result = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            result.add(new String(list.get(i)));
+        for (char[] chars : list) {
+            result.add(new String(chars));
         }
         return result;
     }
