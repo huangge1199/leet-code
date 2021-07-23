@@ -37,8 +37,6 @@ package leetcode.editor.cn;
 
 import com.code.leet.entiy.TreeNode;
 
-import java.util.List;
-
 //108:将有序数组转换为二叉搜索树
 class ConvertSortedArrayToBinarySearchTree{
     public static void main(String[] args) {
