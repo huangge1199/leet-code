@@ -63,52 +63,94 @@ public class AllNodesDistanceKInBinaryTree {
      * }
      */
     class Solution {
-        private Stack<TreeNode> stack = new Stack<>();
-        List<Integer> list = new ArrayList<>();
+//        private Stack<TreeNode> stack = new Stack<>();
+//        List<Integer> list = new ArrayList<>();
+//
+//        public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
+//            if (k == 0) {
+//                return Arrays.asList(target.val);
+//            }
+//            if (!root.val.equals(target.val)) {
+//                serchTarget(root, target.val, true);
+//            }
+//            int index = 1;
+//            while (!stack.isEmpty() && k >= index) {
+//                TreeNode node = stack.pop();
+//                dfs(node, 0, k - index);
+//                index++;
+//            }
+//            return list;
+//        }
+//
+//        private boolean serchTarget(TreeNode root, int val, boolean bl) {
+//            if (root == null) {
+//                return true;
+//            }
+//            if (root.val == val) {
+//                return false;
+//            }
+//            if (bl) {
+//                stack.push(root);
+//            }
+//            bl = serchTarget(root.left, val, bl) || serchTarget(root.right, val, bl);
+//            if (bl) {
+//                stack.pop();
+//            }
+//            return bl;
+//        }
+//
+//        private void dfs(TreeNode root, int index, int k) {
+//            if (root == null) {
+//                return;
+//            }
+//            if (index == k) {
+//                list.add(root.val);
+//                return;
+//            }
+//            dfs(root.left, index + 1, k);
+//            dfs(root.right, index + 1, k);
+//        }
+Map<Integer, TreeNode> parents = new HashMap<Integer, TreeNode>();
+        List<Integer> ans = new ArrayList<Integer>();
 
         public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
-            if (k == 0) {
-                return Arrays.asList(target.val);
-            }
-            if (!root.val.equals(target.val)) {
-                serchTarget(root, target.val, true);
-            }
-            int index = 1;
-            while (!stack.isEmpty() && k >= index) {
-                TreeNode node = stack.pop();
-                dfs(node, 0, k - index);
-                index++;
-            }
-            return list;
+            // 从 root 出发 DFS，记录每个结点的父结点
+            findParents(root);
+
+            // 从 target 出发 DFS，寻找所有深度为 k 的结点
+            findAns(target, null, 0, k);
+
+            return ans;
         }
 
-        private boolean serchTarget(TreeNode root, int val, boolean bl) {
-            if (root == null) {
-                return true;
+        public void findParents(TreeNode node) {
+            if (node.left != null) {
+                parents.put(node.left.val, node);
+                findParents(node.left);
             }
-            if (root.val == val) {
-                return false;
+            if (node.right != null) {
+                parents.put(node.right.val, node);
+                findParents(node.right);
             }
-            if (bl) {
-                stack.push(root);
-            }
-            bl = serchTarget(root.left, val, bl) || serchTarget(root.right, val, bl);
-            if (bl) {
-                stack.pop();
-            }
-            return bl;
         }
 
-        private void dfs(TreeNode root, int index, int k) {
-            if (root == null) {
+        public void findAns(TreeNode node, TreeNode from, int depth, int k) {
+            if (node == null) {
                 return;
             }
-            if (index == k) {
-                list.add(root.val);
+            if (depth == k) {
+                ans.add(node.val);
                 return;
             }
-            dfs(root.left, index + 1, k);
-            dfs(root.right, index + 1, k);
+            if (node.left != from) {
+                findAns(node.left, node, depth + 1, k);
+            }
+            if (node.right != from) {
+                findAns(node.right, node, depth + 1, k);
+            }
+            if (parents.get(node.val) != from) {
+                findAns(parents.get(node.val), node, depth + 1, k);
+            }
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
