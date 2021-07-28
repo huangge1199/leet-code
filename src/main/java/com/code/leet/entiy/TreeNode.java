@@ -2,7 +2,9 @@ package com.code.leet.entiy;
 
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * @Author: hyy
@@ -69,5 +71,44 @@ public class TreeNode {
                 }
             }
         }
+    }
+
+    public TreeNode preTreeNode(List<Integer> list) {
+        if (list == null || list.size() == 0) {
+            return null;
+        }
+        TreeNode root = new TreeNode(list.get(0));
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        for (int i = 1; i < list.size(); i = i + 2) {
+            TreeNode node = queue.poll();
+            Integer left = list.get(i);
+            if (node == null) {
+                queue.add(null);
+                queue.add(null);
+            } else {
+                if (left != null) {
+                    node.left = new TreeNode(left);
+                }
+                queue.add(node.left);
+                Integer right = i + 1 < list.size() ? list.get(i + 1) : null;
+                if (right != null) {
+                    node.right = new TreeNode(right);
+                }
+                queue.add(node.right);
+            }
+        }
+        return root;
+    }
+
+    public TreeNode search(TreeNode root, int target) {
+        if (root == null || root.val == target) {
+            return root;
+        }
+        TreeNode temp = search(root.left, target);
+        if (temp != null) {
+            return temp;
+        }
+        return search(root.right, target);
     }
 }
