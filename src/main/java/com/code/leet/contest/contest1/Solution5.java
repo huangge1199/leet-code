@@ -1,4 +1,4 @@
-package com.code.leet.contest1;
+package com.code.leet.contest.contest1;
 
 public class Solution5 {
     public static void main(String[] args) {

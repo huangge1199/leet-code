@@ -1,7 +1,6 @@
-package com.code.leet.contest2;
+package com.code.leet.contest.contest2;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Solution6 {
     public static void main(String[] args) {

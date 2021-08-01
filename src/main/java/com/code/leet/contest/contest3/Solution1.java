@@ -1,4 +1,4 @@
-package com.code.leet.contest3;
+package com.code.leet.contest.contest3;
 
 import com.code.leet.entiy.TreeNode;
 
