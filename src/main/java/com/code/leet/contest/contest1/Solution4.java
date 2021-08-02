@@ -1,6 +1,4 @@
-package com.code.leet.contest1;
-
-import java.util.Arrays;
+package com.code.leet.contest.contest1;
 
 public class Solution4 {
     public static void main(String[] args) {

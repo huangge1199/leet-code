@@ -1,4 +1,4 @@
-package com.code.leet.contest1;
+package com.code.leet.contest.contest1;
 
 import com.code.leet.entiy.ListNode;
 

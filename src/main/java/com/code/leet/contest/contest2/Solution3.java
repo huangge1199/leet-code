@@ -1,6 +1,4 @@
-package com.code.leet.contest2;
-
-import com.code.leet.entiy.ListNode;
+package com.code.leet.contest.contest2;
 
 import java.util.ArrayList;
 import java.util.List;

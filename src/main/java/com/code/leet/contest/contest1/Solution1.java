@@ -1,6 +1,4 @@
-package com.code.leet.contest1;
-
-import java.util.*;
+package com.code.leet.contest.contest1;
 
 public class Solution1 {
     public static void main(String[] args) {

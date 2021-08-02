@@ -1,4 +1,4 @@
-package com.code.leet.contest2;
+package com.code.leet.contest.contest2;
 
 import java.util.Arrays;
 
