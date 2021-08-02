@@ -57,7 +57,7 @@ public class NetworkDelayTime {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new NetworkDelayTime().new Solution();
-        TwoArray twoArray = new TwoArray("[[2,1,1],[2,3,1],[3,4,1]]");
+        TwoArray twoArray = new TwoArray("[[2,1,1],[2,3,1],[3,4,1]]",true);
         System.out.println(solution.networkDelayTime(twoArray.getArr(), 4, 2));
     }
 

@@ -2,10 +2,6 @@ package com.code.leet.entiy;
 
 import lombok.Data;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-
 /**
  * Created with IntelliJ IDEA.
  *
@@ -18,7 +14,15 @@ public class TwoArray {
 
     int[][] arr;
 
-    public TwoArray(String str) {
+    public TwoArray(String str, boolean bl) {
+        if (bl) {
+            getSquArr(str);
+        } else {
+            getArr(str);
+        }
+    }
+
+    private void getSquArr(String str) {
         int xLength = str.length() - str.replace("[", "").length() - 1;
         int yLength = (str.length() - str.replace(",", "").length() - xLength + 1) / xLength + 1;
         arr = new int[xLength][yLength];
@@ -38,6 +42,23 @@ public class TwoArray {
                         xIndex += 1;
                     }
                 }
+            }
+        }
+    }
+
+    private void getArr(String str) {
+        str = str.substring(2, str.length() - 2);
+        String[] strings = str.split("],\\[");
+        arr = new int[strings.length][];
+        for (int i = 0; i < strings.length; i++) {
+            if("".equals(strings[i])){
+                arr[i] = new int[0];
+                continue;
+            }
+            String[] strs = strings[i].split(",");
+            arr[i] = new int[strs.length];
+            for (int j = 0; j < strs.length; j++) {
+                arr[i][j] = Integer.parseInt(strs[j]);
             }
         }
     }
