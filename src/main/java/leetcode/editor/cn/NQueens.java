@@ -47,6 +47,7 @@ public class NQueens {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new NQueens().new Solution();
+        solution.solveNQueens(4);
     }
 
     //力扣代码
@@ -80,10 +81,11 @@ public class NQueens {
                 }
 
                 String temp = list.get(row);
-                String s1 = temp;
-                temp = temp.substring(0,col)+"Q"+temp.substring(col+1);
-                bfs(list,n,row+1);
-
+                temp = temp.substring(0, col) + "Q" + temp.substring(col + 1);
+                list.set(row,temp);
+                bfs(list, n, row + 1);
+                temp = temp.substring(0, col) + "." + temp.substring(col + 1);
+                list.set(row,temp);
             }
         }
 
@@ -105,9 +107,9 @@ public class NQueens {
                 c++;
             }
 
-            r= row - 1;
+            r = row - 1;
             c = col - 1;
-            while (r>=0&&c>=0){
+            while (r >= 0 && c >= 0) {
                 if (list.get(r).charAt(c) == 'Q') {
                     return false;
                 }
