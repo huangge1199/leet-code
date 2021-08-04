@@ -40,11 +40,23 @@ class ValidTriangleNumber {
             int count = 0;
             for (int i = 0; i < nums.length; i++) {
                 for (int j = i - 1; j >= 0; j--) {
-                    int k = 0;
-                    while (k < j && nums[j] + nums[k] <= nums[i]) {
-                        k++;
+//                    int k = 0;
+//                    while (k < j && nums[j] + nums[k] <= nums[i]) {
+//                        k++;
+//                    }
+//                    count += j - k;
+                    int start = 0, end = j - 1;
+                    while (start < end) {
+                        int mid = start + end >> 1;
+                        if (nums[mid] + nums[j] > nums[i]) {
+                            end = mid;
+                        } else {
+                            start = mid + 1;
+                        }
                     }
-                    count += j - k;
+                    if (start == end && nums[end] + nums[j] > nums[i]) {
+                        count += j - end;
+                    }
                 }
             }
             return count;
