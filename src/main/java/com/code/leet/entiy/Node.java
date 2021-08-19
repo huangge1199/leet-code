@@ -9,6 +9,8 @@ public class Node {
     public Node random;
     public Node prev;
     public Node child;
+    public Node left;
+    public Node right;
     public List<Node> children;
 
     public Node(int val) {
