@@ -1,6 +1,6 @@
 /.idea/
 /leet-code.iml
 /src/test/
-/src/main/java/leetcode/editor/cn/doc/
 /target/
 /src/main/java/leetcode/editor/cn/*.txt
+/src/main/java/leetcode/editor/cn/doc/solution/
