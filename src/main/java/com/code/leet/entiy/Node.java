@@ -25,6 +25,11 @@ public class Node {
         this.random = random;
     }
 
+    public Node(int val, List<Node> children) {
+        this.val = val;
+        this.children = children;
+    }
+
     public Node(int val, Node prev, Node next, Node child) {
         this.val = val;
         this.prev = prev;
