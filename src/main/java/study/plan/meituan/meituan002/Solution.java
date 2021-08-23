@@ -1,9 +1,6 @@
 package study.plan.meituan.meituan002;
 
-import javafx.util.Pair;
-
 import java.io.*;
-import java.util.*;
 
 /**
  * @ClassName Solution
@@ -14,80 +11,59 @@ import java.util.*;
 
 class Solution {
 
-    static Solution.Scanner sc;
-    static PrintWriter pw;
-
     public static void main(String[] args) throws IOException {
-        sc = new Solution.Scanner(System.in);
-        pw = new PrintWriter(System.out);
-        solve();
-        pw.close();
-    }
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    public static void solve() throws IOException {
-        int num = sc.nextInt();
-        int index = 0;
-        int[] sums = new int[num];
-        while (index < num) {
-            sums[index] = index == 0 ? sc.nextInt() : sums[index - 1] + sc.nextInt();
-            index++;
+        int n = Integer.parseInt(reader.readLine());
+        int[] arr = new int[n + 1];
+        int[] prev = new int[n + 1];
+        String[] w = reader.readLine().split(" ");
+        for (int i = 1; i <= n; i++) {
+            arr[i] = Integer.parseInt(w[i - 1]);
+            prev[i] += prev[i - 1] + arr[i];
         }
-        index = 0;
-        while (index < num) {
-            int remove = sc.nextInt();
-            for (int i = remove; i < num; i++) {
-                sums[i] -= sums[remove - 1];
+
+        int[][] d = new int[n + 1][2];
+        for (int i = 0; i <= n; i++) {
+            d[i] = new int[]{-1, -1};
+        }
+
+        int[] res = new int[n];
+
+        int maxW = 0;
+        String[] q = reader.readLine().split(" ");
+        for (int i = n - 1; i >= 0; i--) {
+            int x = Integer.parseInt(q[i]);
+            res[i] = maxW;
+            if (i == 0) break;
+            //更新最大重量
+            int cur = arr[x];
+            int left = x, right = x;
+            //每次只会将左右两块区域连成一块,我们只需关心一段区间的左边界和右边界,就能通过前缀和数组查询到区间和
+            if (x + 1 <= n && d[x + 1][0] != -1) {
+                cur += prev[d[x + 1][1]] - prev[d[x + 1][0] - 1];
+                right = d[x + 1][1]; //更新右边界
             }
-            sums[remove - 1] = 0;
-            int max = Integer.MAX_VALUE;
-            for (int i = 0; i < num; i++) {
-                max = Math.max(max,sums[i]);
+            if (x - 1 > 0 && d[x - 1][1] != -1) {
+                cur += prev[d[x - 1][1]] - prev[d[x - 1][0] - 1];
+                left = d[x - 1][0]; //更新左边界
             }
-            pw.println(max);
-            index++;
-        }
-    }
 
-
-    static class Scanner {
-        BufferedReader br;
-        StringTokenizer st;
-
-        public Scanner(InputStream s) {
-            br = new BufferedReader(new InputStreamReader(s));
+            maxW = Math.max(maxW, cur);
+            //更新两端点的左右区间
+            d[left][0] = left;
+            d[left][1] = right;
+            d[right][0] = left;
+            d[right][1] = right;
         }
 
-        public Scanner(FileReader f) {
-            br = new BufferedReader(f);
+        for (int i = 0; i < n; i++) {
+            writer.write(res[i] + "\n");
         }
 
-        public String next() throws IOException {
-            while (st == null || !st.hasMoreTokens()) {
-                st = new StringTokenizer(br.readLine());
-            }
-            return st.nextToken();
-        }
-
-        public int nextInt() throws IOException {
-            return Integer.parseInt(next());
-        }
-
-        public long nextLong() throws IOException {
-            return Long.parseLong(next());
-        }
-
-        public double nextDouble() throws IOException {
-            return Double.parseDouble(next());
-        }
-
-        public int[] nextIntArr(int n) throws IOException {
-            int[] arr = new int[n];
-            for (int i = 0; i < n; i++) {
-                arr[i] = Integer.parseInt(next());
-            }
-            return arr;
-        }
-
+        writer.close();
+        reader.close();
     }
 }
 
