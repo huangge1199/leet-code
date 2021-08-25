@@ -62,8 +62,9 @@
 
 package leetcode.editor.cn;
 
-import java.util.ArrayList;
-import java.util.List;
+import javafx.util.Pair;
+
+import java.util.*;
 
 //797:所有可能的路径
 class AllPathsFromSourceToTarget {
@@ -75,46 +76,29 @@ class AllPathsFromSourceToTarget {
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
-        //        List<List<Integer>> result = new ArrayList<>();
-//
-//        public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
-//            path(graph, 0, new ArrayList<>());
-//            return result;
-//        }
-//
-//        public void path(int[][] graph, int index, List<Integer> list) {
-//            list.add(index);
-//            if (index == graph.length) {
-//                result.add(new ArrayList<>(list));
-//                list.remove(list.size() - 1);
-//                return;
-//            }
-//            for (int i = 0; i < graph[index].length; i++) {
-//                path(graph, graph[index][i], list);
-//            }
-//            list.remove(list.size() - 1);
-//        }
         public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
-            return solve(graph, 0);
-        }
-
-        public List<List<Integer>> solve(int[][] graph, int node) {
-            int N = graph.length;
-            List<List<Integer>> ans = new ArrayList();
-            if (node == N - 1) {
-                List<Integer> path = new ArrayList();
-                path.add(N - 1);
-                ans.add(path);
-                return ans;
-            }
-
-            for (int nei : graph[node]) {
-                for (List<Integer> path : solve(graph, nei)) {
-                    path.add(0, node);
-                    ans.add(path);
+            List<List<Integer>> result = new ArrayList<>();
+            Queue<Pair<Integer, List<Integer>>> queue = new LinkedList<>();
+            queue.add(new Pair<>(0, new ArrayList<>(Collections.singletonList(0))));
+            while (!queue.isEmpty()) {
+                Pair<Integer, List<Integer>> pair = queue.poll();
+                int index = pair.getKey();
+                List<Integer> paths = pair.getValue();
+                for (int gr : graph[index]) {
+                    if (paths.contains(gr)) {
+                        continue;
+                    }
+                    paths.add(gr);
+                    if (gr == graph.length - 1) {
+                        result.add(new ArrayList<>(paths));
+                        paths.remove((Integer) gr);
+                        continue;
+                    }
+                    queue.add(new Pair<>(gr, new ArrayList<>(paths)));
+                    paths.remove((Integer) gr);
                 }
             }
-            return ans;
+            return result;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
