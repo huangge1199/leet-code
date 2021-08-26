@@ -3,7 +3,7 @@ package study.plan.meituan;
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Solution {
 
     static Scanner sc;
     static PrintWriter pw;
