@@ -30,43 +30,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 //784:字母大小写全排列
-class LetterCasePermutation{
+class LetterCasePermutation {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new LetterCasePermutation().new Solution();
         solution.letterCasePermutation("a1b2");
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public List<String> letterCasePermutation(String s) {
-        char[] chs = s.toCharArray();
-        List<char[]> list = new ArrayList<>();
-        list.add(chs);
-        for (int i = 0; i < chs.length; i++) {
-            if(Character.isDigit(chs[i])){
-                continue;
-            }
-            List<char[]> temp = new ArrayList<>();
-            for (char[] chList:list) {
-                temp.add(chList);
-                if(chList[i]<'a'){
-                    chList[i] += 32;
-                    temp.add(chList);
-                }else {
-                    chList[i] -= 32;
-                    temp.add(chList);
+    class Solution {
+        public List<String> letterCasePermutation(String s) {
+            return dfs(s, 0);
+        }
+
+        private List<String> dfs(String str, int index) {
+            List<String> result = new ArrayList<>();
+            if (index == str.length() - 1) {
+                String s1 = ("" + str.charAt(index)).toLowerCase();
+                String s2 = ("" + str.charAt(index)).toUpperCase();
+                if (s1.equals(s2)) {
+                    result.add(s1);
+                } else {
+                    result.add(s1);
+                    result.add(s2);
+                }
+            } else {
+                List<String> rest = dfs(str, index + 1);
+                String s1 = ("" + str.charAt(index)).toLowerCase();
+                String s2 = ("" + str.charAt(index)).toUpperCase();
+                for (String r : rest) {
+                    if (s1.equals(s2)) {
+                        result.add(s1 + r);
+                    } else {
+                        result.add(s1 + r);
+                        result.add(s2 + r);
+                    }
                 }
             }
-            list = temp;
+            return result;
         }
-        List<String> result = new ArrayList<>();
-        for (char[] chars : list) {
-            result.add(new String(chars));
-        }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
