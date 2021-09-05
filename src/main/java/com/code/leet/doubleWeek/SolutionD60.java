@@ -6,7 +6,14 @@ import java.util.*;
 public class SolutionD60 {
     public static void main(String[] args) {
         SolutionD60 solution = new SolutionD60();
-        solution.numberOfGoodSubsets(new int[]{4, 2, 3, 15});
+        //5
+//        solution.numberOfGoodSubsets(new int[]{4, 2, 3, 15});
+        //6
+//        solution.numberOfGoodSubsets(new int[]{1, 2, 3, 4});
+        //7
+//        solution.numberOfGoodSubsets(new int[]{30, 28, 26, 30, 19, 12, 12, 25, 12});
+        //5368
+        solution.numberOfGoodSubsets(new int[]{5,10,1,26,24,21,24,23,11,12,27,4,17,16,2,6,1,1,6,8,13,30,24,20,2,19});
     }
 
     public int findMiddleIndex(int[] nums) {
@@ -91,19 +98,10 @@ public class SolutionD60 {
 
     public int numberOfGoodSubsets(int[] nums) {
         int[] counts = new int[31];
-        List<Integer> list = new ArrayList<>(Arrays.asList(2, 3, 5, 6, 7, 10, 11, 13, 14, 15, 17, 19, 21, 22, 23, 29, 30));
+        List<Integer> list = new ArrayList<>(Arrays.asList(2, 3, 5, 6, 7, 10, 11, 13, 14, 15, 17, 19, 21, 22, 23, 26, 29, 30));
         long sum = 0;
         for (int num : nums) {
             counts[num]++;
-        }
-        int count = 0;
-        for (int i = 1; i < 31; i++) {
-            if (list.contains(i)) {
-                count += counts[i];
-            }
-        }
-        if (counts[1] > 0) {
-            sum += (long) counts[1] * count;
         }
         for (int i = list.size() - 1; i >= 0; i--) {
             if (counts[list.get(i)] == 0) {
@@ -123,15 +121,19 @@ public class SolutionD60 {
         pd.put(29, Collections.singletonList(29));
         boolean[] use = new boolean[31];
         dfs(list, use, 0, 0, pd, counts);
-        sum += (long) nums[0] * (nums[0] + 1) / 2 * temp;
+        if (counts[1] > 0) {
+            sum += ((long) counts[1] * (counts[1] + 1) / 2 + 1) * temp;
+        } else {
+            sum = temp;
+        }
         return (int) (sum % 1000000007);
     }
 
     private void dfs(List<Integer> list, boolean[] use, long count, int index, Map<Integer, List<Integer>> pd, int[] counts) {
         if (index == list.size()) {
-            temp = count;
+            temp += count;
+            return;
         }
-        int t = 0;
         boolean bl = true;
         List<Integer> l = new ArrayList<>();
         for (int key : pd.keySet()) {
@@ -147,7 +149,7 @@ public class SolutionD60 {
             for (Integer integer : l) {
                 use[integer] = true;
             }
-            dfs(list, use, Math.max(0, 1) * counts[list.get(index)], index + 1, pd, counts);
+            dfs(list, use, Math.max(count, 1) * counts[list.get(index)], index + 1, pd, counts);
             for (Integer integer : l) {
                 use[integer] = false;
             }
