@@ -71,80 +71,35 @@ class SearchSuggestionsSystem {
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
-        List<String> getL;
         public List<List<String>> suggestedProducts(String[] products, String searchWord) {
             Arrays.sort(products);
-            Map<Character, Node> map = new HashMap<>();
-            for (String product : products) {
-                char ch = product.charAt(0);
-                Node root = map.getOrDefault(ch, new Node(ch));
-                Node temp = root;
-                for (int j = 1; j < product.length(); j++) {
-                    if (temp.child[product.charAt(j) - 'a'] == null) {
-                        temp.child[product.charAt(j) - 'a'] = new Node(product.charAt(j));
-                    }
-                    temp = temp.child[product.charAt(j) - 'a'];
-                    if (j == product.length() - 1) {
-                        temp.isEnd = true;
-                        temp.str = product;
-                    }
-                }
-                map.put(ch, root);
-            }
+            int index = 0;
+            String str = searchWord.substring(0, index + 1);
             List<List<String>> result = new ArrayList<>();
-            Node node;
-            if (!map.containsKey(searchWord.charAt(0))) {
-                for (int i = 0; i < searchWord.length(); i++) {
+            for (int i = 0; i < products.length; i++) {
+                if (products[i].startsWith(str)) {
+                    List<String> list = new ArrayList<>();
+                    for (int j = i; j < Math.min(i + 3, products.length); j++) {
+                        if (products[j].startsWith(str)) {
+                            list.add(products[j]);
+                        }
+                    }
+                    index++;
+                    result.add(new ArrayList<>(list));
+                    if (index == searchWord.length()) {
+                        break;
+                    }
+                    i--;
+                    str = searchWord.substring(0, index + 1);
+                }
+            }
+            if (index < searchWord.length()) {
+                int size = result.size();
+                for (int i = 0; i < searchWord.length() - size; i++) {
                     result.add(new ArrayList<>());
                 }
-                return result;
-            }
-            node = map.get(searchWord.charAt(0));
-            getL = new ArrayList<>();
-            getStr(node);
-            result.add(new ArrayList<>(getL));
-            for (int i = 1; i < searchWord.length(); i++) {
-                char ch = searchWord.charAt(i);
-                getL = new ArrayList<>();
-                if (node.child[ch - 'a'] == null) {
-                    break;
-                }
-                getStr(node.child[ch - 'a']);
-                node = node.child[ch - 'a'];
-                result.add(new ArrayList<>(getL));
-            }
-            int size = result.size();
-            for (int i = 0; i < searchWord.length() - size; i++) {
-                result.add(new ArrayList<>());
             }
             return result;
-        }
-
-        public void getStr(Node root) {
-            if (root.isEnd) {
-                getL.add(root.str);
-            }
-            for (int i = 0; i < 26; i++) {
-                if (getL.size() == 3) {
-                    break;
-                }
-                if (root.child[i] != null) {
-                    getStr(root.child[i]);
-                }
-            }
-        }
-
-        class Node {
-            char ch;
-            boolean isEnd;
-            Node[] child;
-            String str;
-
-            public Node(char ch) {
-                this.ch = ch;
-                child = new Node[26];
-                isEnd = false;
-            }
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
