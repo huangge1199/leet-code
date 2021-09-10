@@ -51,44 +51,62 @@
 // Related Topics 数组 二分查找 前缀和 模拟 👍 4 👎 0
 
 package leetcode.editor.cn;
+
 //1894:找到需要补充粉笔的学生编号
-class FindTheStudentThatWillReplaceTheChalk{
+class FindTheStudentThatWillReplaceTheChalk {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new FindTheStudentThatWillReplaceTheChalk().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int chalkReplacer(int[] chalk, int k) {
-        int temp = k;
-        int length = chalk.length;
-        int[] free = new int[length];
-        for (int i = 0; i < length; i++) {
-            if (i == 0) {
-                free[i] = chalk[i];
-            } else {
-                free[i] += chalk[i] + free[i - 1];
+    class Solution {
+        //    public int chalkReplacer(int[] chalk, int k) {
+//        int temp = k;
+//        int length = chalk.length;
+//        int[] free = new int[length];
+//        for (int i = 0; i < length; i++) {
+//            if (i == 0) {
+//                free[i] = chalk[i];
+//            } else {
+//                free[i] += chalk[i] + free[i - 1];
+//            }
+//            temp -= chalk[i];
+//            if (temp < 0) {
+//                return i;
+//            }
+//        }
+//        temp %= free[length - 1];
+//        if (temp == 0) {
+//            return 0;
+//        }
+//        for (int i = 0; i < length; i++) {
+//            temp -= chalk[i];
+//            if (temp < 0) {
+//                return i;
+//            }
+//        }
+//        return 0;
+//    }
+        public int chalkReplacer(int[] chalk, int k) {
+            int size = chalk.length;
+            int sum = 0;
+            int i = 0;
+            for (; i < size && sum <= k; i++) {
+                sum += chalk[i];
             }
-            temp -= chalk[i];
-            if (temp < 0) {
-                return i;
+            if (i < size) {
+                return i - 1;
             }
-        }
-        temp %= free[length - 1];
-        if (temp == 0) {
-            return 0;
-        }
-        for (int i = 0; i < length; i++) {
-            temp -= chalk[i];
-            if (temp < 0) {
-                return i;
+            k %= sum;
+            i = 0;
+            for (; i < size && k >= 0; i++) {
+                k -= chalk[i];
             }
+            return i - 1;
         }
-        return 0;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
