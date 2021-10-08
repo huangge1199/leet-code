@@ -50,8 +50,6 @@
 
 package leetcode.editor.cn;
 
-import javax.swing.plaf.IconUIResource;
-
 //517:超级洗衣机
 class SuperWashingMachines {
     public static void main(String[] args) {
