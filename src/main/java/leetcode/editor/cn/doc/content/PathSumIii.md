@@ -30,4 +30,4 @@
 	<li><meta charset="UTF-8" /><code>-10<sup>9</sup> <= Node.val <= 10<sup>9</sup></code> </li>
 	<li><code>-1000 <= targetSum <= 1000</code> </li>
 </ul>
-<div><div>Related Topics</div><div><li>树</li><li>深度优先搜索</li><li>二叉树</li></div></div><br><div><li>👍 1091</li><li>👎 0</li></div>
+<div><div>Related Topics</div><div><li>树</li><li>深度优先搜索</li><li>二叉树</li></div></div><br><div><li>👍 1054</li><li>👎 0</li></div>
