@@ -45,54 +45,79 @@
 
 package leetcode.editor.cn;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 //1:两数之和
-public class TwoSum{
+public class TwoSum {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new TwoSum().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] twoSum(int[] nums, int target) {
-        int start = 0;
-        int end = nums.length - 1;
-        int[] result = new int[2];
-        if (nums.length == 2) {
-            result[0] = start;
-            result[1] = end;
-        } else {
-            List<Integer> list = new ArrayList();
-            for (int i = 0; i < nums.length; i++) {
-                list.add(nums[i]);
+    class Solution {
+        //    public int[] twoSum(int[] nums, int target) {
+//        int start = 0;
+//        int end = nums.length - 1;
+//        int[] result = new int[2];
+//        if (nums.length == 2) {
+//            result[0] = start;
+//            result[1] = end;
+//        } else {
+//            List<Integer> list = new ArrayList();
+//            for (int i = 0; i < nums.length; i++) {
+//                list.add(nums[i]);
+//            }
+//            Arrays.sort(nums);
+//            while (nums[start] + nums[end] != target) {
+//                if (nums[start] + nums[end] > target) {
+//                    end--;
+//                } else {
+//                    start++;
+//                }
+//            }
+//            result[0] = list.indexOf(nums[start]);
+//            list.remove(result[0]);
+//            result[1] = list.indexOf(nums[end]);
+//            if (result[1] >= result[0]) {
+//                result[1]++;
+//            }
+//            if (result[0] > result[1]) {
+//                int temp = result[0];
+//                result[0] = result[1];
+//                result[1] = temp;
+//            }
+//        }
+//        return result;
+//    }
+        public int[] twoSum(int[] nums, int target) {
+            int[] arrs = new int[2];
+            int start = 0;
+            int end = nums.length - 1;
+            List<Integer> list = new ArrayList<>();
+            for (int num : nums) {
+                list.add(num);
             }
             Arrays.sort(nums);
-            while (nums[start] + nums[end] != target) {
-                if (nums[start] + nums[end] > target) {
+            while (start < end) {
+                if (nums[start] + nums[end] < target) {
+                    start++;
+                } else if (nums[start] + nums[end] > target) {
                     end--;
                 } else {
-                    start++;
+                    break;
                 }
             }
-            result[0] = list.indexOf(nums[start]);
-            list.remove(result[0]);
-            result[1] = list.indexOf(nums[end]);
-            if (result[1] >= result[0]) {
-                result[1]++;
+            arrs[0] = list.indexOf(nums[start]);
+            list.remove(arrs[0]);
+            arrs[1] = list.indexOf(nums[end]);
+            if (arrs[1] >= arrs[0]) {
+                arrs[1]++;
             }
-            if (result[0] > result[1]) {
-                int temp = result[0];
-                result[0] = result[1];
-                result[1] = temp;
-            }
+            return arrs;
         }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
