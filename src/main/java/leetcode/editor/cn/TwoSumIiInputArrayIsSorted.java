@@ -43,30 +43,32 @@
 // 👍 533 👎 0
 
 package leetcode.editor.cn;
+
 //167:两数之和 II - 输入有序数组
-class TwoSumIiInputArrayIsSorted{
+class TwoSumIiInputArrayIsSorted {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new TwoSumIiInputArrayIsSorted().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] twoSum(int[] numbers, int target) {
-        int start = 0;
-        int end = numbers.length-1;
-        while(start<end){
-            if(numbers[start]+numbers[end]==target){
-                return new int[]{start+1,end+1};
-            }else if (numbers[start]+numbers[end]>target){
-                end--;
-            }else{
-                start++;
+    class Solution {
+        public int[] twoSum(int[] numbers, int target) {
+            int start = 0;
+            int end = numbers.length - 1;
+            while (start < end) {
+                if (numbers[start] + numbers[end] == target) {
+                    return new int[]{start + 1, end + 1};
+                } else if (numbers[start] + numbers[end] > target) {
+                    end--;
+                } else {
+                    start++;
+                }
             }
+            return null;
         }
-        return null;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
