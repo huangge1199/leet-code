@@ -26,29 +26,41 @@
 
 package leetcode.editor.cn;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 //217:存在重复元素
-class ContainsDuplicate{
+class ContainsDuplicate {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new ContainsDuplicate().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean containsDuplicate(int[] nums) {
-        Set<Integer> set = new HashSet<>();
-        for (int num : nums) {
-            if (set.contains(num)) {
-                return true;
+    class Solution {
+        //    public boolean containsDuplicate(int[] nums) {
+//        Set<Integer> set = new HashSet<>();
+//        for (int num : nums) {
+//            if (set.contains(num)) {
+//                return true;
+//            }
+//            set.add(num);
+//        }
+//        return false;
+//    }
+        public boolean containsDuplicate(int[] nums) {
+            Arrays.sort(nums);
+            for (int i = 1; i < nums.length; i++) {
+                if(nums[i]==nums[i-1]){
+                    return true;
+                }
             }
-            set.add(num);
+            return false;
         }
-        return false;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
