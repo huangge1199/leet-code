@@ -55,22 +55,19 @@ public class SmallestGoodBase {
     class Solution {
         public String smallestGoodBase(String n) {
             long num = Long.parseLong(n);
-            for (long i = 2; i < num; i++) {
-                if (isTrue(num, i)) {
-                    return String.valueOf(i);
+            int mMax = (int) Math.floor(Math.log(num) / Math.log(2));
+            for (int m = mMax; m > 1; m--) {
+                int k = (int) Math.pow(num, 1.0 / m);
+                long mul = 1, sum = 1;
+                for (int i = 0; i < m; i++) {
+                    mul *= k;
+                    sum += mul;
+                }
+                if (sum == num) {
+                    return Integer.toString(k);
                 }
             }
-            return n;
-        }
-
-        private boolean isTrue(long num, long i) {
-            do {
-                if (num % i != 1) {
-                    return false;
-                }
-                num /= i;
-            } while (num != 1);
-            return true;
+            return Long.toString(num - 1);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
