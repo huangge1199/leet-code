@@ -1,0 +1,26 @@
+抽象固定寻找维护
+![image.png](https://pic.leetcode-cn.com/1629517956-RMiOma-image.png)
+
+* 
+
+```
+class Solution {
+public:
+    int largestPalindrome(int n) {
+        if(n==1)return 9;
+        int down=pow(10,n-1);
+        int up=pow(10,n)-1;
+        for(int i=up;i>=down;i--){
+            string tmp=to_string(i);
+            string rev(tmp.rbegin(),tmp.rend());
+            string add=tmp+rev;
+            long long addNum=stoll(add);
+            for(long long j=up;j*j>=addNum;j--){
+                if(addNum%j==0)return addNum%1337;
+            }
+        }
+        return -1;
+    }
+};
+```
+

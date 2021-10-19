@@ -1,0 +1,50 @@
+## 题解
+
+显然，如果洗衣机的数量 不能整除 所有洗衣机的衣服之和，则不能使每台洗衣机中衣物的数量相等。
+
+反之，都可以使每台洗衣机中衣物的数量相等。
+
+**每台洗衣机，每次只能将一件衣服送到相邻的一台洗衣机。**
+
+设 $Max=max_{i=0}^{n-1} machine[i]$, 即所有洗衣机中最多的衣服数量，$Avg=\frac{\sum_{i=0}^{n-1}machine[i]}{n}$ 等于最后每台洗衣机中衣物的数量相等的数量。
+
+- 因为每次只能移动一件衣服，所有对于衣服数量最多的一个洗衣机，最少需要 $Max - Avg$ 次转移。
+- 因为每次只能往相邻的洗衣机转移一件衣服，所以假设前 $i$ 个洗衣机的衣服总和为 $sum$，那么至少需要 $|sum - i * Avg|$ 次转移，才能使 前$i$个 和 前$i$个后面 洗衣机中的衣服相等。若 $sum - i * Avg>0$ 则表示 前$i$个洗衣机的衣服，需要向 前$i$个洗衣机后面里 转移；，若 $sum - i * Avg<=0$ 则表示 前$i$个后面的洗衣机的衣服，需要向 前$i$个洗衣机里 转移。
+
+两者情况取最大值。
+
+时间复杂度: $O(n)$。
+
+空间复杂度: $O(1)$。
+
+## 代码
+
+* c++
+
+```c++
+class Solution {
+public:
+    int findMinMoves(vector<int>& machines) {
+        int ans = 0, sum = 0, presum = 0;
+        for (int i = 0; i < machines.size(); i++)
+            sum += machines[i];
+
+        if (sum % machines.size() != 0)
+            return -1;
+
+        int avg = sum / machines.size();
+
+        for (int i = 0; i < machines.size(); i++) {
+            presum += machines[i];
+            ans = max(ans, max(machines[i] - avg, abs(presum - avg * (i + 1))));
+        }
+        return ans;
+    }
+};
+```
+
+![](https://pic.leetcode-cn.com/1632848376-NSpTYg-image.png)
+
+## 最后
+
+大家好，我是编程熊，字节跳动、旷视科技前员工，ACM亚洲区域赛金牌，欢迎 [关注我](https://leetcode-cn.com/u/bianchengxiong/)

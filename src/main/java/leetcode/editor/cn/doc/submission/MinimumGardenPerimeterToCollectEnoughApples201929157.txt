@@ -1,0 +1,21 @@
+class Solution {
+    public long minimumPerimeter(long neededApples) {
+        if (neededApples == 0) {
+            return 0;
+        }
+        if (neededApples < 12) {
+            return 8;
+        }
+        long n = 2;
+        long cur = 12;
+        long sum = 12;
+        while (sum < neededApples) {
+            cur = cur + 12 * (n + 1);
+            sum += cur;
+            n += 2;
+        }
+        return 4 * n;
+    }
+}
+//runtime:15 ms
+//memory:35.2 MB

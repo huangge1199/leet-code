@@ -1,0 +1,17 @@
+class Solution {
+    public boolean areOccurrencesEqual(String s) {
+        int[] arr = new int[26];
+        for (char ch : s.toCharArray()) {
+            arr[ch - 'a']++;
+        }
+        int num = arr[s.charAt(0) - 'a'];
+        for (int j : arr) {
+            if (j > 0 && j != num) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+//runtime:1 ms
+//memory:36.9 MB

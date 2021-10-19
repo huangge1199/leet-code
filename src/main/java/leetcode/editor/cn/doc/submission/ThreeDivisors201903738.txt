@@ -1,0 +1,20 @@
+class Solution {
+    public boolean isThree(int n) {
+        int flag = 0;
+        if (n <= 2) {
+            return false;
+        }
+        int num = n / 2;
+        for (int i = 2; i <= num; i++) {
+            if (n % i == 0) {
+                if (flag == 1) {
+                    return false;
+                }
+                flag = 1;
+            }
+        }
+        return flag == 1;
+    }
+}
+//runtime:0 ms
+//memory:35.3 MB

@@ -1,0 +1,19 @@
+class Solution {
+    public String findDifferentBinaryString(String[] nums) {
+        int n = nums.length;
+        List<String> list = Arrays.asList(nums);
+        int max = (int) Math.pow(2, n);
+        for (int i = max - 1; i >= 0; i--) {
+            if (!list.contains(Integer.toBinaryString(i))) {
+                String temp = Integer.toBinaryString(i);
+                while (temp.length() < n) {
+                    temp = "0" + temp;
+                }
+                return temp;
+            }
+        }
+        return null;
+    }
+}
+//runtime:1 ms
+//memory:36.4 MB

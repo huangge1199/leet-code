@@ -1,0 +1,36 @@
+class Solution {
+
+    private int max = 0;
+
+    public int maxCompatibilitySum(int[][] students, int[][] mentors) {
+        dfs(0,students,mentors,new ArrayList<>(),0);
+        return max;
+    }
+
+    private void dfs(int index, int[][] students, int[][] mentors, List<Integer> use, int sum) {
+        if (index == students.length) {
+            max = Math.max(max, sum);
+            return;
+        }
+        int[] student = students[index];
+        for (int i = 0; i < mentors.length; i++) {
+            if (use.contains(i)) {
+                continue;
+            }
+            int[] mentor = mentors[i];
+            int count = 0;
+            for (int j = 0; j < student.length; j++) {
+                if (student[j] == mentor[j]) {
+                    count++;
+                }
+            }
+            use.add(i);
+            sum += count;
+            dfs(index + 1, students, mentors, use, sum);
+            use.remove(use.size() - 1);
+            sum -= count;
+        }
+    }
+}
+//runtime:257 ms
+//memory:36.3 MB

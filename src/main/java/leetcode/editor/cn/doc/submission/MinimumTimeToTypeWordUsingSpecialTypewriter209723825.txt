@@ -1,0 +1,15 @@
+class Solution {
+    public int minTimeToType(String word) {
+        int time = 0;
+        char[] chs = word.toCharArray();
+        time += chs.length;
+        time += Math.min(26 - Math.abs(chs[0] - 'a'), Math.abs(chs[0] - 'a'));
+        for (int i = 1; i < chs.length; i++) {
+            int abs = Math.abs(chs[i] - chs[i - 1]);
+            time += Math.min(26 - abs, abs);
+        }
+        return time;
+    }
+}
+//runtime:0 ms
+//memory:36.6 MB

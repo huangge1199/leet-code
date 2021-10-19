@@ -1,0 +1,64 @@
+# 核心思想：
+
+依次遍历比较同位置上的字符是否相同，且数量必须为偶数。因为若不相同的数量为奇数，则肯定不能交换成相同的字符串；
+**证明：**
+若```[s1[i], s2[i]] == ["x", "y"]```的个数为n1，```[s1[i], s2[i]] == ["y", "x"]```的个数为n2；所以字符'x'和'y'的个数都为n1+n2。
+1. 当n1+n2为奇数时，字符'x'和'y'无法分配到两个字符串中，则肯定无法交换成为两个相同的字符串。
+2. 当n1+n2为偶数时，则可以通过交换两个字符串的字符使得两个字符串完全相等。
+
+字符不相等分为两种情况讨论：
+s1 : "xy"
+s2 : "yx"
+和
+s1 : "xx"
+s2 : "yy"
+第一种需要交换两次才能都变成"xy"或"yx"。第二种则只需要交换一次即可。
+因此在遍历时分别统计这两种情况的数量，最后再统一计算需要交换的次数。
+
+# 复杂度分析
+
+时间复杂度：O(n), n为字符串的长度
+空间复杂度：O(1)
+
+* []
+
+```Python
+class Solution:
+    def minimumSwap(self, s1: str, s2: str) -> int:
+        cnt1, cnt2 = 0, 0
+        for i in range(len(s1)):
+            if s1[i] == 'x' and s2[i] == 'y':
+                cnt1 += 1
+            elif s1[i] == 'y' and s2[i] == 'x':
+                cnt2 += 1
+        if (cnt1 + cnt2) % 2 != 0:
+            return -1
+        n1, m1 = divmod(cnt1, 2)
+        n2, m2 = divmod(cnt2, 2)
+        return n1 + n2 + 2 * m1
+```
+
+* []
+
+```C++
+class Solution {
+public:
+    int minimumSwap(string s1, string s2) {
+        int cnt1 = 0;
+        int cnt2 = 0;
+        for (int i = 0; i < s1.size(); i++) {
+            if (s1[i] == 'x' && s2[i] == 'y') {
+                cnt1++;
+            } else if (s1[i] == 'y' && s2[i] == 'x') {
+                cnt2++;
+            }
+        }
+        if ((cnt1 + cnt2) % 2 != 0) {
+            return -1;
+        }
+        return cnt1 / 2 + cnt2 / 2 + 2 * (cnt1 % 2);
+    }
+};
+```
+
+![image.png](https://pic.leetcode-cn.com/1629187471-SlNyLd-image.png)

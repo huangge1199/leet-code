@@ -1,0 +1,31 @@
+class Solution {
+    public int getLucky(String s, int k) {
+        int sum = 0;
+        int count = 0;
+        for (char ch : s.toCharArray()) {
+            int num = ch - 'a' + 1;
+            if (num > 9) {
+                sum += num / 10 + num % 10;
+            } else {
+                sum += num;
+            }
+        }
+        if (sum < 10 || k == 1) {
+            return sum;
+        }
+        for (int i = 1; i < k; i++) {
+            int result = 0;
+            while (sum > 9) {
+                result += sum % 10;
+                sum /= 10;
+            }
+            sum += result;
+            if (sum < 10) {
+                break;
+            }
+        }
+        return sum;
+    }
+}
+//runtime:0 ms
+//memory:36.8 MB

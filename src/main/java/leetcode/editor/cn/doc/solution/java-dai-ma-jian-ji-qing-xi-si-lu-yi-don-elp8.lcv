@@ -1,0 +1,77 @@
+![...lindrome Product.mp4](https://leetcode-cn.com/problems/largest-palindrome-product/solution/java-dai-ma-jian-ji-qing-xi-si-lu-yi-don-elp8/aeeb45a7-6002-4cd1-915b-aa52cb15a1d7)
+
+# 如果视频失效，还请到B站观看 https://space.bilibili.com/479038960
+
+# code
+
+* java
+
+```java
+/*
+
+1. 定界限
+     n = 2
+     int upperBound = 99  99 / 10 + 1
+     int lowerBound = 10
+
+ 2.手动生成回文串
+     long maxNumber = 99 * 99 = 9801         9889
+                                            9779
+                                            9669
+                                            9559
+
+
+                                            1001
+        手动生成 98 89
+
+ 3.
+     判断， 是否回文串
+
+ 4.
+     return
+
+
+     1 --> 9     1 .... 81
+
+        77 66 55 44 33 22 11
+        7 * 11   3 * 11
+*/
+    public int largestPalindrome(int n) {
+        if(n == 1)
+            return 9;
+
+        long upperBound = (long)Math.pow(10, n) - 1;
+        long lowerBound = upperBound / 10 + 1;
+
+        long maxNumber = upperBound * upperBound;       //9801
+        long half      = (long)(maxNumber / (Math.pow(10, n))); //98  89
+
+        boolean found = false;
+        long res      = 0;
+
+        while(!found){
+            res = createPalindrome(half);
+            for(long i = upperBound; i >= lowerBound; i--){
+                if(i * i < res)
+                    break;
+
+                if(res % i == 0){
+                    found = true;
+                    break;
+                }
+
+            }
+
+            half--;
+        }
+
+        return (int)(res % 1337);
+    }
+
+    private long createPalindrome(long num) {
+        String pStr = num + new StringBuilder().append(num).reverse().toString();
+        return Long.parseLong(pStr);
+    }
+
+```
+

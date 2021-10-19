@@ -1,0 +1,45 @@
+最新价格从《时间-价格表》HashMap中取
+最大最小值从 《价格-数量表》TreeMap中取
+![image.png](https://pic.leetcode-cn.com/1633842374-UUxAVB-image.png)
+
+* 
+
+```
+    class StockPrice {
+        HashMap<Integer, Integer> tsMap;
+        TreeMap<Integer, Integer> priceMap;
+        int currentTs;
+
+        public StockPrice() {
+            tsMap = new HashMap<>();
+            priceMap = new TreeMap<>();
+            currentTs = 0;
+        }
+
+        public void update(int timestamp, int price) {
+            if (tsMap.containsKey(timestamp)) {
+                int oldPrice = tsMap.get(timestamp);
+                priceMap.put(oldPrice, priceMap.get(oldPrice) - 1);
+                if (priceMap.get(oldPrice) == 0) {
+                    priceMap.remove(oldPrice);
+                }
+            }
+            priceMap.put(price, priceMap.getOrDefault(price, 0) + 1);
+            tsMap.put(timestamp, price);
+            currentTs = Math.max(currentTs, timestamp);
+        }
+
+        public int current() {
+            return tsMap.get(currentTs);
+        }
+
+        public int maximum() {
+            return priceMap.lastKey();
+        }
+
+        public int minimum() {
+            return priceMap.firstKey();
+        }
+    }
+```
+

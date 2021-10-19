@@ -1,0 +1,190 @@
+### 解题思路：
+
+最短路径：基于 `dijkstra` 算法(127ms)
+
+* []
+
+```Java
+class Solution {
+    public int minimumEffortPath(int[][] heights) {
+        int m = heights.length, n = heights[0].length;
+        int[][] dist = new int[m][n];
+        int[][] dir = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        for(int[] d : dist)
+            Arrays.fill(d, Integer.MAX_VALUE);
+        dist[0][0] = 0;
+        Queue<int[]> queue = new PriorityQueue<>((a, b) -> a[2] - b[2]);
+        boolean[][] visited = new boolean[m][n];
+        queue.offer(new int[]{0, 0, 0});
+        while(!queue.isEmpty()) {
+            int[] cur = queue.poll();
+            int x = cur[0], y = cur[1];
+            if(visited[x][y])
+                continue;
+            visited[x][y] = true;
+            for(int[] d : dir) {
+                int nx = x + d[0], ny = y + d[1];
+                if(0 <= nx && nx < m && 0 <= ny && ny < n) {
+                    int effort = Math.max(dist[x][y], Math.abs(heights[x][y] - heights[nx][ny]));
+                    dist[nx][ny] = Math.min(dist[nx][ny], effort);
+                    queue.offer(new int[]{nx, ny, dist[nx][ny]});
+                }
+            }
+        }
+        return dist[m-1][n-1];
+    }   
+}
+```
+
+最小生成树：基于并查集(96ms)
+
+* []
+
+```Java
+class Solution {
+    private int m;
+    private int n;
+    public int minimumEffortPath(int[][] heights) {
+        m = heights.length;
+        n = heights[0].length;
+        parent = new int[m * n];
+        rank = new int[m * n];
+        for (int i = 0; i < parent.length; i++) {
+            parent[i] = i;
+            rank[i] = 1;
+        }
+        List<Edge> list = new ArrayList<>();
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                if(i + 1 < m){
+                    list.add(new Edge(i*n+j, (i+1)*n+j, Math.abs(heights[i][j] - heights[i+1][j])));
+                }
+                if(j + 1 < n){
+                    list.add(new Edge(i*n+j, i*n+j+1, Math.abs(heights[i][j] - heights[i][j+1])));
+                }
+            }
+        }
+        Collections.sort(list, (a, b) -> a.value - b.value);
+        int ret = 0;
+        for(Edge edge : list){
+            if(isConnected(0, m*n-1))
+                break;
+            int v = edge.v, w = edge.w;
+            if(!isConnected(v, w)){
+                unionElements(v, w);
+                ret = edge.value;
+            }
+        }
+        return ret;
+    }
+    class Edge{
+        int v;
+        int w;
+        int value;
+        Edge(int v, int w, int value) {
+            this.v = v;
+            this.w = w;
+            this.value = value;
+        }
+    }
+    private int[] parent;
+    private int[] rank;
+    private int find(int p){
+        if (p != parent[p])
+            parent[p] = find(parent[p]);
+        return parent[p];
+    }
+    private boolean isConnected(int p, int q) {
+        return find(p) == find(q);
+    }
+    public void unionElements(int p, int q) {
+        int pRoot = find(p);
+        int qRoot = find(q);
+        if(pRoot == qRoot)
+            return;
+        if(rank[pRoot] < rank[qRoot])
+            parent[pRoot] = qRoot;
+        else if(rank[pRoot] > rank[qRoot])
+            parent[qRoot] = pRoot;
+        else {
+            parent[qRoot] = pRoot;
+            rank[pRoot] += 1;
+        }
+    }
+}
+```
+
+二分答案：基于DFS(74ms)
+
+* java
+
+```java
+class Solution {
+    private int m;
+    private int n;
+    private int[][] dir = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    public int minimumEffortPath(int[][] heights) {
+        m = heights.length;
+        n = heights[0].length;
+        int l = 0, r = 1000000;
+        while(l < r) {
+            int mid = l + r >>> 1;
+            if(!dfs(0, 0, mid, heights, new boolean[m][n]))
+                l = mid + 1;
+            else
+                r = mid;
+        }
+        return l;
+    }
+    private boolean dfs(int x, int y, int effort, int[][] heights, boolean[][] visited) {
+        if(x == m - 1 && y == n - 1)
+            return true;
+        visited[x][y] = true;
+        for(int[] d : dir) {
+            int nx = x + d[0], ny = y + d[1];
+            if(0 <= nx && nx < m && 0 <= ny && ny < n && !visited[nx][ny]) {
+                if(Math.abs(heights[nx][ny] - heights[x][y]) > effort)
+                    continue;
+                if(dfs(nx, ny, effort, heights, visited))
+                    return true;
+            }
+        }
+        return false;
+    }
+}
+```
+
+BFS：备忘录优化(101ms)
+
+* []
+
+```Java
+class Solution {
+    public int minimumEffortPath(int[][] heights) {
+        int m = heights.length, n = heights[0].length;
+        int[][] memo = new int[m][n];
+        int[][] dir = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        for(int[] arr : memo)
+            Arrays.fill(arr, Integer.MAX_VALUE);
+        memo[0][0] = 0;
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(0);
+        while(!queue.isEmpty()) {
+            int cur = queue.poll();
+            int x = cur / n, y = cur % n;
+            for(int[] d : dir) {
+                int nx = x + d[0], ny = y + d[1];
+                if(0 <= nx && nx < m && 0 <= ny && ny < n) {
+                    int effort = Math.max(memo[x][y], Math.abs(heights[nx][ny] - heights[x][y]));
+                    if(effort >= memo[nx][ny])
+                        continue;
+                    memo[nx][ny] = effort;
+                    queue.offer(nx * n + ny);
+                }
+            }
+        }
+        return memo[m-1][n-1];
+    }
+}
+```
+

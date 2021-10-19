@@ -1,0 +1,28 @@
+class Solution {
+    public int eliminateMaximum(int[] dist, int[] speed) {
+        int size = dist.length;
+        int[] times = new int[size];
+        for (int i = 0; i < size; i++) {
+            int time = dist[i] / speed[i];
+            times[i] = dist[i] % speed[i] == 0 ? time - 1 : time;
+        }
+        Arrays.sort(times);
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < size; i++) {
+            map.put(times[i], map.getOrDefault(times[i], 0) + 1);
+        }
+        int index = 1;
+        for (int i = 0; i < size; i++) {
+            if(map.containsKey(i)){
+                if(map.get(i)>index){
+                    return i+1;
+                }
+                index-=map.get(i);
+            }
+            index++;
+        }
+        return size;
+    }
+}
+//runtime:37 ms
+//memory:49.1 MB

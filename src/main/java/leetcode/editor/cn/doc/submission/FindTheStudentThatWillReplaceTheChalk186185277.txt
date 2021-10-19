@@ -1,0 +1,31 @@
+class Solution {
+    public int chalkReplacer(int[] chalk, int k) {
+        int temp = k;
+        int length = chalk.length;
+        int[] free = new int[length];
+        for (int i = 0; i < length; i++) {
+            if (i == 0) {
+                free[i] = chalk[i];
+            } else {
+                free[i] += chalk[i] + free[i - 1];
+            }
+            temp -= chalk[i];
+            if (temp < 0) {
+                return i;
+            }
+        }
+        temp %= free[length - 1];
+        if (temp == 0) {
+            return 0;
+        }
+        for (int i = 0; i < length; i++) {
+            temp -= chalk[i];
+            if (temp < 0) {
+                return i;
+            }
+        }
+        return 0;
+    }
+}
+//runtime:3 ms
+//memory:50.9 MB

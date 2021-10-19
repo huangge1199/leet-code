@@ -1,0 +1,29 @@
+思路：其实没啥思路，就是简单的获得中位数，在进行加减x等于中位数的操作
+![bd68d7f4e59501f83d7cb4643d620e7.jpg](https://pic.leetcode-cn.com/1633843495-oEjmUY-bd68d7f4e59501f83d7cb4643d620e7.jpg)
+
+* 
+
+```
+class Solution {
+    public int minOperations(int[][] grid, int x) {
+        int n = grid.length;
+        int m = grid[0].length;
+        int[] arr = new int[m*n];
+        int i = 0;
+        for(int[] a : grid)
+            for(int a_ : a){
+                arr[i++] = a_;
+            }
+        Arrays.sort(arr);
+        int j = arr[(n*m)/2];
+        int sum = 0;
+        for(int a : arr){
+            int l = Math.abs(j-a);
+            if(l%x != 0) return -1;
+            sum += l/x;
+        }
+        return sum;
+    }
+}
+```
+

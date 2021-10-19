@@ -1,0 +1,18 @@
+class Solution {
+    public double myPow(double x, int n) {
+        double ans=1;
+        if(n<0)
+            x=1/x;
+        long exp=n;
+        exp=Math.abs(exp);
+        while(exp>0){
+            if(exp%2==1)
+                ans=ans*x;
+            x*=x;
+            exp/=2;
+        }
+        return ans;
+    }
+}
+//runtime:0 ms
+//memory:36.4 MB

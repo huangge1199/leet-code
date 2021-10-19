@@ -1,0 +1,48 @@
+### 解题思路
+
+f(s,i) 表示字符串s从i开始的大小写变化结果。
+
+大小写一致时候返回一组结果
+否则返回两组结果
+
+by 瓦片
+
+### 代码
+
+* java
+
+```java
+class Solution {
+	public List<String> letterCasePermutation(String s) {
+		return f(s, 0);
+	}
+
+	private List<String> f(String s, int i) {
+		List<String> result = new ArrayList<>();
+		if (i == s.length() -1 ) {
+			String s1 = ("" + s.charAt(i)).toLowerCase();
+			String s2 = ("" + s.charAt(i)).toUpperCase();
+			if(s1.equals(s2)) {
+				result.add(s1);
+			}else {
+				result.add(s1);
+				result.add(s2);
+			}
+		} else {
+			List<String> rest = f(s, i + 1);
+			String s1 = ("" + s.charAt(i)).toLowerCase();
+			String s2 = ("" + s.charAt(i)).toUpperCase();
+			for (String r : rest) {
+				if(s1.equals(s2)) {
+					result.add(s1 + r);
+				}else {
+					result.add(s1 + r);
+					result.add(s2 + r);
+				}
+			}
+		}
+		return result;
+	}
+}
+```
+
