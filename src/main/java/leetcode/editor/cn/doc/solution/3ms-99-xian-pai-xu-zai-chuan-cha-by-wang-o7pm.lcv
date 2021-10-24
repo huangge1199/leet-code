@@ -1,0 +1,26 @@
+### 解题思路
+
+* 数组按照从小到大排序后，从中间切分,比如 123456 切分后123，456 穿插进行后142536符合题意
+* 但是1223这种就不行了，但是穿插规则可以变一下，两部分逆序穿插，即2 3 1 2
+
+### 代码
+
+* java
+
+```java
+class Solution {
+  public void wiggleSort(int[] nums) {
+        int[] help = nums.clone(); //不能写成int[] help = nums,排序后两个数组都改变
+        Arrays.sort(help);
+        int N = nums.length;
+        //比如123456
+        for (int i = 1; i < nums.length; i += 2) {
+            nums[i] = help[--N]; //遍历完成后 x 6 x 5 x 4 
+        }
+        for (int i = 0; i < nums.length; i += 2) {
+            nums[i] = help[--N]; //便利完成后 3 6 2 5 1 4
+        }
+    }
+}
+```
+

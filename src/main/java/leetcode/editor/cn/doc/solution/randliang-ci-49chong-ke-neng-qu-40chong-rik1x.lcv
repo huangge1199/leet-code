@@ -1,0 +1,23 @@
+* []
+
+```c++
+class Solution {
+public:
+    int rand10() {
+        while (1) {
+            int a = rand7(), b = rand7();
+            if (a == 1 && (b < 5)) return 1;
+            if (a == 2 && (b < 5)) return 2;
+            if (a == 3 && (b < 5)) return 3;
+            if (a == 4 && (b < 5)) return 4;
+            if (a == 5 && (b < 5)) return 5;
+            if (a == 6 && (b < 5)) return 6;
+            if (a == 7 && (b < 5)) return 7;
+            if (b == 5 && (a < 5)) return 8;
+            if (b == 6 && (a < 5)) return 9;
+            if (b == 7 && (a < 5)) return 10;
+        }
+    }
+};
+```
+
