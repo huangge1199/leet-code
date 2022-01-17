@@ -59,7 +59,6 @@ import java.util.Random;
 class LinkedListRandomNode {
     public static void main(String[] args) {
         //测试代码
-        Solution solution = new LinkedListRandomNode().new Solution();
     }
 
     //力扣代码
