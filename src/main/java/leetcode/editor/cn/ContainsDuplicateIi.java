@@ -21,6 +21,9 @@
 
 package leetcode.editor.cn;
 
+import java.util.HashMap;
+import java.util.Map;
+
 //219:存在重复元素 II
 class ContainsDuplicateIi {
     public static void main(String[] args) {
@@ -35,12 +38,12 @@ class ContainsDuplicateIi {
             if (k <= 0) {
                 return false;
             }
+            Map<Integer, Integer> map = new HashMap<>();
             for (int i = 0; i < nums.length; i++) {
-                for (int j = i + 1; j <= Math.min(i + k, nums.length - 1); j++) {
-                    if (nums[i] == nums[j]) {
-                        return true;
-                    }
+                if (map.containsKey(nums[i]) && i - map.get(nums[i]) <= k) {
+                    return true;
                 }
+                map.put(nums[i], i);
             }
             return false;
         }
