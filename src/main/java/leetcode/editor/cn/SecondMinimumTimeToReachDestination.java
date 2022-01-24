@@ -92,6 +92,7 @@ public class SecondMinimumTimeToReachDestination {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int secondMinimum(int n, int[][] edges, int time, int change) {
+            // 统计所有节点的联通节点，并将其存入map中留着后面使用
             Map<Integer, List<Integer>> map = new HashMap<>(n);
             for (int i = 1; i <= n; i++) {
                 map.put(i, new ArrayList<>());
@@ -100,32 +101,35 @@ public class SecondMinimumTimeToReachDestination {
                 map.get(edge[0]).add(edge[1]);
                 map.get(edge[1]).add(edge[0]);
             }
-            Queue<int[]> queue = new LinkedList<>();
-            queue.add(new int[]{1, 0});
+            Queue<Integer> queue = new LinkedList<>();
+            queue.add(1);
+            // 记录节点到达的次数
             int[] counts = new int[n + 1];
+            // 记录到达节点的时间
+            int free = 0;
             while (!queue.isEmpty()) {
-                int[] arrs = queue.peek();
-                int free = arrs[1] + time;
-                if ((arrs[1] / change) % 2 == 1) {
-                    free += change - arrs[1] % change;
+                // 红灯情况下加上需要等待的时间
+                if (free % (2 * change) >= change) {
+                    free += change - free % change;
                 }
+                free += time;
+                // 同一时间可以到达的节点数量
                 int size = queue.size();
-                boolean bl = true;
+                // 同一时间节点是否已经到达
                 boolean[] use = new boolean[n + 1];
                 for (int i = 0; i < size; i++) {
-                    arrs = queue.poll();
-                    List<Integer> list = map.get(arrs[0]);
+                    // 获取该节点接下来可以到达的节点
+                    List<Integer> list = map.get(queue.poll());
                     for (int num : list) {
+                        // 同一时间未到达，并且到达该节点的总次数小于2
                         if (!use[num] && counts[num] < 2) {
-                            queue.add(new int[]{num, free});
+                            queue.add(num);
                             use[num] = true;
                             counts[num]++;
                         }
-                        if (num == n && bl) {
-                            bl = false;
-                            if (counts[num] == 2) {
-                                return free;
-                            }
+                        // 如果是第二次到达最后一个节点，直接返回需要到达的诗句
+                        if (num == n && counts[num] == 2) {
+                            return free;
                         }
                     }
                 }
