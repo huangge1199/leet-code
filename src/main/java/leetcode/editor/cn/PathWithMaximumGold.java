@@ -68,9 +68,11 @@ class PathWithMaximumGold {
             boolean[][] use = new boolean[grid.length][grid[0].length];
             for (int i = 0; i < grid.length; i++) {
                 for (int j = 0; j < grid[0].length; j++) {
-                    use[i][j] = true;
-                    counts = Math.max(counts, dfs(i, j, grid, use));
-                    use[i][j] = false;
+                    if (grid[i][j] != 0) {
+                        use[i][j] = true;
+                        counts = Math.max(counts, dfs(i, j, grid, use));
+                        use[i][j] = false;
+                    }
                 }
             }
             return counts;
