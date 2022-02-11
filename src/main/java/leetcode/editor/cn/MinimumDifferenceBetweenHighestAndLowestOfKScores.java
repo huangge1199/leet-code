@@ -41,6 +41,7 @@
 package leetcode.editor.cn;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 //1984:学生分数的最小差值
 public class MinimumDifferenceBetweenHighestAndLowestOfKScores {
