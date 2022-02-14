@@ -45,13 +45,20 @@ class SingleElementInASortedArray {
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+        //        public int singleNonDuplicate(int[] nums) {
+//            for (int i = 0; i < nums.length; i = i + 2) {
+//                if (i + 1 == nums.length || nums[i] != nums[i + 1]) {
+//                    return nums[i];
+//                }
+//            }
+//            return 0;
+//        }
         public int singleNonDuplicate(int[] nums) {
-            for (int i = 0; i < nums.length; i = i + 2) {
-                if (i + 1 == nums.length || nums[i] != nums[i + 1]) {
-                    return nums[i];
-                }
+            int result = nums[0];
+            for (int i = 1; i < nums.length; i++) {
+                result ^= nums[i];
             }
-            return 0;
+            return result;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
