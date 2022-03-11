@@ -63,10 +63,13 @@ public class CountNodesWithTheHighestScore {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+        // 记录每一个节点作为根节点的子树中节点的数量
         int[] counts;
 
         public int countHighestScoreNodes(int[] parents) {
             int size = parents.length;
+
+            // 记录每个节点的直接子节点
             Map<Integer, List<Integer>> map = new HashMap<>();
             for (int i = 0; i < size; i++) {
                 map.put(i, new ArrayList<>());
@@ -74,6 +77,8 @@ public class CountNodesWithTheHighestScore {
             for (int i = 1; i < size; i++) {
                 map.get(parents[i]).add(i);
             }
+
+            // 记录每个子节点为根节点的树中节点数
             counts = new int[size];
             for (int i = 0; i < size; i++) {
                 if (counts[i] > 0) {
@@ -81,6 +86,8 @@ public class CountNodesWithTheHighestScore {
                 }
                 counts[i] = dfs(map.get(i), map);
             }
+
+            // 遍历计算每个节点的得分并统计结果
             long mul = 1;
             for (int num : map.get(0)) {
                 mul *= counts[num];
@@ -102,6 +109,9 @@ public class CountNodesWithTheHighestScore {
             return count;
         }
 
+        /**
+         * 计算每个节点为根节点的树中节点数
+         */
         private int dfs(List<Integer> list, Map<Integer, List<Integer>> map) {
             if (list.size() == 0) {
                 return 1;
