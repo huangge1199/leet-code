@@ -39,34 +39,39 @@ import java.util.HashMap;
 import java.util.List;
 
 //599:两个列表的最小索引总和
-public class MinimumIndexSumOfTwoLists{
+public class MinimumIndexSumOfTwoLists {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MinimumIndexSumOfTwoLists().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public String[] findRestaurant(String[] list1, String[] list2) {
-        HashMap< Integer, List < String >> map = new HashMap < > ();
-        for (int i = 0; i < list1.length; i++) {
-            for (int j = 0; j < list2.length; j++) {
-                if (list1[i].equals(list2[j])) {
-                    if (!map.containsKey(i + j)) {
-                        map.put(i + j, new ArrayList < String > ());
+    class Solution {
+        public String[] findRestaurant(String[] list1, String[] list2) {
+            List<String> listS1 = new ArrayList<>(Arrays.asList(list1));
+            List<String> listS2 = new ArrayList<>(Arrays.asList(list2));
+            List<String> list = new ArrayList<>();
+            int min = list1.length + list2.length;
+            for (int i = 0; i < listS2.size(); i++) {
+                int index = listS1.indexOf(listS2.get(i));
+                if (index >= 0) {
+                    if (list.isEmpty() || index + i < min) {
+                        list = new ArrayList<>();
+                        list.add(listS2.get(i));
+                        min = index + i;
+                    } else if (index + i == min) {
+                        list.add(listS2.get(i));
                     }
-                    map.get(i + j).add(list1[i]);
                 }
             }
+            String[] strs = new String[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+                strs[i] = list.get(i);
+            }
+            return strs;
         }
-        int min_index_sum = Integer.MAX_VALUE;
-        for (int key: map.keySet()) {
-            min_index_sum = Math.min(min_index_sum, key);
-        }
-        String[] res = new String[map.get(min_index_sum).size()];
-        return map.get(min_index_sum).toArray(res);
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
