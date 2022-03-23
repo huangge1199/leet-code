@@ -1,7 +1,9 @@
 package com.code.leet.entiy;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Node {
     public int val;
@@ -35,6 +37,22 @@ public class Node {
         this.prev = prev;
         this.next = next;
         this.child = child;
+    }
+
+    public Node(List<Integer> list) {
+        this.val = list.get(0);
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(this);
+        for (int i = 2; i < list.size(); i++) {
+            Node root = queue.poll();
+            root.children = new ArrayList<>();
+            while (i < list.size() && list.get(i) != null) {
+                Node node = new Node(list.get(i));
+                root.children.add(node);
+                queue.add(node);
+                i++;
+            }
+        }
     }
 
     public Node setHead(List<Integer> list, List<Integer> index) {
