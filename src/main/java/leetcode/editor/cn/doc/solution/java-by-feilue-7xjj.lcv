@@ -1,0 +1,25 @@
+首先计算每个字符出现的次数
+
+每有两个同样的字符，就可以放在结果的回文两端，长度便可以 $+2$
+
+当最后得到的回文的长度跟 $s$ 一样长时，说明每个字符都出现了 $2n$ 遍，即每个字符都已经被使用
+
+如果长度不等于 $s$, 说明至少有一个字符单独出现，将它放在回文中间使结果的长度 $+1$
+
+* []
+
+```Java
+class Solution {
+    public int longestPalindrome(String s) {
+        int[] letters = new int[128];
+        char[] arr = s.toCharArray();
+        for(char c : arr) letters[c]++;
+
+        int res = 0;
+        for(int i : letters) res += i - (i % 2);
+
+        return res == arr.length ? res : res + 1;
+    }
+}
+```
+
