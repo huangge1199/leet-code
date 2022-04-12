@@ -45,7 +45,42 @@ public class CountPrimes {
         solution.countPrimes(499979);
     }
 
-    //leetcode submit region begin(Prohibit modification and deletion)
+    //class Solution {
+    //    public int countPrimes(int n) {
+    //        if (n <= 2) {
+    //            return 0;
+    //        }
+    //        int count = 1;
+    //        for (int i = 3; i < n; i++) {
+    //            if (isPrime(i)) {
+    //                count++;
+    //            }
+    //        }
+    //        return count;
+    //    }
+
+    //    /**
+    //     * 判断是否是质数
+    //     *
+    //     * @param num 数字
+    //     * @return true：质数、false：不是质数
+    //     */
+    //    private boolean isPrime(int num) {
+    //        if (num < 2) {
+    //            return false;
+    //        }
+    //        if (num == 2) {
+    //            return true;
+    //        }
+    //        for (int i = 2; i * i <= num; i++) {
+    //            if (num % i == 0) {
+    //                return false;
+    //            }
+    //        }
+    //        return true;
+    //    }
+    //}
+
     class Solution {
         public int countPrimes(int n) {
             if (n <= 2) {
