@@ -1,8 +1,6 @@
-package contest.y2022.m4;
+package contest.y2022.m4.week;
 
-import javax.management.Query;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @description:
