@@ -49,13 +49,11 @@ public class RepeatedSubstringPattern {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public boolean repeatedSubstringPattern(String s) {
-            int lens = s.length(), i = 0;
-            while (++i < lens) {
-                if (lens % i != 0) {
-                    continue;
-                }
-                if (s.substring(lens - i, lens).equals(s.substring(0, i))) {
-                    if (s.substring(i, lens).equals(s.substring(0, lens - i))) {
+            int lens = s.length();
+            for (int i = 1; i < lens; i++) {
+                if (lens % i == 0) {
+                    if (s.substring(0, i).equals(s.substring(lens - i))
+                            && s.substring(i).equals(s.substring(0, lens - i))) {
                         return true;
                     }
                 }
