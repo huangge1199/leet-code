@@ -30,7 +30,7 @@ public class TwoArray {
         int yIndex = 0;
         String iStr = "";
         for (char ch : str.toCharArray()) {
-            if (Character.isDigit(ch)) {
+            if (Character.isDigit(ch) || ch == '-') {
                 iStr += ch;
             } else {
                 if (!iStr.equals("")) {
@@ -51,7 +51,7 @@ public class TwoArray {
         String[] strings = str.split("],\\[");
         arr = new int[strings.length][];
         for (int i = 0; i < strings.length; i++) {
-            if("".equals(strings[i])){
+            if ("".equals(strings[i])) {
                 arr[i] = new int[0];
                 continue;
             }
