@@ -16,6 +16,12 @@ public class Solution292 {
         solution.countTexts("22233");
     }
 
+    /**
+     * 第一题
+     *
+     * @param num
+     * @return
+     */
     public String largestGoodInteger(String num) {
         String str = "";
         for (int i = 9; i >= 0; i--) {
@@ -27,6 +33,12 @@ public class Solution292 {
         return "";
     }
 
+    /**
+     * 第二题
+     *
+     * @param root
+     * @return
+     */
     public int averageOfSubtree(TreeNode root) {
         counts(root);
         sums(root);
@@ -58,6 +70,12 @@ public class Solution292 {
         return sum;
     }
 
+    /**
+     * 第三题
+     *
+     * @param pressedKeys
+     * @return
+     */
     public int countTexts(String pressedKeys) {
         int[] cnts = new int[pressedKeys.length() + 1];
         cnts[0] = 1;
@@ -82,36 +100,80 @@ public class Solution292 {
     }
 
 
+    /**
+     * 第四题
+     *
+     * @param grid
+     * @return
+     */
+    //public boolean hasValidPath(char[][] grid) {
+    //    xl = grid.length;
+    //    yl = grid[0].length;
+    //    return dfs(grid, 0, 0, 0);
+    //}
+    //
+    //Set<String> set = new HashSet<>();
+    //int xl;
+    //int yl;
+    //
+    //private boolean dfs(char[][] grid, int x, int y, int cnt) {
+    //    String s = "" + x + "-" + y + "-" + cnt;
+    //    if (set.contains(s)) {
+    //        return false;
+    //    }
+    //    set.add(s);
+    //    if (x >= xl || y >= yl) {
+    //        return false;
+    //    }
+    //    if (grid[x][y] == '(') {
+    //        cnt++;
+    //    } else {
+    //        cnt--;
+    //    }
+    //    if (cnt < 0 || xl + yl - x - y < cnt) {
+    //        return false;
+    //    }
+    //    if (x == xl - 1 && y == yl - 1 && cnt == 0) {
+    //        return true;
+    //    }
+    //    return dfs(grid, x + 1, y, cnt) || dfs(grid, x, y + 1, cnt);
+    //}
     public boolean hasValidPath(char[][] grid) {
         xl = grid.length;
         yl = grid[0].length;
-        return dfs(grid, 0, 0, 0);
+        use = new boolean[xl][yl][xl * yl];
+        if ((xl + yl) % 2 == 0 || grid[0][0] == ')' || grid[xl - 1][yl - 1] == '(') {
+            return false;
+        }
+        dfs(grid, 0, 0, 0);
+        return bl;
     }
 
-    Set<String> set = new HashSet<>();
     int xl;
     int yl;
+    boolean bl = false;
+    boolean[][][] use;
 
-    private boolean dfs(char[][] grid, int x, int y, int cnt) {
-        String s = "" + x + "-" + y + "-" + cnt;
-        if (set.contains(s)) {
-            return false;
+    private void dfs(char[][] grid, int x, int y, int cnt) {
+        if (x >= xl || y >= yl || cnt > xl - x + yl - y - 1) {
+            return;
         }
-        set.add(s);
-        if (x >= xl || y >= yl) {
-            return false;
+        if (x == xl - 1 && y == yl - 1) {
+            bl = cnt == 1;
         }
-        if (grid[x][y] == '(') {
-            cnt++;
-        } else {
-            cnt--;
+        if (use[x][y][cnt]) {
+            return;
         }
-        if (cnt < 0 || xl + yl - x - y < cnt) {
-            return false;
+        use[x][y][cnt] = true;
+        cnt += grid[x][y] == '(' ? 1 : -1;
+        if (cnt < 0) {
+            return;
         }
-        if (x == xl - 1 && y == yl - 1 && cnt == 0) {
-            return true;
+        if (!bl) {
+            dfs(grid, x + 1, y, cnt);
         }
-        return dfs(grid, x + 1, y, cnt) || dfs(grid, x, y + 1, cnt);
+        if (!bl) {
+            dfs(grid, x, y + 1, cnt);
+        }
     }
 }
