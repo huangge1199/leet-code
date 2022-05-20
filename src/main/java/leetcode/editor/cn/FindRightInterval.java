@@ -47,6 +47,8 @@
 
 package leetcode.editor.cn;
 
+import com.code.leet.entiy.TwoArray;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -56,6 +58,8 @@ class FindRightInterval{
     public static void main(String[] args) {
         //测试代码
         Solution solution = new FindRightInterval().new Solution();
+        TwoArray twoArray = new TwoArray("[[1,4],[2,3],[3,4]]",true);
+        solution.findRightInterval(twoArray.getArr());
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
