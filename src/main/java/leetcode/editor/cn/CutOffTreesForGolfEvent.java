@@ -74,11 +74,18 @@ public class CutOffTreesForGolfEvent {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int cutOffTree(List<List<Integer>> forest) {
+            /*
+            起始位置不可到达的情况，即坐标（0,0）位置为0
+             */
             if (forest.get(0).get(0) == 0) {
                 return -1;
             }
             int xL = forest.size();
             int yL = forest.get(0).size();
+
+            /*
+            按照顺序排列需要砍的树，记录每棵树的位置
+             */
             TreeMap<Integer, Pair<Integer, Integer>> map = new TreeMap<>();
             for (int i = 0; i < xL; i++) {
                 List<Integer> list = forest.get(i);
@@ -102,6 +109,9 @@ public class CutOffTreesForGolfEvent {
                     continue;
                 }
                 boolean bl = false;
+                /*
+                计算到达下一棵需要砍树的步数
+                 */
                 while (!queue.isEmpty() && !bl) {
                     int nums = queue.size();
                     step++;
