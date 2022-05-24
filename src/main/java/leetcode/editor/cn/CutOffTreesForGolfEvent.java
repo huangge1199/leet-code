@@ -83,7 +83,7 @@ public class CutOffTreesForGolfEvent {
             for (int i = 0; i < xL; i++) {
                 List<Integer> list = forest.get(i);
                 for (int j = 0; j < yL; j++) {
-                    if (list.get(j) > 0) {
+                    if (list.get(j) > 1) {
                         map.put(list.get(j), new Pair<>(i, j));
                     }
                 }
