@@ -42,15 +42,12 @@
 //<div><div>Related Topics</div><div><li>设计</li><li>字典树</li><li>哈希表</li><li>字符串</li></div></div><br><div><li>👍 16</li><li>👎 0</li></div>
 package leetcode.editor.cn;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-// 剑指 Offer II 066:单词之和
 public class Z1R5dt {
     public static void main(String[] args) {
-        Solution solution = new Z1R5dt().new Solution();
+        //Solution solution = new Z1R5dt().new Solution();
         // TO TEST
     }
 
