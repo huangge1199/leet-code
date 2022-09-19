@@ -1,4 +1,5 @@
-给你一个链表的头节点 <code>head</code> 和一个整数 <code>val</code> ，请你删除链表中所有满足 <code>Node.val == val</code> 的节点，并返回 <strong>新的头节点</strong> 。
+给你一个链表的头节点 <code>head</code> 和一个整数 <code>val</code> ，请你删除链表中所有满足 <code>Node.val == val</code>
+的节点，并返回 <strong>新的头节点</strong> 。
 <p> </p>
 
 <p><strong>示例 1：</strong></p>

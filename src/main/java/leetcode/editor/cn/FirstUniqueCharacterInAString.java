@@ -23,34 +23,35 @@ import java.util.HashMap;
 import java.util.Map;
 
 //387:字符串中的第一个唯一字符
-class FirstUniqueCharacterInAString{
+class FirstUniqueCharacterInAString {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new FirstUniqueCharacterInAString().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int firstUniqChar(String s) {
+    class Solution {
+        public int firstUniqChar(String s) {
 //        for (int i = 0; i < s.length(); i++) {
 //            if(!s.substring(i+1).contains(""+s.charAt(i))&&!s.substring(0,i).contains(""+s.charAt(i))){
 //                return i;
 //            }
 //        }
 //        return -1;
-        Map<Character, Integer> map = new HashMap<>();
-        for (int i = 0; i < s.length(); ++i) {
-            char ch = s.charAt(i);
-            map.put(ch, map.getOrDefault(ch, 0) + 1);
-        }
-        for (int i = 0; i < s.length(); ++i) {
-            if (map.get(s.charAt(i)) == 1) {
-                return i;
+            Map<Character, Integer> map = new HashMap<>();
+            for (int i = 0; i < s.length(); ++i) {
+                char ch = s.charAt(i);
+                map.put(ch, map.getOrDefault(ch, 0) + 1);
             }
+            for (int i = 0; i < s.length(); ++i) {
+                if (map.get(s.charAt(i)) == 1) {
+                    return i;
+                }
+            }
+            return -1;
         }
-        return -1;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

@@ -47,27 +47,27 @@ import java.util.Collections;
 import java.util.List;
 
 //1365:有多少小于当前数字的数字
-public class HowManyNumbersAreSmallerThanTheCurrentNumber{
+public class HowManyNumbersAreSmallerThanTheCurrentNumber {
     public static void main(String[] args) {
         Solution solution = new HowManyNumbersAreSmallerThanTheCurrentNumber().new Solution();
-        
+
     }
 
-//leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] smallerNumbersThanCurrent(int[] nums) {
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < nums.length; i++) {
-            list.add(nums[i]);
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public int[] smallerNumbersThanCurrent(int[] nums) {
+            List<Integer> list = new ArrayList<>();
+            for (int i = 0; i < nums.length; i++) {
+                list.add(nums[i]);
+            }
+            Collections.sort(list);
+            int[] arrs = new int[nums.length];
+            for (int i = 0; i < nums.length; i++) {
+                arrs[i] = list.indexOf(nums[i]);
+            }
+            return arrs;
         }
-        Collections.sort(list);
-        int[] arrs = new int[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            arrs[i] = list.indexOf(nums[i]);
-        }
-        return arrs;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

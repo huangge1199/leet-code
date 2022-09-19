@@ -49,28 +49,29 @@ package leetcode.editor.cn;
 import java.util.Arrays;
 
 //5739:最高频元素的频数
-public class FrequencyOfTheMostFrequentElement{
+public class FrequencyOfTheMostFrequentElement {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new FrequencyOfTheMostFrequentElement().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int maxFrequency(int[] nums, int k) {
-        Arrays.sort(nums);
-        int ans = 1;
-        for(int i = 1, j = 0, sum = 0; i < nums.length; i += 1){
-            sum += (nums[i] - nums[i - 1]) * (i - j);
-            while(sum > k){
-                sum -= nums[i] - nums[j];
-                j += 1;
+    class Solution {
+        public int maxFrequency(int[] nums, int k) {
+            Arrays.sort(nums);
+            int ans = 1;
+            for (int i = 1, j = 0, sum = 0; i < nums.length; i += 1) {
+                sum += (nums[i] - nums[i - 1]) * (i - j);
+                while (sum > k) {
+                    sum -= nums[i] - nums[j];
+                    j += 1;
+                }
+                ans = Math.max(ans, i - j + 1);
             }
-            ans = Math.max(ans, i - j + 1);
+            return ans;
         }
-        return ans;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

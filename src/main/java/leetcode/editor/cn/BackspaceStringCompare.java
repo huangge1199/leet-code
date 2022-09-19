@@ -83,7 +83,7 @@ public class BackspaceStringCompare {
             int length = str.length();
             for (char ch : str.toCharArray()) {
                 if (ch == '#') {
-                    if(!stack.isEmpty()) {
+                    if (!stack.isEmpty()) {
                         stack.pop();
                     }
                 } else {

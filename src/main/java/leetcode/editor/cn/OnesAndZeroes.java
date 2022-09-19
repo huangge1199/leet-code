@@ -54,7 +54,7 @@ class OnesAndZeroes {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int findMaxForm(String[] strs, int m, int n) {
-            int[][] dp = new int[m+1][n+1];
+            int[][] dp = new int[m + 1][n + 1];
             for (String str : strs) {
                 int size = str.length();
                 int num0 = str.replace("1", "").length();

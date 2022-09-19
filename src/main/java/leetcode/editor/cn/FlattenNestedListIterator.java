@@ -81,7 +81,7 @@ public class FlattenNestedListIterator {
 
         @Override
         public boolean hasNext() {
-            return index< list.size();
+            return index < list.size();
         }
     }
 

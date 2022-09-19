@@ -24,38 +24,39 @@ package leetcode.editor.cn;
 import com.code.leet.entiy.ListNode;
 
 //剑指 Offer 24:反转链表
-public class FanZhuanLianBiaoLcof{
+public class FanZhuanLianBiaoLcof {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new FanZhuanLianBiaoLcof().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public ListNode reverseList(ListNode head) {
-        ListNode newHead = null;
-        ListNode p = head;
-        ListNode pPrev = null;
-        while (p != null) {
-            ListNode temp = p.next;
-            if (temp == null) {
-                newHead = p;
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) { val = x; }
+     * }
+     */
+    class Solution {
+        public ListNode reverseList(ListNode head) {
+            ListNode newHead = null;
+            ListNode p = head;
+            ListNode pPrev = null;
+            while (p != null) {
+                ListNode temp = p.next;
+                if (temp == null) {
+                    newHead = p;
+                }
+                p.next = pPrev;
+                pPrev = p;
+                p = temp;
             }
-            p.next = pPrev;
-            pPrev = p;
-            p = temp;
+            return newHead;
         }
-        return newHead;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

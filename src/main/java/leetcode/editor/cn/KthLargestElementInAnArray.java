@@ -34,19 +34,20 @@ import java.util.Arrays;
 import java.util.Queue;
 
 //215:数组中的第K个最大元素
-public class KthLargestElementInAnArray{
+public class KthLargestElementInAnArray {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new KthLargestElementInAnArray().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int findKthLargest(int[] nums, int k) {
-        Arrays.sort(nums);
-        return nums[nums.length-k];
+    class Solution {
+        public int findKthLargest(int[] nums, int k) {
+            Arrays.sort(nums);
+            return nums[nums.length - k];
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

@@ -88,37 +88,37 @@ public class EvaluateReversePolishNotation {
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
-            public int evalRPN(String[] tokens) {
-                Stack<Integer> stack = new Stack<>();
-                String op = "+-*/";
-                int result = 0;
-                for (String str : tokens) {
-                    if (op.contains(str) && !stack.isEmpty()) {
-                        int op2 = stack.pop();
-                        int op1 = stack.pop();
-                        switch (str) {
-                            case "+":
-                                result = op1 + op2;
-                                break;
-                            case "-":
-                                result = op1 - op2;
-                                break;
-                            case "*":
-                                result = op1 * op2;
-                                break;
-                            case "/":
-                                result = op1 / op2;
-                                break;
-                            default:
-                                break;
-                        }
-                        stack.push(result);
-                    } else {
-                        stack.push(Integer.valueOf(str));
+        public int evalRPN(String[] tokens) {
+            Stack<Integer> stack = new Stack<>();
+            String op = "+-*/";
+            int result = 0;
+            for (String str : tokens) {
+                if (op.contains(str) && !stack.isEmpty()) {
+                    int op2 = stack.pop();
+                    int op1 = stack.pop();
+                    switch (str) {
+                        case "+":
+                            result = op1 + op2;
+                            break;
+                        case "-":
+                            result = op1 - op2;
+                            break;
+                        case "*":
+                            result = op1 * op2;
+                            break;
+                        case "/":
+                            result = op1 / op2;
+                            break;
+                        default:
+                            break;
                     }
+                    stack.push(result);
+                } else {
+                    stack.push(Integer.valueOf(str));
                 }
-                return stack.pop();
             }
+            return stack.pop();
+        }
     }
 //leetcode submit region end(Prohibit modification and deletion)
 

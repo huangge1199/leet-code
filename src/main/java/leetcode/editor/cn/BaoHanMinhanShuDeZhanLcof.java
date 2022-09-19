@@ -33,14 +33,15 @@ package leetcode.editor.cn;
 import java.util.Stack;
 
 //面试题30:包含min函数的栈
-public class BaoHanMinhanShuDeZhanLcof{
+public class BaoHanMinhanShuDeZhanLcof {
     public static void main(String[] args) {
         //测试代码
 //        Solution solution = new BaoHanMinhanShuDeZhanLcof().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class MinStack {
+    class MinStack {
         Stack<Integer> stack;
         Stack<Integer> min;
 
@@ -70,7 +71,7 @@ class MinStack {
         public int min() {
             return min.peek();
         }
-}
+    }
 
 /**
  * Your MinStack object will be instantiated and called as such:

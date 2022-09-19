@@ -50,18 +50,19 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 //81:搜索旋转排序数组 II
-public class SearchInRotatedSortedArrayIi{
+public class SearchInRotatedSortedArrayIi {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new SearchInRotatedSortedArrayIi().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean search(int[] nums, int target) {
-        return Arrays.stream(nums).boxed().collect(Collectors.toList()).contains(target);
+    class Solution {
+        public boolean search(int[] nums, int target) {
+            return Arrays.stream(nums).boxed().collect(Collectors.toList()).contains(target);
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

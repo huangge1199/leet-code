@@ -59,7 +59,7 @@ public class JEj789 {
                 mins[i][1] = costs[i][1] + Math.min(mins[i - 1][0], mins[i - 1][2]);
                 mins[i][2] = costs[i][2] + Math.min(mins[i - 1][0], mins[i - 1][1]);
             }
-            return Math.min(Math.min(mins[length-1][0],mins[length-1][1]),mins[length-1][2]);
+            return Math.min(Math.min(mins[length - 1][0], mins[length - 1][1]), mins[length - 1][2]);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)

@@ -38,28 +38,30 @@
 // 👍 2 👎 0
 
 package leetcode.editor.cn;
+
 //1876:长度为三且各字符不同的子字符串
-public class SubstringsOfSizeThreeWithDistinctCharacters{
+public class SubstringsOfSizeThreeWithDistinctCharacters {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new SubstringsOfSizeThreeWithDistinctCharacters().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int countGoodSubstrings(String s) {
-        if(s.length()<3){
-            return 0;
-        }
-        int count = 0;
-        for (int i = 1; i < s.length() - 1; i++) {
-            if(s.charAt(i-1)!=s.charAt(i)&&s.charAt(i-1)!=s.charAt(i+1)&&s.charAt(i+1)!=s.charAt(i)){
-                count++;
+    class Solution {
+        public int countGoodSubstrings(String s) {
+            if (s.length() < 3) {
+                return 0;
             }
+            int count = 0;
+            for (int i = 1; i < s.length() - 1; i++) {
+                if (s.charAt(i - 1) != s.charAt(i) && s.charAt(i - 1) != s.charAt(i + 1) && s.charAt(i + 1) != s.charAt(i)) {
+                    count++;
+                }
+            }
+            return count;
         }
-        return count;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

@@ -26,7 +26,7 @@ public class SumOfTwoIntegers {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int getSum(int a, int b) {
-            while(b != 0){
+            while (b != 0) {
                 int temp = a ^ b;
                 b = (a & b) << 1;
                 a = temp;

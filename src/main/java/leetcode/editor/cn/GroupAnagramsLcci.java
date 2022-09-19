@@ -26,30 +26,31 @@ package leetcode.editor.cn;
 import java.util.*;
 
 //面试题 10.02:变位词组
-class GroupAnagramsLcci{
+class GroupAnagramsLcci {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new GroupAnagramsLcci().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public List<List<String>> groupAnagrams(String[] strs) {
-        Map<String,List<String>> map = new HashMap<>();
-        for (String str:strs){
-            char[] chars = str.toCharArray();
-            Arrays.sort(chars);
-            List<String> list = map.getOrDefault(new String(chars),new ArrayList<>());
-            list.add(str);
-            map.put(new String(chars),list);
+    class Solution {
+        public List<List<String>> groupAnagrams(String[] strs) {
+            Map<String, List<String>> map = new HashMap<>();
+            for (String str : strs) {
+                char[] chars = str.toCharArray();
+                Arrays.sort(chars);
+                List<String> list = map.getOrDefault(new String(chars), new ArrayList<>());
+                list.add(str);
+                map.put(new String(chars), list);
+            }
+            List<List<String>> result = new ArrayList<>();
+            for (String key : map.keySet()) {
+                result.add(map.get(key));
+            }
+            return result;
         }
-        List<List<String>> result = new ArrayList<>();
-        for (String key: map.keySet()){
-            result.add(map.get(key));
-        }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

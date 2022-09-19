@@ -78,19 +78,23 @@ public class MinStack {
 //        public int getMin() {
 //            return min.peek();
 //        }
-        class Data{
+        class Data {
             int num;
             int min;
+
             public Data(int num, int min) {
                 this.num = num;
                 this.min = min;
             }
+
             public int getNum() {
                 return num;
             }
+
             public void setNum(int num) {
                 this.num = num;
             }
+
             public int getMin() {
                 return min;
             }
@@ -99,6 +103,7 @@ public class MinStack {
                 this.min = min;
             }
         }
+
         Stack<Data> stack;
 
         public MinStack1() {
@@ -107,9 +112,9 @@ public class MinStack {
 
         public void push(int val) {
             if (stack.isEmpty()) {
-                stack.push(new Data(val,val));
+                stack.push(new Data(val, val));
             } else {
-                stack.push(new Data(val,Math.min(val,stack.peek().min)));
+                stack.push(new Data(val, Math.min(val, stack.peek().min)));
             }
         }
 

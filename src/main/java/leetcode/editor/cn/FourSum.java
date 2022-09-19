@@ -66,11 +66,11 @@ class FourSum {
                 if (i > 0 && nums[i] == nums[i - 1]) {
                     continue;
                 }
-                sum = (long)nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3];
+                sum = (long) nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3];
                 if (sum > target) {
                     break;
                 }
-                sum = (long)nums[i] + nums[length - 3] + nums[length - 2] + nums[length - 1];
+                sum = (long) nums[i] + nums[length - 3] + nums[length - 2] + nums[length - 1];
                 if (sum < target) {
                     continue;
                 }
@@ -78,18 +78,18 @@ class FourSum {
                     if (j > i + 1 && nums[j] == nums[j - 1]) {
                         continue;
                     }
-                    sum = (long)nums[i] + nums[j] + nums[j + 1] + nums[j + 2];
+                    sum = (long) nums[i] + nums[j] + nums[j + 1] + nums[j + 2];
                     if (sum > target) {
                         break;
                     }
-                    sum = (long)nums[i] + nums[j] + nums[length - 2] + nums[length - 1];
+                    sum = (long) nums[i] + nums[j] + nums[length - 2] + nums[length - 1];
                     if (sum < target) {
                         continue;
                     }
                     int start = j + 1;
                     int end = length - 1;
                     while (start < end) {
-                        sum = (long)nums[i] + nums[j] + nums[start] + nums[end];
+                        sum = (long) nums[i] + nums[j] + nums[start] + nums[end];
                         if (sum == target) {
                             result.add(Arrays.asList(nums[i], nums[j], nums[start], nums[end]));
                             while (start < end && nums[start] == nums[start + 1]) {

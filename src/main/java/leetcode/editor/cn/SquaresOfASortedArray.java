@@ -45,22 +45,23 @@ package leetcode.editor.cn;
 import java.util.Arrays;
 
 //977:有序数组的平方
-class SquaresOfASortedArray{
+class SquaresOfASortedArray {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new SquaresOfASortedArray().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] sortedSquares(int[] nums) {
-        for (int i = 0; i < nums.length; i++) {
-            nums[i]*=nums[i];
+    class Solution {
+        public int[] sortedSquares(int[] nums) {
+            for (int i = 0; i < nums.length; i++) {
+                nums[i] *= nums[i];
+            }
+            Arrays.sort(nums);
+            return nums;
         }
-        Arrays.sort(nums);
-        return nums;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

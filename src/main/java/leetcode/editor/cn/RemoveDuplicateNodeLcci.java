@@ -35,38 +35,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 //面试题 02.01:移除重复节点
-public class RemoveDuplicateNodeLcci{
+public class RemoveDuplicateNodeLcci {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new RemoveDuplicateNodeLcci().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public ListNode removeDuplicateNodes(ListNode head) {
-        List<Integer> list = new ArrayList<>();
-        ListNode temp = head;
-        ListNode pro = null;
-        while (temp != null) {
-            if (list.contains(temp.val)) {
-                pro.next = temp.next;
-            } else {
-                list.add(temp.val);
-                pro = temp;
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) { val = x; }
+     * }
+     */
+    class Solution {
+        public ListNode removeDuplicateNodes(ListNode head) {
+            List<Integer> list = new ArrayList<>();
+            ListNode temp = head;
+            ListNode pro = null;
+            while (temp != null) {
+                if (list.contains(temp.val)) {
+                    pro.next = temp.next;
+                } else {
+                    list.add(temp.val);
+                    pro = temp;
+                }
+                temp = temp.next;
             }
-            temp = temp.next;
+            return head;
         }
-        return head;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

@@ -50,24 +50,25 @@ package leetcode.editor.cn;
 import java.util.Arrays;
 
 //1877:数组中最大数对和的最小值
-public class MinimizeMaximumPairSumInArray{
+public class MinimizeMaximumPairSumInArray {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MinimizeMaximumPairSumInArray().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int minPairSum(int[] nums) {
-        Arrays.sort(nums);
-        int max = Integer.MIN_VALUE;
-        int length = nums.length;
-        for (int i = 0; i < length / 2; i++) {
-            max = Math.max(nums[i] + nums[length - 1 - i], max);
+    class Solution {
+        public int minPairSum(int[] nums) {
+            Arrays.sort(nums);
+            int max = Integer.MIN_VALUE;
+            int length = nums.length;
+            for (int i = 0; i < length / 2; i++) {
+                max = Math.max(nums[i] + nums[length - 1 - i], max);
+            }
+            return max;
         }
-        return max;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

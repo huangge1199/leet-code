@@ -44,7 +44,7 @@ public class Ccw6C7 {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new Ccw6C7().new Solution();
-        solution.paintingPlan(2,2);
+        solution.paintingPlan(2, 2);
     }
 
     //力扣代码

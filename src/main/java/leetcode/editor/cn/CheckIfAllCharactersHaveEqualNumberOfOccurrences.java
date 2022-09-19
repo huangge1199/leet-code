@@ -30,30 +30,31 @@
 // Related Topics 哈希表 字符串 计数 👍 0 👎 0
 
 package leetcode.editor.cn;
+
 //1941:检查是否所有字符出现次数相同
-class CheckIfAllCharactersHaveEqualNumberOfOccurrences{
+class CheckIfAllCharactersHaveEqualNumberOfOccurrences {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new CheckIfAllCharactersHaveEqualNumberOfOccurrences().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean areOccurrencesEqual(String s) {
-        int[] arr = new int[26];
-        for (char ch : s.toCharArray()) {
-            arr[ch - 'a']++;
-        }
-        int num = arr[s.charAt(0) - 'a'];
-        for (int j : arr) {
-            if (j > 0 && j != num) {
-                return false;
+    class Solution {
+        public boolean areOccurrencesEqual(String s) {
+            int[] arr = new int[26];
+            for (char ch : s.toCharArray()) {
+                arr[ch - 'a']++;
             }
+            int num = arr[s.charAt(0) - 'a'];
+            for (int j : arr) {
+                if (j > 0 && j != num) {
+                    return false;
+                }
+            }
+            return true;
         }
-        return true;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

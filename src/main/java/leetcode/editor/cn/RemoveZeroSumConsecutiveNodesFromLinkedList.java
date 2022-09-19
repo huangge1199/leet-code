@@ -46,51 +46,52 @@ import java.util.HashMap;
 import java.util.Map;
 
 //1171:从链表中删去总和值为零的连续节点
-public class RemoveZeroSumConsecutiveNodesFromLinkedList{
+public class RemoveZeroSumConsecutiveNodesFromLinkedList {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new RemoveZeroSumConsecutiveNodesFromLinkedList().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public ListNode removeZeroSumSublists(ListNode head) {
-        Map<Integer, ListNode> map = new HashMap<>();
-        int sum = 0;
-        ListNode temp = head;
-        while (temp != null) {
-            sum += temp.val;
-            while (temp.next != null && temp.next.val == 0) {
-                temp.next = temp.next.next;
-            }
-            if (sum == 0 || map.containsKey(sum)) {
-                if (sum == 0) {
-                    head = temp.next;
-                } else {
-                    map.get(sum).next = temp.next;
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) { val = x; }
+     * }
+     */
+    class Solution {
+        public ListNode removeZeroSumSublists(ListNode head) {
+            Map<Integer, ListNode> map = new HashMap<>();
+            int sum = 0;
+            ListNode temp = head;
+            while (temp != null) {
+                sum += temp.val;
+                while (temp.next != null && temp.next.val == 0) {
+                    temp.next = temp.next.next;
                 }
-                if (head != null) {
-                    map = new HashMap<>();
-                    temp = head;
-                    sum = head.val;
-                } else {
-                    return head;
+                if (sum == 0 || map.containsKey(sum)) {
+                    if (sum == 0) {
+                        head = temp.next;
+                    } else {
+                        map.get(sum).next = temp.next;
+                    }
+                    if (head != null) {
+                        map = new HashMap<>();
+                        temp = head;
+                        sum = head.val;
+                    } else {
+                        return head;
+                    }
                 }
+                map.put(sum, temp);
+                temp = temp.next;
             }
-            map.put(sum, temp);
-            temp = temp.next;
+            return head;
         }
-        return head;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

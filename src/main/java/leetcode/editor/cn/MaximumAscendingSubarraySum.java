@@ -50,31 +50,33 @@
 // 👍 15 👎 0
 
 package leetcode.editor.cn;
+
 //1800:最大升序子数组和
-public class MaximumAscendingSubarraySum{
+public class MaximumAscendingSubarraySum {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MaximumAscendingSubarraySum().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int maxAscendingSum(int[] nums) {
-        int max = 0;
-        int size = nums.length;
-        int sum = nums[0];
-        for (int i = 1; i < size; i++) {
-            if (nums[i] > nums[i - 1]) {
-                sum += nums[i];
-            } else {
-                max = Math.max(sum, max);
-                sum = nums[i];
+    class Solution {
+        public int maxAscendingSum(int[] nums) {
+            int max = 0;
+            int size = nums.length;
+            int sum = nums[0];
+            for (int i = 1; i < size; i++) {
+                if (nums[i] > nums[i - 1]) {
+                    sum += nums[i];
+                } else {
+                    max = Math.max(sum, max);
+                    sum = nums[i];
+                }
             }
+            max = Math.max(sum, max);
+            return max;
         }
-        max = Math.max(sum, max);
-        return max;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

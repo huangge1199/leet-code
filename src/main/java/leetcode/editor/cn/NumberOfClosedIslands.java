@@ -63,7 +63,7 @@ public class NumberOfClosedIslands {
                 "[1,0,0,0,0,1,1,0]," +
                 "[1,0,1,0,1,1,1,0]," +
                 "[1,0,0,0,0,1,0,1]," +
-                "[1,1,1,1,1,1,1,0]]",true
+                "[1,1,1,1,1,1,1,0]]", true
         );
         System.out.println(solution.closedIsland(twoArray.getArr()));
     }

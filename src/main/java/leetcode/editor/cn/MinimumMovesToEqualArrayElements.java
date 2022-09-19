@@ -49,7 +49,7 @@ class MinimumMovesToEqualArrayElements {
             int min = Arrays.stream(nums).min().getAsInt();
             int count = 0;
             for (int num : nums) {
-                count += num-min;
+                count += num - min;
             }
             return count;
         }

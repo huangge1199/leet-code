@@ -41,42 +41,44 @@
 // 👍 8 👎 0
 
 package leetcode.editor.cn;
+
 //1864:构成交替字符串需要的最小交换次数
-public class MinimumNumberOfSwapsToMakeTheBinaryStringAlternating{
+public class MinimumNumberOfSwapsToMakeTheBinaryStringAlternating {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MinimumNumberOfSwapsToMakeTheBinaryStringAlternating().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int minSwaps(String s) {
-        int s0 = s.replace("0", "").length();
-        int s1 = s.replace("1", "").length();
-        if (Math.abs(s0 - s1) > 1) {
-            return -1;
-        }
-        int com = 0;
-        int m0 = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (com != s.charAt(i) - '0') {
-                m0++;
+    class Solution {
+        public int minSwaps(String s) {
+            int s0 = s.replace("0", "").length();
+            int s1 = s.replace("1", "").length();
+            if (Math.abs(s0 - s1) > 1) {
+                return -1;
             }
-            com = 1 - com;
-        }
-        m0 = m0 % 2 == 0 ? m0 : Integer.MAX_VALUE;
-        com = 1;
-        int m1 = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (com != s.charAt(i) - '0') {
-                m1++;
+            int com = 0;
+            int m0 = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (com != s.charAt(i) - '0') {
+                    m0++;
+                }
+                com = 1 - com;
             }
-            com = 1 - com;
+            m0 = m0 % 2 == 0 ? m0 : Integer.MAX_VALUE;
+            com = 1;
+            int m1 = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (com != s.charAt(i) - '0') {
+                    m1++;
+                }
+                com = 1 - com;
+            }
+            m1 = m1 % 2 == 0 ? m1 : Integer.MAX_VALUE;
+            return Math.min(m0, m1) / 2;
         }
-        m1 = m1 % 2 == 0 ? m1 : Integer.MAX_VALUE;
-        return Math.min(m0, m1) / 2;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

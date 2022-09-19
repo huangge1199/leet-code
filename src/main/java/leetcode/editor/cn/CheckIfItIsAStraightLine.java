@@ -40,7 +40,7 @@ public class CheckIfItIsAStraightLine {
     public static void main(String[] args) {
         Solution solution = new CheckIfItIsAStraightLine().new Solution();
         // TO TEST
-        TwoArray twoArray = new TwoArray("[[0,1],[1,3],[-4,-7],[5,11]]",true);
+        TwoArray twoArray = new TwoArray("[[0,1],[1,3],[-4,-7],[5,11]]", true);
         System.out.println(solution.checkStraightLine(twoArray.getArr()));
     }
 

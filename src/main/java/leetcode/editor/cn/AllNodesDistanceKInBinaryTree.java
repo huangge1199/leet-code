@@ -63,7 +63,7 @@ public class AllNodesDistanceKInBinaryTree {
      * }
      */
     class Solution {
-//        private Stack<TreeNode> stack = new Stack<>();
+        //        private Stack<TreeNode> stack = new Stack<>();
 //        List<Integer> list = new ArrayList<>();
 //
 //        public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
@@ -110,7 +110,7 @@ public class AllNodesDistanceKInBinaryTree {
 //            dfs(root.left, index + 1, k);
 //            dfs(root.right, index + 1, k);
 //        }
-Map<Integer, TreeNode> parents = new HashMap<Integer, TreeNode>();
+        Map<Integer, TreeNode> parents = new HashMap<Integer, TreeNode>();
         List<Integer> ans = new ArrayList<Integer>();
 
         public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {

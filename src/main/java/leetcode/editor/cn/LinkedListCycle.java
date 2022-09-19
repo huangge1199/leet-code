@@ -60,36 +60,37 @@ import java.util.HashSet;
 import java.util.Set;
 
 //141:环形链表
-public class LinkedListCycle{
+public class LinkedListCycle {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new LinkedListCycle().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
- */
-public class Solution {
-    public boolean hasCycle(ListNode head) {
-        Set<ListNode> seen = new HashSet<>();
-        while (head != null) {
-            if (!seen.add(head)) {
-                return true;
+
+    /**
+     * Definition for singly-linked list.
+     * class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) {
+     * val = x;
+     * next = null;
+     * }
+     * }
+     */
+    public class Solution {
+        public boolean hasCycle(ListNode head) {
+            Set<ListNode> seen = new HashSet<>();
+            while (head != null) {
+                if (!seen.add(head)) {
+                    return true;
+                }
+                head = head.next;
             }
-            head = head.next;
+            return false;
         }
-        return false;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

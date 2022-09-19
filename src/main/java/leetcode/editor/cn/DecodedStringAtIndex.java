@@ -100,7 +100,7 @@ public class DecodedStringAtIndex {
                 }
             }
 
-            for (int i = length-1; i >= 0; --i) {
+            for (int i = length - 1; i >= 0; --i) {
                 K %= size;
                 if (K == 0 && Character.isLetter(S.charAt(i))) {
                     return Character.toString(S.charAt(i));

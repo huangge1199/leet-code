@@ -45,31 +45,32 @@
 // 👍 2 👎 0
 
 package leetcode.editor.cn;
+
 //1979:找出数组的最大公约数
-class FindGreatestCommonDivisorOfArray{
+class FindGreatestCommonDivisorOfArray {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new FindGreatestCommonDivisorOfArray().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int findGCD(int[] nums) {
-        int max = Integer.MIN_VALUE;
-        int min = Integer.MAX_VALUE;
-        for (int num : nums) {
-            max = Math.max(max, num);
-            min = Math.min(min, num);
-        }
-        for (int i = min; i >= 1; i--) {
-            if (max % i == 0 && min % i == 0) {
-                return i;
+    class Solution {
+        public int findGCD(int[] nums) {
+            int max = Integer.MIN_VALUE;
+            int min = Integer.MAX_VALUE;
+            for (int num : nums) {
+                max = Math.max(max, num);
+                min = Math.min(min, num);
             }
+            for (int i = min; i >= 1; i--) {
+                if (max % i == 0 && min % i == 0) {
+                    return i;
+                }
+            }
+            return 1;
         }
-        return 1;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

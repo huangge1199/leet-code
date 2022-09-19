@@ -45,7 +45,7 @@ public class MeetingRooms {
         public boolean canAttendMeetings(int[][] intervals) {
             Arrays.sort(intervals, Comparator.comparingInt(e -> e[0]));
             for (int i = 1; i < intervals.length; i++) {
-                if(intervals[i][0]<intervals[i-1][1]){
+                if (intervals[i][0] < intervals[i - 1][1]) {
                     return false;
                 }
             }

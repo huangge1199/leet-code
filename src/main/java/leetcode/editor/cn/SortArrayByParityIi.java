@@ -28,28 +28,30 @@
 // 👍 208 👎 0
 
 package leetcode.editor.cn;
+
 //922:按奇偶排序数组 II
-public class SortArrayByParityIi{
+public class SortArrayByParityIi {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new SortArrayByParityIi().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] sortArrayByParityII(int[] nums) {
-        for (int i = 0; i < nums.length - 1; i++) {
-            int j = i + 1;
-            while ((nums[i] - i) % 2 != 0) {
-                int temp = nums[i];
-                nums[i] = nums[j];
-                nums[j] = temp;
-                j++;
+    class Solution {
+        public int[] sortArrayByParityII(int[] nums) {
+            for (int i = 0; i < nums.length - 1; i++) {
+                int j = i + 1;
+                while ((nums[i] - i) % 2 != 0) {
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
+                    j++;
+                }
             }
+            return nums;
         }
-        return nums;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

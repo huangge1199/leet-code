@@ -50,34 +50,35 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 //692:前K个高频单词
-public class TopKFrequentWords{
+public class TopKFrequentWords {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new TopKFrequentWords().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public List<String> topKFrequent(String[] words, int k) {
-        HashMap<String, Integer> map = new HashMap<>();
-        for (String s : words) {
-            map.put(s, map.getOrDefault(s, 0) + 1);
-        }
-        PriorityQueue<String> queue = new PriorityQueue<>((o1, o2) ->{
-            if (map.get(o1).equals(map.get(o2))) {
-                return o1.compareTo(o2);
+    class Solution {
+        public List<String> topKFrequent(String[] words, int k) {
+            HashMap<String, Integer> map = new HashMap<>();
+            for (String s : words) {
+                map.put(s, map.getOrDefault(s, 0) + 1);
             }
-            return map.get(o2) - map.get(o1);
-        });
-        queue.addAll(map.keySet());
-        List<String> result = new ArrayList<>();
-        for (int i = 0; i < k; i++) {
-            result.add(queue.peek());
-            queue.poll();
+            PriorityQueue<String> queue = new PriorityQueue<>((o1, o2) -> {
+                if (map.get(o1).equals(map.get(o2))) {
+                    return o1.compareTo(o2);
+                }
+                return map.get(o2) - map.get(o1);
+            });
+            queue.addAll(map.keySet());
+            List<String> result = new ArrayList<>();
+            for (int i = 0; i < k; i++) {
+                result.add(queue.peek());
+                queue.poll();
+            }
+            return result;
         }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

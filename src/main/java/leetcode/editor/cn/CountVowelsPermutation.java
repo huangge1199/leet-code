@@ -56,11 +56,11 @@ public class CountVowelsPermutation {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int countVowelPermutation(int n) {
-            int mod = (int)(1e9+7);
+            int mod = (int) (1e9 + 7);
             long[][] nums = new long[n][5];
             Arrays.fill(nums[0], 1);
             for (int i = 1; i < n; i++) {
-                nums[i][0] = (nums[i - 1][1] + nums[i - 1][2]+nums[i-1][4]) % mod;
+                nums[i][0] = (nums[i - 1][1] + nums[i - 1][2] + nums[i - 1][4]) % mod;
                 nums[i][1] = (nums[i - 1][0] + nums[i - 1][2]) % mod;
                 nums[i][2] = (nums[i - 1][1] + nums[i - 1][3]) % mod;
                 nums[i][3] = nums[i - 1][2];
@@ -70,7 +70,7 @@ public class CountVowelsPermutation {
             for (int i = 0; i < 5; i++) {
                 result += nums[n - 1][i];
             }
-            return (int)(result % mod);
+            return (int) (result % mod);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)

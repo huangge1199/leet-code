@@ -47,26 +47,28 @@
 // 👍 1003 👎 0
 
 package leetcode.editor.cn;
+
 //189:旋转数组
-class RotateArray{
+class RotateArray {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new RotateArray().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public void rotate(int[] nums, int k) {
-        int length = nums.length;
-        int temp[] = new int[length];
-        for (int i = 0; i < length; i++) {
-            temp[i] = nums[i];
-        }
-        for (int i = 0; i < length; i++) {
-            nums[(i + k) % length] = temp[i];
+    class Solution {
+        public void rotate(int[] nums, int k) {
+            int length = nums.length;
+            int temp[] = new int[length];
+            for (int i = 0; i < length; i++) {
+                temp[i] = nums[i];
+            }
+            for (int i = 0; i < length; i++) {
+                nums[(i + k) % length] = temp[i];
+            }
         }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

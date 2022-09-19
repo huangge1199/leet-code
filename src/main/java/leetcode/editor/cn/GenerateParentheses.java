@@ -44,7 +44,7 @@ class GenerateParentheses {
     class Solution {
         public List<String> generateParenthesis(int n) {
             List<String> result = new ArrayList<>();
-            dfs(n,0,"",result);
+            dfs(n, 0, "", result);
             return result;
         }
 

@@ -56,11 +56,11 @@ public class TheSkylineProblem {
         //测试代码
         Solution solution = new TheSkylineProblem().new Solution();
         solution.getSkyline(new int[][]{
-                {2,9,10},
-                {3,7,15},
-                {5,12,12},
-                {15,20,10},
-                {19,24,8}
+                {2, 9, 10},
+                {3, 7, 15},
+                {5, 12, 12},
+                {15, 20, 10},
+                {19, 24, 8}
         });
     }
 

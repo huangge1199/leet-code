@@ -47,13 +47,13 @@ public class ShortestWordDistance {
             for (int i = 0; i < wordsDict.length; i++) {
                 if (wordsDict[i].equals(word1)) {
                     arrs[0] = i;
-                    if(arrs[1]>-1){
-                        length = Math.min(length,arrs[0]-arrs[1]);
+                    if (arrs[1] > -1) {
+                        length = Math.min(length, arrs[0] - arrs[1]);
                     }
-                }else if (wordsDict[i].equals(word2)) {
+                } else if (wordsDict[i].equals(word2)) {
                     arrs[1] = i;
-                    if(arrs[0]>-1){
-                        length = Math.min(length,arrs[1]-arrs[0]);
+                    if (arrs[0] > -1) {
+                        length = Math.min(length, arrs[1] - arrs[0]);
                     }
                 }
             }

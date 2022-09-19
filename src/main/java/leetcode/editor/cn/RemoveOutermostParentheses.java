@@ -66,7 +66,7 @@ public class RemoveOutermostParentheses {
                 if (ch == '(') {
                     count++;
                     result = count > 1 ? result + ch : result;
-                }else{
+                } else {
                     count--;
                     result = count > 0 ? result + ch : result;
                 }

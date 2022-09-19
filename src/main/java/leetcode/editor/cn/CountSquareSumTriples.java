@@ -28,31 +28,32 @@
 // Related Topics 数学 枚举 👍 5 👎 0
 
 package leetcode.editor.cn;
+
 //1925:统计平方和三元组的数目
-class CountSquareSumTriples{
+class CountSquareSumTriples {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new CountSquareSumTriples().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int countTriples(int n) {
-        int count = 0;
-        for (int i = n; i > 0; i--) {
-            for (int j = i - 1; j > 0; j--) {
-                int sum = i * i - j * j;
-                int num = (int) Math.sqrt(sum);
-                if (sum == num * num) {
-                    count++;
+    class Solution {
+        public int countTriples(int n) {
+            int count = 0;
+            for (int i = n; i > 0; i--) {
+                for (int j = i - 1; j > 0; j--) {
+                    int sum = i * i - j * j;
+                    int num = (int) Math.sqrt(sum);
+                    if (sum == num * num) {
+                        count++;
 
+                    }
                 }
             }
+            return count;
         }
-        return count;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

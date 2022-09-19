@@ -57,15 +57,17 @@
 // 👍 4 👎 0
 
 package leetcode.editor.cn;
+
 //1880:检查某单词是否等于两单词之和
-public class CheckIfWordEqualsSummationOfTwoWords{
+public class CheckIfWordEqualsSummationOfTwoWords {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new CheckIfWordEqualsSummationOfTwoWords().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+    class Solution {
         public boolean isSumEqual(String firstWord, String secondWord, String targetWord) {
             return trans(firstWord) + trans(secondWord) == trans(targetWord);
         }
@@ -80,7 +82,7 @@ class Solution {
             }
             return Integer.parseInt(numStr.toString());
         }
-}
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

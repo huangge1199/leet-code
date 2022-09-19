@@ -36,43 +36,44 @@ import java.util.HashMap;
 import java.util.Map;
 
 //567:字符串的排列
-public class PermutationInString{
+public class PermutationInString {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new PermutationInString().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean checkInclusion(String s1, String s2) {
-        int l1 = s1.length();
-        int l2 = s2.length();
-        Map<String, Integer> m1 = new HashMap<>(l1);
-        if (l1 > l2) {
-            return false;
-        }
-        for (int i = 0; i < l1; i++) {
-            String ch = String.valueOf(s1.charAt(i));
-            m1.put(ch, m1.get(ch) == null ? 1 : m1.get(ch) + 1);
-        }
-        int count = l2 - l1;
-        for (int i = 0; i <= count; i++) {
-            String str = s2.substring(i, i + l1);
-            boolean bl = true;
-            for (String ch : m1.keySet()) {
-                String temp = str.replace(ch, "");
-                if (l1 - temp.length() != m1.get(ch)) {
-                    bl = false;
-                    break;
+    class Solution {
+        public boolean checkInclusion(String s1, String s2) {
+            int l1 = s1.length();
+            int l2 = s2.length();
+            Map<String, Integer> m1 = new HashMap<>(l1);
+            if (l1 > l2) {
+                return false;
+            }
+            for (int i = 0; i < l1; i++) {
+                String ch = String.valueOf(s1.charAt(i));
+                m1.put(ch, m1.get(ch) == null ? 1 : m1.get(ch) + 1);
+            }
+            int count = l2 - l1;
+            for (int i = 0; i <= count; i++) {
+                String str = s2.substring(i, i + l1);
+                boolean bl = true;
+                for (String ch : m1.keySet()) {
+                    String temp = str.replace(ch, "");
+                    if (l1 - temp.length() != m1.get(ch)) {
+                        bl = false;
+                        break;
+                    }
+                }
+                if (bl) {
+                    return true;
                 }
             }
-            if (bl) {
-                return true;
-            }
+            return false;
         }
-        return false;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

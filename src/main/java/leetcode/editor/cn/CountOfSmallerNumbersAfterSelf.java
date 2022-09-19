@@ -34,7 +34,7 @@ class CountOfSmallerNumbersAfterSelf {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new CountOfSmallerNumbersAfterSelf().new Solution();
-        System.out.println(solution.countSmaller(new int[]{1,-3,-2}));
+        System.out.println(solution.countSmaller(new int[]{1, -3, -2}));
     }
 
     //力扣代码

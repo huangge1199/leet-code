@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Map;
 
 //690:员工的重要性
-public class EmployeeImportance{
+public class EmployeeImportance {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new EmployeeImportance().new Solution();
@@ -54,24 +54,26 @@ class Employee {
 };
 */
 
-class Solution {
-    Map<Integer,Employee> map = new HashMap<>();
-    public int getImportance(List<Employee> employees, int id) {
-        for(Employee employee:employees){
-            map.put(employee.id,employee);
+    class Solution {
+        Map<Integer, Employee> map = new HashMap<>();
+
+        public int getImportance(List<Employee> employees, int id) {
+            for (Employee employee : employees) {
+                map.put(employee.id, employee);
+            }
+            return dfs(id);
         }
-        return dfs(id);
-    }
-    private int dfs(int id){
-        Employee employee = map.get(id);
-        int total = employee.importance;
-        List<Integer> subordinates = employee.subordinates;
-        for(int subordinaty:subordinates){
-            total+=dfs(subordinaty);
+
+        private int dfs(int id) {
+            Employee employee = map.get(id);
+            int total = employee.importance;
+            List<Integer> subordinates = employee.subordinates;
+            for (int subordinaty : subordinates) {
+                total += dfs(subordinaty);
+            }
+            return total;
         }
-        return total;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

@@ -98,9 +98,9 @@ public class ReverseNodesInKGroup {
             for (int i = 0; i < count; i++) {
                 for (int j = i * k; j < (i + 1) * k; j++) {
                     if (j == i * k && i == count - 1) {
-                        if(list.size() % k==0){
+                        if (list.size() % k == 0) {
                             list.get(j).next = null;
-                        }else{
+                        } else {
                             list.get(j).next = list.get((i + 1) * k);
                         }
                     } else if (j == i * k) {

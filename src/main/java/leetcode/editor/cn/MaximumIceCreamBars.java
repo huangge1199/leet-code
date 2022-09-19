@@ -48,27 +48,28 @@ package leetcode.editor.cn;
 import java.util.Arrays;
 
 //1833:雪糕的最大数量
-public class MaximumIceCreamBars{
+public class MaximumIceCreamBars {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MaximumIceCreamBars().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int maxIceCream(int[] costs, int coins) {
-        Arrays.sort(costs);
-        int num = 0;
-        for (int i = 0; i < costs.length; i++) {
-            coins -= costs[i];
-            if (coins < 0) {
-                break;
+    class Solution {
+        public int maxIceCream(int[] costs, int coins) {
+            Arrays.sort(costs);
+            int num = 0;
+            for (int i = 0; i < costs.length; i++) {
+                coins -= costs[i];
+                if (coins < 0) {
+                    break;
+                }
+                num++;
             }
-            num++;
+            return num;
         }
-        return num;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

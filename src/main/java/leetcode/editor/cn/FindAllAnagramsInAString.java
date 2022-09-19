@@ -54,7 +54,7 @@ class FindAllAnagramsInAString {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public List<Integer> findAnagrams(String s, String p) {
-            if(p.length()>s.length()){
+            if (p.length() > s.length()) {
                 return new ArrayList<>();
             }
             int[] pchs = new int[26];

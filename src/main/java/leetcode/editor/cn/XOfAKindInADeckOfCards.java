@@ -72,7 +72,7 @@ class XOfAKindInADeckOfCards {
         System.out.println(solution.hasGroupsSizeX(new int[]{1, 2, 3, 4, 4, 3, 2, 1}));
         System.out.println(solution.hasGroupsSizeX(new int[]{1, 1}));
         System.out.println(solution.hasGroupsSizeX(new int[]{1, 1, 2, 2, 2, 2}));
-        System.out.println(solution.hasGroupsSizeX(new int[]{1,1,1,1,2,2,2,2,2,2}));
+        System.out.println(solution.hasGroupsSizeX(new int[]{1, 1, 1, 1, 2, 2, 2, 2, 2, 2}));
         System.out.println("------------------------");
         System.out.println(solution.hasGroupsSizeX(new int[]{1, 1, 1, 2, 2, 2, 3, 3}));
         System.out.println(solution.hasGroupsSizeX(new int[]{}));

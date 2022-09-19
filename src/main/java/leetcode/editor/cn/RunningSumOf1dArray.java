@@ -33,23 +33,24 @@
 // Related Topics 数组 前缀和 👍 107 👎 0
 
 package leetcode.editor.cn;
+
 //1480:一维数组的动态和
-class RunningSumOf1dArray{
+class RunningSumOf1dArray {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new RunningSumOf1dArray().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] runningSum(int[] nums) {
-        for (int i = 1; i < nums.length; i++) {
-            nums[i] += nums[i-1];
+    class Solution {
+        public int[] runningSum(int[] nums) {
+            for (int i = 1; i < nums.length; i++) {
+                nums[i] += nums[i - 1];
+            }
+            return nums;
         }
-        return nums;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

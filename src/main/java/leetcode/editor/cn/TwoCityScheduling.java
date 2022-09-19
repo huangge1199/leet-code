@@ -69,7 +69,7 @@ class TwoCityScheduling {
             }
             Arrays.sort(a);
             for (int i = 0; i < a.length / 2; i++) {
-                sum+=a[i];
+                sum += a[i];
             }
             return sum;
         }

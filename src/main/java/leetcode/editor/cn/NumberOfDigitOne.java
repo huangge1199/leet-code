@@ -46,7 +46,7 @@ class NumberOfDigitOne {
         public int countDigitOne(int n) {
             int index = 1;
             int count = 0;
-            while (index<=n){
+            while (index <= n) {
                 count += (n / (index * 10)) * index + Math.min(Math.max(n % (index * 10) - index + 1, 0), index);
                 index *= 10;
             }

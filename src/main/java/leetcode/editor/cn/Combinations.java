@@ -51,7 +51,8 @@ public class Combinations {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         List<List<Integer>> list = new ArrayList<>();
-//        public List<List<Integer>> combine(int n, int k) {
+
+        //        public List<List<Integer>> combine(int n, int k) {
 //            int[] nums = new int[n];
 //            for (int i = 0; i < n; i++) {
 //                nums[i] = i + 1;

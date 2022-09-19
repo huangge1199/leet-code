@@ -82,10 +82,10 @@ public class NQueens {
 
                 String temp = list.get(row);
                 temp = temp.substring(0, col) + "Q" + temp.substring(col + 1);
-                list.set(row,temp);
+                list.set(row, temp);
                 bfs(list, n, row + 1);
                 temp = temp.substring(0, col) + "." + temp.substring(col + 1);
-                list.set(row,temp);
+                list.set(row, temp);
             }
         }
 

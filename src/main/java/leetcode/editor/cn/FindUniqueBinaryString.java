@@ -44,31 +44,31 @@ import java.util.Arrays;
 import java.util.List;
 
 //1980:找出不同的二进制字符串
-class FindUniqueBinaryString{
+class FindUniqueBinaryString {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new FindUniqueBinaryString().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public String findDifferentBinaryString(String[] nums) {
-        int n = nums.length;
-        List<String> list = Arrays.asList(nums);
-        int max = (int) Math.pow(2, n);
-        for (int i = max - 1; i >= 0; i--) {
-            if (!list.contains(Integer.toBinaryString(i))) {
-                String temp = Integer.toBinaryString(i);
-                while (temp.length() < n) {
-                    temp = "0" + temp;
+    class Solution {
+        public String findDifferentBinaryString(String[] nums) {
+            int n = nums.length;
+            List<String> list = Arrays.asList(nums);
+            int max = (int) Math.pow(2, n);
+            for (int i = max - 1; i >= 0; i--) {
+                if (!list.contains(Integer.toBinaryString(i))) {
+                    String temp = Integer.toBinaryString(i);
+                    while (temp.length() < n) {
+                        temp = "0" + temp;
+                    }
+                    return temp;
                 }
-                return temp;
             }
+            return null;
         }
-        return null;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

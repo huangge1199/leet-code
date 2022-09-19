@@ -25,30 +25,32 @@
 // 👍 154 👎 0
 
 package leetcode.editor.cn;
+
 //477:汉明距离总和
-public class TotalHammingDistance{
+public class TotalHammingDistance {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new TotalHammingDistance().new Solution();
         System.out.println(solution.totalHammingDistance(new int[]{4, 14, 2}));
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int totalHammingDistance(int[] nums) {
-        int length = nums.length;
-        int result = 0;
-        int size = 30;
-        for (int i = 0; i < size; ++i) {
-            int count = 0;
-            for (int num : nums) {
-                count += (num >> i) & 1;
+    class Solution {
+        public int totalHammingDistance(int[] nums) {
+            int length = nums.length;
+            int result = 0;
+            int size = 30;
+            for (int i = 0; i < size; ++i) {
+                int count = 0;
+                for (int num : nums) {
+                    count += (num >> i) & 1;
+                }
+                result += count * (length - count);
             }
-            result += count * (length - count);
+            return result;
         }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

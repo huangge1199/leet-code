@@ -83,7 +83,7 @@ class PathWithMinimumEffort {
                     if (x < 0 || x >= heights.length || y < 0 || y >= heights[0].length) {
                         continue;
                     }
-                    int heigh = Math.max(Math.abs(heights[x][y] - heights[arr[0]][arr[1]]),use[arr[0]][arr[1]]);
+                    int heigh = Math.max(Math.abs(heights[x][y] - heights[arr[0]][arr[1]]), use[arr[0]][arr[1]]);
                     if (use[x][y] == -1) {
                         use[x][y] = heigh;
                         queue.add(new int[]{x, y});

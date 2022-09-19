@@ -64,7 +64,7 @@ public class RemoveElement {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new RemoveElement().new Solution();
-        solution.removeElement(new int[]{3,2,2,3},3);
+        solution.removeElement(new int[]{3, 2, 2, 3}, 3);
     }
 
     //力扣代码

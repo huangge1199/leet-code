@@ -61,7 +61,7 @@ class MaxAreaOfIsland {
             if (x < 0 || x >= grid.length || y < 0 || y >= grid[0].length || grid[x][y] == 0) {
                 return 0;
             }
-            grid[x][y]=0;
+            grid[x][y] = 0;
             int count = 1;
             count += dfs(grid, x - 1, y);
             count += dfs(grid, x + 1, y);

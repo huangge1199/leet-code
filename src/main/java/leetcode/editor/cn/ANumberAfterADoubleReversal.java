@@ -39,20 +39,21 @@
 // 👍 1 👎 0
 
 package leetcode.editor.cn;
+
 //5963:反转两次的数字
-class ANumberAfterADoubleReversal{
+class ANumberAfterADoubleReversal {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new ANumberAfterADoubleReversal().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean isSameAfterReversals(int num) {
-        return num == 0 || num % 10 > 0;
+    class Solution {
+        public boolean isSameAfterReversals(int num) {
+            return num == 0 || num % 10 > 0;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

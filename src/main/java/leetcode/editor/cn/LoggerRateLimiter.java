@@ -63,22 +63,22 @@ public class LoggerRateLimiter {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Logger {
-        Map<String,Integer> map;
+        Map<String, Integer> map;
 
         public Logger() {
             map = new HashMap<>();
         }
 
         public boolean shouldPrintMessage(int timestamp, String message) {
-            if(map.containsKey(message)){
-                if(map.get(message)+10<=timestamp){
-                    map.put(message,timestamp);
+            if (map.containsKey(message)) {
+                if (map.get(message) + 10 <= timestamp) {
+                    map.put(message, timestamp);
                     return true;
-                }else{
+                } else {
                     return false;
                 }
-            }else{
-                map.put(message,timestamp);
+            } else {
+                map.put(message, timestamp);
                 return true;
             }
         }

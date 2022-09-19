@@ -65,27 +65,28 @@ package leetcode.editor.cn;
 import java.util.Arrays;
 
 //1846:减小和重新排列数组后的最大元素
-public class MaximumElementAfterDecreasingAndRearranging{
+public class MaximumElementAfterDecreasingAndRearranging {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MaximumElementAfterDecreasingAndRearranging().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int maximumElementAfterDecrementingAndRearranging(int[] arr) {
-        Arrays.sort(arr);
-        int count = 1;
-        arr[0]=1;
-        for (int i = 1; i < arr.length; i++) {
-            if(arr[i]!=arr[i-1]){
-                count++;
-                arr[i]=arr[i-1]+1;
+    class Solution {
+        public int maximumElementAfterDecrementingAndRearranging(int[] arr) {
+            Arrays.sort(arr);
+            int count = 1;
+            arr[0] = 1;
+            for (int i = 1; i < arr.length; i++) {
+                if (arr[i] != arr[i - 1]) {
+                    count++;
+                    arr[i] = arr[i - 1] + 1;
+                }
             }
+            return count;
         }
-        return count;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

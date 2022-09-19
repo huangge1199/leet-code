@@ -54,32 +54,33 @@ package leetcode.editor.cn;
 import com.code.leet.entiy.ListNode;
 
 //1290:二进制链表转整数
-public class ConvertBinaryNumberInALinkedListToInteger{
+public class ConvertBinaryNumberInALinkedListToInteger {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new ConvertBinaryNumberInALinkedListToInteger().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public int getDecimalValue(ListNode head) {
-        int num = 0;
-        while (head != null) {
-            num <<= 1;
-            num |= head.val;
-            head = head.next;
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) { val = x; }
+     * }
+     */
+    class Solution {
+        public int getDecimalValue(ListNode head) {
+            int num = 0;
+            while (head != null) {
+                num <<= 1;
+                num |= head.val;
+                head = head.next;
+            }
+            return num;
         }
-        return num;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

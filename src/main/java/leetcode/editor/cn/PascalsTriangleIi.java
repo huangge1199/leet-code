@@ -40,7 +40,7 @@ public class PascalsTriangleIi {
                 for (int j = 1; j < list.size(); j++) {
                     int temp = list.get(j);
                     list.add(j, left + list.get(j));
-                    list.remove(j+1);
+                    list.remove(j + 1);
                     left = temp;
                 }
                 list.add(1);

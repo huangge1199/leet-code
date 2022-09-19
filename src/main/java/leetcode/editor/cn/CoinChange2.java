@@ -52,9 +52,9 @@ public class CoinChange2 {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new CoinChange2().new Solution();
-        System.out.println(solution.change(5,new int[]{1,2,5}));
-        System.out.println(solution.change(3,new int[]{2}));
-        System.out.println(solution.change(10,new int[]{10}));
+        System.out.println(solution.change(5, new int[]{1, 2, 5}));
+        System.out.println(solution.change(3, new int[]{2}));
+        System.out.println(solution.change(10, new int[]{10}));
     }
 
     //力扣代码

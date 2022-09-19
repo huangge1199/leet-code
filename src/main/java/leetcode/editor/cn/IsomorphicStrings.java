@@ -42,30 +42,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 //205:同构字符串
-public class IsomorphicStrings{
+public class IsomorphicStrings {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new IsomorphicStrings().new Solution();
-        solution.isIsomorphic("badc","baba");
+        solution.isIsomorphic("badc", "baba");
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean isIsomorphic(String s, String t) {
-        Map<Character,Character> sMap = new HashMap<>();
-        Map<Character,Character> tMap = new HashMap<>();
-        for (int i = 0; i < s.length(); i++) {
-            char sch = s.charAt(i);
-            char tch = t.charAt(i);
-            if((sMap.containsKey(sch)&&sMap.get(sch)!=tch)||(tMap.containsKey(tch)&&tMap.get(tch)!=sch)){
-                return false;
+    class Solution {
+        public boolean isIsomorphic(String s, String t) {
+            Map<Character, Character> sMap = new HashMap<>();
+            Map<Character, Character> tMap = new HashMap<>();
+            for (int i = 0; i < s.length(); i++) {
+                char sch = s.charAt(i);
+                char tch = t.charAt(i);
+                if ((sMap.containsKey(sch) && sMap.get(sch) != tch) || (tMap.containsKey(tch) && tMap.get(tch) != sch)) {
+                    return false;
+                }
+                sMap.put(sch, tch);
+                tMap.put(tch, sch);
             }
-            sMap.put(sch,tch);
-            tMap.put(tch,sch);
+            return true;
         }
-        return true;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

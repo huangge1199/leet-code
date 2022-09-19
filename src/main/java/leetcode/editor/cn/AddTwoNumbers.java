@@ -45,53 +45,54 @@ package leetcode.editor.cn;
 import com.code.leet.entiy.ListNode;
 
 //2:两数相加
-public class AddTwoNumbers{
+public class AddTwoNumbers {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new AddTwoNumbers().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int sum = 0;
-        ListNode temp = l1;
-        while (temp != null) {
-            sum = l2 == null ? temp.val + sum : temp.val + l2.val + sum;
-            temp.val = sum % 10;
-            sum = sum / 10;
 
-            if (l2 != null && temp.next == null && l2.next == null && sum > 0) {
-                temp.next = new ListNode(sum);
-                sum = 0;
-                l2 = null;
-            } else if (l2 != null && temp.next == null && l2.next != null) {
-                temp.next = l2.next;
-                l2 = null;
-            } else if (l2 != null) {
-                l2 = l2.next;
-            } else {
-                if (temp.next == null && sum > 0) {
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode() {}
+     * ListNode(int val) { this.val = val; }
+     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+            int sum = 0;
+            ListNode temp = l1;
+            while (temp != null) {
+                sum = l2 == null ? temp.val + sum : temp.val + l2.val + sum;
+                temp.val = sum % 10;
+                sum = sum / 10;
+
+                if (l2 != null && temp.next == null && l2.next == null && sum > 0) {
                     temp.next = new ListNode(sum);
                     sum = 0;
+                    l2 = null;
+                } else if (l2 != null && temp.next == null && l2.next != null) {
+                    temp.next = l2.next;
+                    l2 = null;
+                } else if (l2 != null) {
+                    l2 = l2.next;
+                } else {
+                    if (temp.next == null && sum > 0) {
+                        temp.next = new ListNode(sum);
+                        sum = 0;
+                    }
+                    l2 = null;
                 }
-                l2 = null;
+                temp = temp.next;
             }
-            temp = temp.next;
+            return l1;
         }
-        return l1;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

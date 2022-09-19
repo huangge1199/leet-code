@@ -63,28 +63,29 @@ package leetcode.editor.cn;
 import java.util.Arrays;
 
 //4:寻找两个正序数组的中位数
-public class MedianOfTwoSortedArrays{
+public class MedianOfTwoSortedArrays {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MedianOfTwoSortedArrays().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int[] result = Arrays.copyOf(nums1,nums1.length+nums2.length);
-        System.arraycopy(nums2,0,result,nums1.length,nums2.length);
-        Arrays.sort(result);
-        double num;
-        int length = result.length;
-        if(length%2==0){
-            num = (result[length/2-1]+result[length/2])/2.0;
-        }else{
-            num = result[length/2];
+    class Solution {
+        public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+            int[] result = Arrays.copyOf(nums1, nums1.length + nums2.length);
+            System.arraycopy(nums2, 0, result, nums1.length, nums2.length);
+            Arrays.sort(result);
+            double num;
+            int length = result.length;
+            if (length % 2 == 0) {
+                num = (result[length / 2 - 1] + result[length / 2]) / 2.0;
+            } else {
+                num = result[length / 2];
+            }
+            return num;
         }
-        return num;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

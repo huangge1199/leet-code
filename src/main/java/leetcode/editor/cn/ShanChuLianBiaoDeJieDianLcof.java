@@ -34,40 +34,41 @@ package leetcode.editor.cn;
 import com.code.leet.entiy.ListNode;
 
 //剑指 Offer 18:删除链表的节点
-public class ShanChuLianBiaoDeJieDianLcof{
+public class ShanChuLianBiaoDeJieDianLcof {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new ShanChuLianBiaoDeJieDianLcof().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public ListNode deleteNode(ListNode head, int val) {
-        ListNode temp = head;
-        ListNode pro = head;
-        while (temp.val == val) {
-            head = pro = temp = head.next;
-        }
-        temp = temp.next;
-        while (temp != null) {
-            if (temp.val == val) {
-                pro.next = temp.next;
-            }else{
-                pro = temp;
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) { val = x; }
+     * }
+     */
+    class Solution {
+        public ListNode deleteNode(ListNode head, int val) {
+            ListNode temp = head;
+            ListNode pro = head;
+            while (temp.val == val) {
+                head = pro = temp = head.next;
             }
             temp = temp.next;
+            while (temp != null) {
+                if (temp.val == val) {
+                    pro.next = temp.next;
+                } else {
+                    pro = temp;
+                }
+                temp = temp.next;
+            }
+            return head;
         }
-        return head;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

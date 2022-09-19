@@ -46,33 +46,34 @@ import java.util.HashMap;
 import java.util.Map;
 
 //1859:将句子排序
-public class SortingTheSentence{
+public class SortingTheSentence {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new SortingTheSentence().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public String sortSentence(String s) {
-        String[] strs = s.split(" ");
-        Map<Integer, String> map = new HashMap<>();
-        for (String str : strs) {
-            int num = Integer.parseInt(str.substring(str.length() - 1));
-            str = str.substring(0, str.length() - 1) + " ";
-            map.put(num, str);
-        }
-        s = "";
-        for (int i = 1; i < 10; i++) {
-            if (map.containsKey(i)) {
-                s += map.get(i);
-            } else {
-                break;
+    class Solution {
+        public String sortSentence(String s) {
+            String[] strs = s.split(" ");
+            Map<Integer, String> map = new HashMap<>();
+            for (String str : strs) {
+                int num = Integer.parseInt(str.substring(str.length() - 1));
+                str = str.substring(0, str.length() - 1) + " ";
+                map.put(num, str);
             }
+            s = "";
+            for (int i = 1; i < 10; i++) {
+                if (map.containsKey(i)) {
+                    s += map.get(i);
+                } else {
+                    break;
+                }
+            }
+            return s.substring(0, s.length() - 1);
         }
-        return s.substring(0, s.length() - 1);
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

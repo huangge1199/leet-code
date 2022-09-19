@@ -50,41 +50,41 @@ package leetcode.editor.cn;
 
 import java.util.Stack;
 
-public class AsteroidCollision{
-        public static void main(String[] args) {
-            Solution solution = new AsteroidCollision().new Solution();
-        }
+public class AsteroidCollision {
+    public static void main(String[] args) {
+        Solution solution = new AsteroidCollision().new Solution();
+    }
 
-//leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] asteroidCollision(int[] asteroids) {
-        Stack<Integer> stack = new Stack<>();
-        for (int num : asteroids) {
-            boolean isIn = true;
-            while (!stack.isEmpty() && num < 0 && stack.peek() > 0) {
-                if (num + stack.peek() < 0) {
-                    stack.pop();
-                } else if (num + stack.peek() > 0) {
-                    isIn = false;
-                    break;
-                } else {
-                    isIn = false;
-                    stack.pop();
-                    break;
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public int[] asteroidCollision(int[] asteroids) {
+            Stack<Integer> stack = new Stack<>();
+            for (int num : asteroids) {
+                boolean isIn = true;
+                while (!stack.isEmpty() && num < 0 && stack.peek() > 0) {
+                    if (num + stack.peek() < 0) {
+                        stack.pop();
+                    } else if (num + stack.peek() > 0) {
+                        isIn = false;
+                        break;
+                    } else {
+                        isIn = false;
+                        stack.pop();
+                        break;
+                    }
+                }
+                if (isIn) {
+                    stack.push(num);
                 }
             }
-            if (isIn) {
-                stack.push(num);
+            int size = stack.size();
+            asteroids = new int[size];
+            for (int i = size - 1; i >= 0; i--) {
+                asteroids[i] = stack.pop();
             }
+            return asteroids;
         }
-        int size = stack.size();
-        asteroids = new int[size];
-        for (int i = size - 1; i >= 0; i--) {
-            asteroids[i] = stack.pop();
-        }
-        return asteroids;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

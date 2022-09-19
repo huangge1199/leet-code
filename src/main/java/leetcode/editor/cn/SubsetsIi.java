@@ -51,7 +51,7 @@ class SubsetsIi {
         public List<List<Integer>> subsetsWithDup(int[] nums) {
             Arrays.sort(nums);
             List<List<Integer>> result = new ArrayList<>();
-            dfs(nums,0,new ArrayList<>(),result,new ArrayList<>());
+            dfs(nums, 0, new ArrayList<>(), result, new ArrayList<>());
             return result;
         }
 

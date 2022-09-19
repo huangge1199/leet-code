@@ -59,17 +59,17 @@ class LongestArithmeticSubsequence {
             for (int num : nums) {
                 max = Math.max(max, num);
             }
-            int[][] dp = new int[nums.length][max*2+1];
-            for (int[] t:dp){
-                Arrays.fill(t,-1);
+            int[][] dp = new int[nums.length][max * 2 + 1];
+            for (int[] t : dp) {
+                Arrays.fill(t, -1);
             }
 
             int result = 2;
             for (int i = 0; i < nums.length; i++) {
                 for (int j = 0; j < i; j++) {
-                    int index = nums[i]-nums[j]+max;
-                    dp[i][index]=Math.max(2,dp[j][index]+1);
-                    result = Math.max(result,dp[i][index]);
+                    int index = nums[i] - nums[j] + max;
+                    dp[i][index] = Math.max(2, dp[j][index] + 1);
+                    result = Math.max(result, dp[i][index]);
                 }
             }
             return result;

@@ -64,12 +64,13 @@ public class HouseRobberIi {
             }
             return Math.max(range(Arrays.copyOfRange(nums, 0, length - 1)), range(Arrays.copyOfRange(nums, 1, length)));
         }
+
         public int range(int[] nums) {
             int length = nums.length;
-            int start  = nums[0],end = Math.max(nums[0],nums[1]);
+            int start = nums[0], end = Math.max(nums[0], nums[1]);
             for (int i = 2; i < length; i++) {
                 int temp = end;
-                end = Math.max(start+nums[i],end);
+                end = Math.max(start + nums[i], end);
                 start = temp;
             }
             return end;

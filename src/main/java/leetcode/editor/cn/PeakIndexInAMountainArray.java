@@ -77,7 +77,7 @@ public class PeakIndexInAMountainArray {
         System.out.println(solution.peakIndexInMountainArray(new int[]{0, 10, 5, 2}));
         System.out.println(solution.peakIndexInMountainArray(new int[]{3, 4, 5, 1}));
         System.out.println(solution.peakIndexInMountainArray(new int[]{24, 69, 100, 99, 79, 78, 67, 36, 26, 19}));
-        System.out.println(solution.peakIndexInMountainArray(new int[]{3,5,3,2,0}));
+        System.out.println(solution.peakIndexInMountainArray(new int[]{3, 5, 3, 2, 0}));
     }
 
     //力扣代码

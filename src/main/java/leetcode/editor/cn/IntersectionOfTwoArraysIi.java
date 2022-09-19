@@ -39,34 +39,35 @@ import java.util.Arrays;
 import java.util.List;
 
 //350:两个数组的交集 II
-class IntersectionOfTwoArraysIi{
+class IntersectionOfTwoArraysIi {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new IntersectionOfTwoArraysIi().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] intersect(int[] nums1, int[] nums2) {
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-        List<Integer> list = new ArrayList<>();
-        int index1 = 0;
-        int index2 = 0;
-        while(index1<nums1.length&&index2<nums2.length){
-            if(nums1[index1]==nums2[index2]){
-                list.add(nums1[index1]);
-                index1++;
-                index2++;
-            }else if (nums1[index1]>nums2[index2]){
-                index2++;
-            }else{
-                index1++;
+    class Solution {
+        public int[] intersect(int[] nums1, int[] nums2) {
+            Arrays.sort(nums1);
+            Arrays.sort(nums2);
+            List<Integer> list = new ArrayList<>();
+            int index1 = 0;
+            int index2 = 0;
+            while (index1 < nums1.length && index2 < nums2.length) {
+                if (nums1[index1] == nums2[index2]) {
+                    list.add(nums1[index1]);
+                    index1++;
+                    index2++;
+                } else if (nums1[index1] > nums2[index2]) {
+                    index2++;
+                } else {
+                    index1++;
+                }
             }
+            return list.stream().mapToInt(Integer::intValue).toArray();
         }
-        return list.stream().mapToInt(Integer::intValue).toArray();
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

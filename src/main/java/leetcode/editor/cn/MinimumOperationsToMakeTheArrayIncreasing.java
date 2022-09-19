@@ -45,29 +45,31 @@
 // 👍 7 👎 0
 
 package leetcode.editor.cn;
+
 //1827:最少操作使数组递增
-public class MinimumOperationsToMakeTheArrayIncreasing{
+public class MinimumOperationsToMakeTheArrayIncreasing {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MinimumOperationsToMakeTheArrayIncreasing().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int minOperations(int[] nums) {
-        int left = nums[0] - 1;
-        int sum = 0;
-        for (int num : nums) {
-            if (num <= left) {
-                sum += left - num + 1;
-                left++;
-            }else{
-                left = num;
+    class Solution {
+        public int minOperations(int[] nums) {
+            int left = nums[0] - 1;
+            int sum = 0;
+            for (int num : nums) {
+                if (num <= left) {
+                    sum += left - num + 1;
+                    left++;
+                } else {
+                    left = num;
+                }
             }
+            return sum;
         }
-        return sum;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

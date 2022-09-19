@@ -52,7 +52,7 @@ public class MinStackLcci {
 
         public void push(int val) {
             if (stack.isEmpty()) {
-                stack.push(new Data(val,val));
+                stack.push(new Data(val, val));
             } else {
                 stack.push(new Data(val, Math.min(val, stack.peek().min)));
             }

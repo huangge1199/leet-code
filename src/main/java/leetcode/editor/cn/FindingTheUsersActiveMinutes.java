@@ -57,43 +57,44 @@ import java.util.List;
 import java.util.Map;
 
 //1817:查找用户活跃分钟数
-public class FindingTheUsersActiveMinutes{
+public class FindingTheUsersActiveMinutes {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new FindingTheUsersActiveMinutes().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] findingUsersActiveMinutes(int[][] logs, int k) {
-        Map<Integer, List<Integer>> map = new HashMap<>();
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i < logs.length; i++) {
-            List<Integer> temp;
-            min = Math.min(min, logs[i][0]);
-            if (map.containsKey(logs[i][0])) {
-                temp = map.get(logs[i][0]);
-                if (!temp.contains(logs[i][1])) {
+    class Solution {
+        public int[] findingUsersActiveMinutes(int[][] logs, int k) {
+            Map<Integer, List<Integer>> map = new HashMap<>();
+            int min = Integer.MAX_VALUE;
+            for (int i = 0; i < logs.length; i++) {
+                List<Integer> temp;
+                min = Math.min(min, logs[i][0]);
+                if (map.containsKey(logs[i][0])) {
+                    temp = map.get(logs[i][0]);
+                    if (!temp.contains(logs[i][1])) {
+                        temp.add(logs[i][1]);
+                    }
+                    map.put(logs[i][0], temp);
+                } else {
+                    temp = new ArrayList<>();
                     temp.add(logs[i][1]);
+                    map.put(logs[i][0], temp);
                 }
-                map.put(logs[i][0], temp);
-            } else {
-                temp = new ArrayList<>();
-                temp.add(logs[i][1]);
-                map.put(logs[i][0], temp);
             }
+            int[] result = new int[k];
+            for (int i = 0; i < k; i++) {
+                result[i] = 0;
+            }
+            for (int key : map.keySet()) {
+                int index = map.get(key).size();
+                result[index - 1] = result[index - 1] + 1;
+            }
+            return result;
         }
-        int[] result = new int[k];
-        for (int i = 0; i < k; i++) {
-            result[i] = 0;
-        }
-        for (int key : map.keySet()) {
-            int index = map.get(key).size();
-            result[index-1] = result[index-1] + 1;
-        }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

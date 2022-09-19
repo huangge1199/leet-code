@@ -47,15 +47,17 @@
 // 👍 273 👎 0
 
 package leetcode.editor.cn;
+
 //307:区域和检索 - 数组可修改
-public class RangeSumQueryMutable{
+public class RangeSumQueryMutable {
     public static void main(String[] args) {
         //测试代码
 //        Solution solution = new RangeSumQueryMutable().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class NumArray {
+    class NumArray {
 
         private int[] nums;
 
@@ -77,7 +79,7 @@ class NumArray {
             }
             return sum;
         }
-}
+    }
 
 /**
  * Your NumArray object will be instantiated and called as such:

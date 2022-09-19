@@ -48,7 +48,7 @@ public class FindFirstAndLastPositionOfElementInSortedArray {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new FindFirstAndLastPositionOfElementInSortedArray().new Solution();
-        solution.searchRange(new int[]{5,7,7,8,8,10},8);//3,4
+        solution.searchRange(new int[]{5, 7, 7, 8, 8, 10}, 8);//3,4
         solution.searchRange(new int[]{5, 7, 7, 8, 8, 10}, 6);//-1,-1
         solution.searchRange(new int[]{2, 2}, 3);//-1,-1
         solution.searchRange(new int[]{1, 4}, 4);//1,1
@@ -92,7 +92,7 @@ public class FindFirstAndLastPositionOfElementInSortedArray {
                         mid /= 2;
                     }
                 }
-                if(nums[mid] == target){
+                if (nums[mid] == target) {
                     break;
                 }
             }

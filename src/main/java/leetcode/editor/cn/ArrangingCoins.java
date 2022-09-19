@@ -46,12 +46,12 @@ class ArrangingCoins {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int arrangeCoins(long n) {
-            if(n==0){
+            if (n == 0) {
                 return 0;
             }
-            double number = (Math.sqrt(1+8*n)-1)/2;
+            double number = (Math.sqrt(1 + 8 * n) - 1) / 2;
 
-            return (int)(Math.floor(number));
+            return (int) (Math.floor(number));
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)

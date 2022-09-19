@@ -26,51 +26,53 @@
 // 👍 43 👎 0
 
 package leetcode.editor.cn;
+
 //面试题 08.14:布尔运算
-public class BooleanEvaluationLcci{
+public class BooleanEvaluationLcci {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new BooleanEvaluationLcci().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int countEval(String s, int result) {
-        if (s.length() == 0) {
-            return 0;
-        }
-        if (s.length() == 1) {
-            return (s.charAt(0) - '0') == result ? 1 : 0;
-        }
-        char[] ch = s.toCharArray();
-        int[][][] dp = new int[ch.length][ch.length][2];
-        for (int i = 0; i < ch.length; i++) {
-            if (ch[i] == '0' || ch[i] == '1') {
-                dp[i][i][ch[i] - '0'] = 1;
+    class Solution {
+        public int countEval(String s, int result) {
+            if (s.length() == 0) {
+                return 0;
             }
-        }
-        for (int len = 2; len <= ch.length; len += 2) {
-            for (int start = 0; start <= ch.length - len; start += 2) {
-                int end = start + len;
-                for (int k = start + 1; k <= end - 1; k += 2) {
-                    if (ch[k] == '&') {
-                        dp[start][end][0] += dp[start][k - 1][0] * dp[k + 1][end][0] + dp[start][k - 1][0] * dp[k + 1][end][1] + dp[start][k - 1][1] * dp[k + 1][end][0];
-                        dp[start][end][1] += dp[start][k - 1][1] * dp[k + 1][end][1];
-                    }
-                    if (ch[k] == '|') {
-                        dp[start][end][0] += dp[start][k - 1][0] * dp[k + 1][end][0];
-                        dp[start][end][1] += dp[start][k - 1][0] * dp[k + 1][end][1] + dp[start][k - 1][1] * dp[k + 1][end][0] + dp[start][k - 1][1] * dp[k + 1][end][1];
-                    }
-                    if (ch[k] == '^') {
-                        dp[start][end][0] += dp[start][k - 1][0] * dp[k + 1][end][0] + dp[start][k - 1][1] * dp[k + 1][end][1];
-                        dp[start][end][1] += dp[start][k - 1][1] * dp[k + 1][end][0] + dp[start][k - 1][0] * dp[k + 1][end][1];
+            if (s.length() == 1) {
+                return (s.charAt(0) - '0') == result ? 1 : 0;
+            }
+            char[] ch = s.toCharArray();
+            int[][][] dp = new int[ch.length][ch.length][2];
+            for (int i = 0; i < ch.length; i++) {
+                if (ch[i] == '0' || ch[i] == '1') {
+                    dp[i][i][ch[i] - '0'] = 1;
+                }
+            }
+            for (int len = 2; len <= ch.length; len += 2) {
+                for (int start = 0; start <= ch.length - len; start += 2) {
+                    int end = start + len;
+                    for (int k = start + 1; k <= end - 1; k += 2) {
+                        if (ch[k] == '&') {
+                            dp[start][end][0] += dp[start][k - 1][0] * dp[k + 1][end][0] + dp[start][k - 1][0] * dp[k + 1][end][1] + dp[start][k - 1][1] * dp[k + 1][end][0];
+                            dp[start][end][1] += dp[start][k - 1][1] * dp[k + 1][end][1];
+                        }
+                        if (ch[k] == '|') {
+                            dp[start][end][0] += dp[start][k - 1][0] * dp[k + 1][end][0];
+                            dp[start][end][1] += dp[start][k - 1][0] * dp[k + 1][end][1] + dp[start][k - 1][1] * dp[k + 1][end][0] + dp[start][k - 1][1] * dp[k + 1][end][1];
+                        }
+                        if (ch[k] == '^') {
+                            dp[start][end][0] += dp[start][k - 1][0] * dp[k + 1][end][0] + dp[start][k - 1][1] * dp[k + 1][end][1];
+                            dp[start][end][1] += dp[start][k - 1][1] * dp[k + 1][end][0] + dp[start][k - 1][0] * dp[k + 1][end][1];
+                        }
                     }
                 }
             }
+            return dp[0][ch.length - 1][result];
         }
-        return dp[0][ch.length - 1][result];
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

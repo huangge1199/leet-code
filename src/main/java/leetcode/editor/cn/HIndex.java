@@ -29,7 +29,7 @@ public class HIndex {
         //测试代码
         Solution solution = new HIndex().new Solution();
         //3
-        System.out.println(solution.hIndex(new int[]{3,0,6,1,5}));
+        System.out.println(solution.hIndex(new int[]{3, 0, 6, 1, 5}));
         //0
         System.out.println(solution.hIndex(new int[]{0}));
     }

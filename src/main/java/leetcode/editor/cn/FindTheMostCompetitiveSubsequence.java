@@ -39,33 +39,34 @@ package leetcode.editor.cn;
 import java.util.Stack;
 
 //1673:找出最具竞争力的子序列
-public class FindTheMostCompetitiveSubsequence{
+public class FindTheMostCompetitiveSubsequence {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new FindTheMostCompetitiveSubsequence().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] mostCompetitive(int[] nums, int k) {
-        int size = nums.length;
-        Stack<Integer> stack = new Stack<>();
-        for (int i = 0; i < size; i++) {
-            while (!stack.isEmpty()&&nums[i]< stack.peek()&&k-stack.size()<size-i){
-                stack.pop();
+    class Solution {
+        public int[] mostCompetitive(int[] nums, int k) {
+            int size = nums.length;
+            Stack<Integer> stack = new Stack<>();
+            for (int i = 0; i < size; i++) {
+                while (!stack.isEmpty() && nums[i] < stack.peek() && k - stack.size() < size - i) {
+                    stack.pop();
+                }
+                if (stack.size() < k) {
+                    stack.add(nums[i]);
+                }
             }
-            if (stack.size() < k) {
-                stack.add(nums[i]);
+            int[] result = new int[k];
+            while (k > 0) {
+                result[k - 1] = stack.pop();
+                k--;
             }
+            return result;
         }
-        int[] result = new int[k];
-        while (k>0){
-            result[k-1]=stack.pop();
-            k--;
-        }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

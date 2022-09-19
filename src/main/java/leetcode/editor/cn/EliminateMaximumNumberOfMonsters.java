@@ -65,40 +65,40 @@ import java.util.HashMap;
 import java.util.Map;
 
 //1921:消灭怪物的最大数量
-class EliminateMaximumNumberOfMonsters{
+class EliminateMaximumNumberOfMonsters {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new EliminateMaximumNumberOfMonsters().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int eliminateMaximum(int[] dist, int[] speed) {
-        int size = dist.length;
-        int[] times = new int[size];
-        for (int i = 0; i < size; i++) {
-            int time = dist[i] / speed[i];
-            times[i] = dist[i] % speed[i] == 0 ? time - 1 : time;
-        }
-        Arrays.sort(times);
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < size; i++) {
-            map.put(times[i], map.getOrDefault(times[i], 0) + 1);
-        }
-        int index = 1;
-        for (int i = 0; i < size; i++) {
-            if(map.containsKey(i)){
-                if(map.get(i)>index){
-                    return i+1;
-                }
-                index-=map.get(i);
+    class Solution {
+        public int eliminateMaximum(int[] dist, int[] speed) {
+            int size = dist.length;
+            int[] times = new int[size];
+            for (int i = 0; i < size; i++) {
+                int time = dist[i] / speed[i];
+                times[i] = dist[i] % speed[i] == 0 ? time - 1 : time;
             }
-            index++;
+            Arrays.sort(times);
+            Map<Integer, Integer> map = new HashMap<>();
+            for (int i = 0; i < size; i++) {
+                map.put(times[i], map.getOrDefault(times[i], 0) + 1);
+            }
+            int index = 1;
+            for (int i = 0; i < size; i++) {
+                if (map.containsKey(i)) {
+                    if (map.get(i) > index) {
+                        return i + 1;
+                    }
+                    index -= map.get(i);
+                }
+                index++;
+            }
+            return size;
         }
-        return size;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

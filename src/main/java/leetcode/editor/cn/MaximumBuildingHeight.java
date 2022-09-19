@@ -88,18 +88,18 @@ public class MaximumBuildingHeight {
             int max = 0;
             int last = 0;
             int id = 1;
-            for (int[] restriction : restrictions){
+            for (int[] restriction : restrictions) {
                 int nextid = restriction[0];
                 int limit = restriction[1];
                 limit = Math.min(limit, nextid - id + last);
 
-                max = Math.max(max, (last + limit + nextid - id)/2);
+                max = Math.max(max, (last + limit + nextid - id) / 2);
 
                 last = limit;
                 id = nextid;
             }
-            if (id < n){
-                max = Math.max(max, (n + Math.min(n, n - id + last) + last - id)/2);
+            if (id < n) {
+                max = Math.max(max, (n + Math.min(n, n - id + last) + last - id) / 2);
             }
             return max;
         }

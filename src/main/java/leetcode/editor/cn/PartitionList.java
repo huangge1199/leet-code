@@ -35,44 +35,45 @@ package leetcode.editor.cn;
 import com.code.leet.entiy.ListNode;
 
 //86:分隔链表
-public class PartitionList{
+public class PartitionList {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new PartitionList().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode partition(ListNode head, int x) {
-        ListNode max = new ListNode(0);
-        ListNode min = new ListNode(0);
-        ListNode maxHead = max;
-        ListNode minHead = min;
-        while (head != null) {
-            if (head.val >= x) {
-                maxHead.next = head;
-                maxHead = maxHead.next;
-            } else {
-                minHead.next = head;
-                minHead = minHead.next;
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode() {}
+     * ListNode(int val) { this.val = val; }
+     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public ListNode partition(ListNode head, int x) {
+            ListNode max = new ListNode(0);
+            ListNode min = new ListNode(0);
+            ListNode maxHead = max;
+            ListNode minHead = min;
+            while (head != null) {
+                if (head.val >= x) {
+                    maxHead.next = head;
+                    maxHead = maxHead.next;
+                } else {
+                    minHead.next = head;
+                    minHead = minHead.next;
+                }
+                head = head.next;
             }
-            head = head.next;
+            maxHead.next = null;
+            minHead.next = max.next;
+            return min.next;
         }
-        maxHead.next = null;
-        minHead.next = max.next;
-        return min.next;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

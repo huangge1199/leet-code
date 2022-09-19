@@ -42,14 +42,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 //1814:统计一个数组中好对子的数目
-public class CountNicePairsInAnArray{
+public class CountNicePairsInAnArray {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new CountNicePairsInAnArray().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+    class Solution {
         public int countNicePairs(int[] nums) {
             Map<Integer, Long> map = new HashMap<>();
             for (int num : nums) {
@@ -67,14 +68,15 @@ class Solution {
                     count += value * (value - 1) / 2;
                 }
             }
-            return (int)(count % (Math.pow(10, 9) + 7));
+            return (int) (count % (Math.pow(10, 9) + 7));
         }
-        private int revert(int num){
-            String str = ""+num;
+
+        private int revert(int num) {
+            String str = "" + num;
             str = new StringBuilder(str).reverse().toString();
             return Integer.parseInt(str);
         }
-}
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

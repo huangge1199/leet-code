@@ -69,14 +69,14 @@ public class MinimumNumberOfStepsToMakeTwoStringsAnagram {
             int length = s.length();
             int num = 0;
             for (int i = 0; i < length; i++) {
-                if(arr[s.charAt(i)-'a']>=0){
+                if (arr[s.charAt(i) - 'a'] >= 0) {
                     num++;
                 }
-                arr[s.charAt(i)-'a']++;
-                if(arr[t.charAt(i)-'a']>0){
+                arr[s.charAt(i) - 'a']++;
+                if (arr[t.charAt(i) - 'a'] > 0) {
                     num--;
                 }
-                arr[t.charAt(i)-'a']--;
+                arr[t.charAt(i) - 'a']--;
             }
             return num;
         }

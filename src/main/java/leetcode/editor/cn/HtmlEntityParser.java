@@ -67,24 +67,25 @@ package leetcode.editor.cn;
 import java.util.Stack;
 
 //1410:HTML 实体解析器
-public class HtmlEntityParser{
+public class HtmlEntityParser {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new HtmlEntityParser().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public String entityParser(String text) {
-        return text.
-                replace("&quot;", "\"").
-                replace("&apos;", "'").
-                replace("&gt;", ">").
-                replace("&lt;", "<").
-                replace("&frasl;", "/").
-                replace("&amp;", "&");
+    class Solution {
+        public String entityParser(String text) {
+            return text.
+                    replace("&quot;", "\"").
+                    replace("&apos;", "'").
+                    replace("&gt;", ">").
+                    replace("&lt;", "<").
+                    replace("&frasl;", "/").
+                    replace("&amp;", "&");
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

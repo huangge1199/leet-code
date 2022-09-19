@@ -69,14 +69,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 //1797:设计一个验证系统
-public class DesignAuthenticationManager{
+public class DesignAuthenticationManager {
     public static void main(String[] args) {
         //测试代码
 //        Solution solution = new DesignAuthenticationManager().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class AuthenticationManager {
+    class AuthenticationManager {
         Map<String, Integer> map = new HashMap<>();
         int timeToLive;
 
@@ -96,14 +97,14 @@ class AuthenticationManager {
 
         public int countUnexpiredTokens(int currentTime) {
             int num = 0;
-            for (String key:map.keySet()) {
-                if(map.get(key)>currentTime){
+            for (String key : map.keySet()) {
+                if (map.get(key) > currentTime) {
                     num++;
                 }
             }
             return num;
         }
-}
+    }
 
 /**
  * Your AuthenticationManager object will be instantiated and called as such:

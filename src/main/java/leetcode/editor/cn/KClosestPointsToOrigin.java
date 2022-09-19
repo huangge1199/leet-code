@@ -42,19 +42,20 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 //973:最接近原点的 K 个点
-class KClosestPointsToOrigin{
+class KClosestPointsToOrigin {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new KClosestPointsToOrigin().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[][] kClosest(int[][] points, int k) {
-        Arrays.sort(points, Comparator.comparingInt(point -> (point[0] * point[0] + point[1] * point[1])));
-        return Arrays.copyOfRange(points, 0, k);
+    class Solution {
+        public int[][] kClosest(int[][] points, int k) {
+            Arrays.sort(points, Comparator.comparingInt(point -> (point[0] * point[0] + point[1] * point[1])));
+            return Arrays.copyOfRange(points, 0, k);
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

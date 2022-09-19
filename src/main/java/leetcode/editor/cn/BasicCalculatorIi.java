@@ -63,7 +63,7 @@ public class BasicCalculatorIi {
             int num = 0;
             Stack<Integer> stack = new Stack<>();
             char op = '+';
-            s=s.replace(" ","");
+            s = s.replace(" ", "");
             for (int i = 0; i < s.length(); i++) {
                 char ch = s.charAt(i);
                 if (Character.isDigit(ch)) {

@@ -63,11 +63,11 @@ public class CutOffTreesForGolfEvent {
         Solution solution = new CutOffTreesForGolfEvent().new Solution();
         // TO TEST
         List<List<Integer>> forest = Arrays.asList(
-                Arrays.asList(54581641,64080174,24346381,69107959)
-                , Arrays.asList(86374198,61363882,68783324,79706116)
-                , Arrays.asList(668150,  92178815,89819108,94701471)
-                , Arrays.asList(83920491,22724204,46281641,47531096)
-                , Arrays.asList(89078499,18904913,25462145,60813308));
+                Arrays.asList(54581641, 64080174, 24346381, 69107959)
+                , Arrays.asList(86374198, 61363882, 68783324, 79706116)
+                , Arrays.asList(668150, 92178815, 89819108, 94701471)
+                , Arrays.asList(83920491, 22724204, 46281641, 47531096)
+                , Arrays.asList(89078499, 18904913, 25462145, 60813308));
         solution.cutOffTree(forest);
     }
 

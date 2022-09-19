@@ -24,36 +24,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 //118:杨辉三角
-public class PascalsTriangle{
+public class PascalsTriangle {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new PascalsTriangle().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> result = new ArrayList<>();
-        for (int i = 0; i < numRows; i++) {
-            List<Integer> list = new ArrayList<>();
-            if(i==0){
-                list.add(1);
-                result.add(list);
-                continue;
-            }
-            List<Integer> bef = result.get(i-1);
-            for (int j = 0; j <= i; j++) {
-                if(j==0||j==i){
+    class Solution {
+        public List<List<Integer>> generate(int numRows) {
+            List<List<Integer>> result = new ArrayList<>();
+            for (int i = 0; i < numRows; i++) {
+                List<Integer> list = new ArrayList<>();
+                if (i == 0) {
                     list.add(1);
-                }else{
-                    list.add(bef.get(j-1)+ bef.get(j));
+                    result.add(list);
+                    continue;
                 }
+                List<Integer> bef = result.get(i - 1);
+                for (int j = 0; j <= i; j++) {
+                    if (j == 0 || j == i) {
+                        list.add(1);
+                    } else {
+                        list.add(bef.get(j - 1) + bef.get(j));
+                    }
+                }
+                result.add(list);
             }
-            result.add(list);
+            return result;
         }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

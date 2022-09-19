@@ -58,8 +58,8 @@ public class LastStoneWeightIi {
         //测试代码
         Solution solution = new LastStoneWeightIi().new Solution();
         System.out.println(solution.lastStoneWeightII(new int[]{2, 7, 4, 1, 8, 1}));
-        System.out.println(solution.lastStoneWeightII(new int[]{31,26,33,21,40}));
-        System.out.println(solution.lastStoneWeightII(new int[]{1,2}));
+        System.out.println(solution.lastStoneWeightII(new int[]{31, 26, 33, 21, 40}));
+        System.out.println(solution.lastStoneWeightII(new int[]{1, 2}));
     }
 
     //力扣代码
@@ -82,7 +82,7 @@ public class LastStoneWeightIi {
                     }
                 }
             }
-            for (int j = m;; --j) {
+            for (int j = m; ; --j) {
                 if (dp[n][j]) {
                     return sum - 2 * j;
                 }

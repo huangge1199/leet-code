@@ -39,33 +39,33 @@ package leetcode.editor.cn;
 import java.util.*;
 
 //49:字母异位词分组
-class GroupAnagrams{
+class GroupAnagrams {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new GroupAnagrams().new Solution();
-        solution.groupAnagrams(new String[]{"eat","tea","tan","ate","nat","bat"});
+        solution.groupAnagrams(new String[]{"eat", "tea", "tan", "ate", "nat", "bat"});
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public List<List<String>> groupAnagrams(String[] strs) {
-        Map<String,List<String>> map = new HashMap<>();
-        for(String s:strs){
-            char[] chs = s.toCharArray();
-            Arrays.sort(chs);
-            String str = Arrays.toString(chs);
-            List<String> list = map.getOrDefault(str,new ArrayList<>());
-            list.add(s);
-            map.put(str,new ArrayList<>(list));
+    class Solution {
+        public List<List<String>> groupAnagrams(String[] strs) {
+            Map<String, List<String>> map = new HashMap<>();
+            for (String s : strs) {
+                char[] chs = s.toCharArray();
+                Arrays.sort(chs);
+                String str = Arrays.toString(chs);
+                List<String> list = map.getOrDefault(str, new ArrayList<>());
+                list.add(s);
+                map.put(str, new ArrayList<>(list));
+            }
+            List<List<String>> result = new ArrayList<>();
+            for (String key : map.keySet()) {
+                result.add(new ArrayList<>(map.get(key)));
+            }
+            return result;
         }
-        List<List<String>> result = new ArrayList<>();
-        for (String key:map.keySet()){
-            result.add(new ArrayList<>(map.get(key)));
-        }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

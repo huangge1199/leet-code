@@ -82,7 +82,7 @@ public class DesignAStackWithIncrementOperation {
         }
 
         public int pop() {
-            if(index==0){
+            if (index == 0) {
                 return -1;
             }
             index--;

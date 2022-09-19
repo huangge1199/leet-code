@@ -51,46 +51,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 //705:设计哈希集合
-public class DesignHashset{
+public class DesignHashset {
     public static void main(String[] args) {
         //测试代码
 //        Solution solution = new DesignHashset().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class MyHashSet {
+    class MyHashSet {
         List<Integer> list;
 
-    /** Initialize your data structure here. */
-    public MyHashSet() {
-        list = new ArrayList<>();
-    }
-    
-    public void add(int key) {
-        if(list.contains(key)){
-            return;
+        /**
+         * Initialize your data structure here.
+         */
+        public MyHashSet() {
+            list = new ArrayList<>();
         }
-        list.add(key);
-    }
-    
-    public void remove(int key) {
-        for (int i = 0; i < list.size(); i++) {
-            if(list.get(i)==key){
-                list.remove(i);
+
+        public void add(int key) {
+            if (list.contains(key)) {
+                return;
+            }
+            list.add(key);
+        }
+
+        public void remove(int key) {
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i) == key) {
+                    list.remove(i);
+                }
             }
         }
-    }
-    
-    /** Returns true if this set contains the specified element */
-    public boolean contains(int key) {
-        for (int i = 0; i < list.size(); i++) {
-            if(list.get(i)==key){
-                return true;
+
+        /**
+         * Returns true if this set contains the specified element
+         */
+        public boolean contains(int key) {
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i) == key) {
+                    return true;
+                }
             }
+            return false;
         }
-        return false;
     }
-}
 
 /**
  * Your MyHashSet object will be instantiated and called as such:

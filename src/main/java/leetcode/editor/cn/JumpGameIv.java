@@ -66,7 +66,7 @@ public class JumpGameIv {
     public static void main(String[] args) {
         Solution solution = new JumpGameIv().new Solution();
         // TO TEST
-        solution.minJumps(new int[]{100,-23,-23,404,100,23,23,23,3,404});
+        solution.minJumps(new int[]{100, -23, -23, 404, 100, 23, 23, 23, 3, 404});
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)

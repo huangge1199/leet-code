@@ -42,36 +42,38 @@
 // 👍 2 👎 0
 
 package leetcode.editor.cn;
+
 //1860:增长的内存泄露
-public class IncrementalMemoryLeak{
+public class IncrementalMemoryLeak {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new IncrementalMemoryLeak().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] memLeak(int memory1, int memory2) {
-        boolean isOne = memory1 >= memory2;
-        int i = 1;
-        while (true) {
-            if (isOne) {
-                if (memory1 < i) {
-                    break;
+    class Solution {
+        public int[] memLeak(int memory1, int memory2) {
+            boolean isOne = memory1 >= memory2;
+            int i = 1;
+            while (true) {
+                if (isOne) {
+                    if (memory1 < i) {
+                        break;
+                    }
+                    memory1 -= i;
+                } else {
+                    if (memory2 < i) {
+                        break;
+                    }
+                    memory2 -= i;
                 }
-                memory1 -= i;
-            } else {
-                if (memory2 < i) {
-                    break;
-                }
-                memory2 -= i;
+                i++;
+                isOne = memory1 >= memory2;
             }
-            i++;
-            isOne = memory1 >= memory2;
+            return new int[]{i, memory1, memory2};
         }
-        return new int[]{i,memory1,memory2};
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

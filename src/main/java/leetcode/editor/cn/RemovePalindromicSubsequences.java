@@ -49,19 +49,21 @@
 // 👍 58 👎 0
 
 package leetcode.editor.cn;
+
 //1332:删除回文子序列
-public class RemovePalindromicSubsequences{
+public class RemovePalindromicSubsequences {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new RemovePalindromicSubsequences().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int removePalindromeSub(String s) {
-        return new StringBuilder(s).reverse().toString().equals(s) ? 1 : 2;
+    class Solution {
+        public int removePalindromeSub(String s) {
+            return new StringBuilder(s).reverse().toString().equals(s) ? 1 : 2;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

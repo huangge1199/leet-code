@@ -44,24 +44,26 @@
 // 👍 4 👎 0
 
 package leetcode.editor.cn;
+
 //1812:判断国际象棋棋盘中一个格子的颜色
-public class DetermineColorOfAChessboardSquare{
+public class DetermineColorOfAChessboardSquare {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new DetermineColorOfAChessboardSquare().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean squareIsWhite(String coordinates) {
-        char[] chars = coordinates.toCharArray();
-        if ((chars[0] - chars[1]) % 2 == 0) {
-            return false;
-        } else {
-            return true;
+    class Solution {
+        public boolean squareIsWhite(String coordinates) {
+            char[] chars = coordinates.toCharArray();
+            if ((chars[0] - chars[1]) % 2 == 0) {
+                return false;
+            } else {
+                return true;
+            }
         }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

@@ -41,33 +41,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 //876:链表的中间结点
-public class MiddleOfTheLinkedList{
+public class MiddleOfTheLinkedList {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MiddleOfTheLinkedList().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode middleNode(ListNode head) {
-        List<ListNode> list = new ArrayList<>();
-        while (head != null) {
-            list.add(head);
-            head = head.next;
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode() {}
+     * ListNode(int val) { this.val = val; }
+     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public ListNode middleNode(ListNode head) {
+            List<ListNode> list = new ArrayList<>();
+            while (head != null) {
+                list.add(head);
+                head = head.next;
+            }
+            return list.get(list.size() / 2);
         }
-        return list.get(list.size() / 2);
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

@@ -18,23 +18,25 @@
 // 👍 1926 👎 0
 
 package leetcode.editor.cn;
+
 //136:只出现一次的数字
-class SingleNumber{
+class SingleNumber {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new SingleNumber().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int singleNumber(int[] nums) {
-        int xor = 0;
-        for (int num : nums) {
-            xor ^= num;
+    class Solution {
+        public int singleNumber(int[] nums) {
+            int xor = 0;
+            for (int num : nums) {
+                xor ^= num;
+            }
+            return xor;
         }
-        return xor;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

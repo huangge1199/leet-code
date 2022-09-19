@@ -78,12 +78,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 //133:克隆图
-class CloneGraph{
+class CloneGraph {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new CloneGraph().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
 /*
@@ -106,26 +106,27 @@ class Node {
 }
 */
 
-class Solution {
-    private HashMap<Node, Node> use = new HashMap<>();
-    public Node cloneGraph(Node node) {
-        if (node == null) {
-            return node;
-        }
+    class Solution {
+        private HashMap<Node, Node> use = new HashMap<>();
 
-        if (use.containsKey(node)) {
-            return use.get(node);
-        }
+        public Node cloneGraph(Node node) {
+            if (node == null) {
+                return node;
+            }
 
-        Node cloneNode = new Node(node.val, new ArrayList());
-        use.put(node, cloneNode);
+            if (use.containsKey(node)) {
+                return use.get(node);
+            }
 
-        for (Node neighbor: node.children) {
-            cloneNode.children.add(cloneGraph(neighbor));
+            Node cloneNode = new Node(node.val, new ArrayList());
+            use.put(node, cloneNode);
+
+            for (Node neighbor : node.children) {
+                cloneNode.children.add(cloneGraph(neighbor));
+            }
+            return cloneNode;
         }
-        return cloneNode;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
