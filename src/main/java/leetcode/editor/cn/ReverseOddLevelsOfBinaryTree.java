@@ -65,7 +65,7 @@ public class ReverseOddLevelsOfBinaryTree {
         // 测试代码
         Solution solution = new ReverseOddLevelsOfBinaryTree().new Solution();
         //TreeNode root = new TreeNode(Arrays.asList(2, 3, 5, 8, 13, 21, 34));
-        TreeNode root = new TreeNode(Arrays.asList(7,13,11));
+        TreeNode root = new TreeNode(Arrays.asList(7, 13, 11));
         solution.reverseOddLevels(root);
     }
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -86,46 +86,68 @@ public class ReverseOddLevelsOfBinaryTree {
      * }
      */
     class Solution {
+        // BFS
+        //public TreeNode reverseOddLevels(TreeNode root) {
+        //    /*
+        //    如果是空节点直接返回
+        //     */
+        //    if (root == null) {
+        //        return null;
+        //    }
+        //    // 队列存入每层的节点
+        //    Queue<TreeNode> queue = new LinkedList<>();
+        //    queue.add(root);
+        //    int level = 0;
+        //    while (!queue.isEmpty()) {
+        //        /*
+        //        拿出每层的节点放入列表中，并将下一层的节点放入队列中
+        //         */
+        //        int size = queue.size();
+        //        List<TreeNode> nodeList = new ArrayList<>();
+        //        for (int i = 0; i < size; i++) {
+        //            TreeNode node = queue.poll();
+        //            nodeList.add(node);
+        //            if (node.left != null) {
+        //                queue.add(node.left);
+        //                queue.add(node.right);
+        //            }
+        //        }
+        //        /*
+        //        奇数层，在列表中交换收尾节点的值
+        //         */
+        //        if (level == 1) {
+        //            int nodeSize = nodeList.size();
+        //            for (int i = 0; i < nodeSize / 2; i++) {
+        //                int num = nodeList.get(i).val;
+        //                nodeList.get(i).val = nodeList.get(nodeSize - i - 1).val;
+        //                nodeList.get(nodeSize - i - 1).val = num;
+        //            }
+        //        }
+        //        // 改变奇偶层
+        //        level = 1 - level;
+        //    }
+        //    return root;
+        //}
+        // DFS
         public TreeNode reverseOddLevels(TreeNode root) {
-            /*
-            如果是空节点直接返回
-             */
             if (root == null) {
-                return null;
+                return root;
             }
-            // 队列存入每层的节点
-            Queue<TreeNode> queue = new LinkedList<>();
-            queue.add(root);
-            int level = 0;
-            while (!queue.isEmpty()) {
-                /*
-                拿出每层的节点放入列表中，并将下一层的节点放入队列中
-                 */
-                int size = queue.size();
-                List<TreeNode> nodeList = new ArrayList<>();
-                for (int i = 0; i < size; i++) {
-                    TreeNode node = queue.poll();
-                    nodeList.add(node);
-                    if (node.left != null) {
-                        queue.add(node.left);
-                        queue.add(node.right);
-                    }
-                }
-                /*
-                奇数层，在列表中交换收尾节点的值
-                 */
-                if (level == 1) {
-                    int nodeSize = nodeList.size();
-                    for (int i = 0; i < nodeSize / 2; i++) {
-                        int num = nodeList.get(i).val;
-                        nodeList.get(i).val = nodeList.get(nodeSize - i - 1).val;
-                        nodeList.get(nodeSize - i - 1).val = num;
-                    }
-                }
-                // 改变奇偶层
-                level = 1 - level;
-            }
+            dfs(root.left, root.right, 1);
             return root;
+        }
+
+        private void dfs(TreeNode left, TreeNode right, int level) {
+            if (left == null) {
+                return;
+            }
+            if (level == 1) {
+                int tmp = left.val;
+                left.val = right.val;
+                right.val = tmp;
+            }
+            dfs(left.left, right.right, 1 - level);
+            dfs(left.right, right.left, 1 - level);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
