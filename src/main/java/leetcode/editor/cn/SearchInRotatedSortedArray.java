@@ -52,18 +52,19 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 //33:搜索旋转排序数组
-public class SearchInRotatedSortedArray{
+public class SearchInRotatedSortedArray {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new SearchInRotatedSortedArray().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int search(int[] nums, int target) {
-        return Arrays.stream(nums).boxed().collect(Collectors.toList()).indexOf(target);
+    class Solution {
+        public int search(int[] nums, int target) {
+            return Arrays.stream(nums).boxed().collect(Collectors.toList()).indexOf(target);
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

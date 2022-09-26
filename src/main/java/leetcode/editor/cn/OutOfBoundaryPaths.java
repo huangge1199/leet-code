@@ -47,7 +47,7 @@ class OutOfBoundaryPaths {
     class Solution {
 
         // 四个方向
-        int[][] dirs = new int[][] {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        int[][] dirs = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
         // 取余
         int MOD = 1000000007;
 

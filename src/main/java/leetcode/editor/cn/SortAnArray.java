@@ -43,8 +43,9 @@ class SortAnArray {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         private Random random;
+
         public int[] sortArray(int[] nums) {
-            random=new Random(System.currentTimeMillis());
+            random = new Random(System.currentTimeMillis());
             pivot(nums, 0, nums.length - 1);
             return nums;
         }

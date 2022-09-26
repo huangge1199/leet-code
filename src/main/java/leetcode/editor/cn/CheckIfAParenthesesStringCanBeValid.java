@@ -58,38 +58,39 @@
 // 👍 4 👎 0
 
 package leetcode.editor.cn;
+
 //5948:判断一个括号字符串是否有效
-class CheckIfAParenthesesStringCanBeValid{
+class CheckIfAParenthesesStringCanBeValid {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new CheckIfAParenthesesStringCanBeValid().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean canBeValid(String s, String locked) {
-        int n = s.length();
-        int min = 0;
-        int max = 0;
-        for (int i = 0; i < n; i++) {
-            if (locked.charAt(i) == '0') {
-                min = Math.max(min - 1, 0);
-                max += 1;
-            } else if (s.charAt(i) == '(') {
-                min += 1;
-                max += 1;
-            } else {
-                min = Math.max(min - 1, 0);
-                max -= 1;
-                if (max < 0) {
-                    return false;
+    class Solution {
+        public boolean canBeValid(String s, String locked) {
+            int n = s.length();
+            int min = 0;
+            int max = 0;
+            for (int i = 0; i < n; i++) {
+                if (locked.charAt(i) == '0') {
+                    min = Math.max(min - 1, 0);
+                    max += 1;
+                } else if (s.charAt(i) == '(') {
+                    min += 1;
+                    max += 1;
+                } else {
+                    min = Math.max(min - 1, 0);
+                    max -= 1;
+                    if (max < 0) {
+                        return false;
+                    }
                 }
             }
+            return min == 0 && max % 2 == 0;
         }
-        return min == 0 && max % 2 == 0;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

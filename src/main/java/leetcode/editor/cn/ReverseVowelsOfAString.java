@@ -57,10 +57,10 @@ class ReverseVowelsOfAString {
                     start++;
                     end--;
                 }
-                if(!list.contains(chs[start])){
+                if (!list.contains(chs[start])) {
                     start++;
                 }
-                if(!list.contains(chs[end])){
+                if (!list.contains(chs[end])) {
                     end--;
                 }
             }

@@ -58,7 +58,7 @@ class NumberOfSubmatricesThatSumToTarget {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new NumberOfSubmatricesThatSumToTarget().new Solution();
-        System.out.println(solution.numSubmatrixSumTarget(new int[][]{{0,1,0}, {1,1,1},{0,1,0}}, 0));
+        System.out.println(solution.numSubmatrixSumTarget(new int[][]{{0, 1, 0}, {1, 1, 1}, {0, 1, 0}}, 0));
     }
 
     //力扣代码
@@ -78,7 +78,7 @@ class NumberOfSubmatricesThatSumToTarget {
                 for (int j = 1; j <= yLength; ++j) {
                     for (int k = 1; k <= i; ++k) {
                         for (int l = 1; l <= j; ++l) {
-                            if (sum[i][j] - sum[k - 1][j] - sum[i][l - 1] + sum[k - 1][l - 1] == target){
+                            if (sum[i][j] - sum[k - 1][j] - sum[i][l - 1] + sum[k - 1][l - 1] == target) {
                                 ++count;
                             }
                         }

@@ -51,14 +51,15 @@ package leetcode.editor.cn;
 import java.util.Arrays;
 
 //79:单词搜索
-public class WordSearch{
+public class WordSearch {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new WordSearch().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+    class Solution {
         public boolean exist(char[][] board, String word) {
 
             String str = Arrays.deepToString(board);
@@ -83,10 +84,11 @@ class Solution {
 
         /**
          * 深度优先搜索
+         *
          * @param board 传入的二维字符网格
-         * @param word 目标字符串
-         * @param i 起点 i 坐标
-         * @param j 起点 j 坐标
+         * @param word  目标字符串
+         * @param i     起点 i 坐标
+         * @param j     起点 j 坐标
          * @param index 遍历到word的哪一个位置了
          * @param visit 访问数组，记录哪些地方已经走过
          * @return
@@ -113,7 +115,7 @@ class Solution {
             }
             return false;
         }
-}
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

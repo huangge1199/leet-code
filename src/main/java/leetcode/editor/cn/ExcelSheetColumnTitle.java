@@ -48,7 +48,7 @@ public class ExcelSheetColumnTitle {
             StringBuilder result = new StringBuilder();
             while (columnNumber > 0) {
                 int num = (columnNumber - 1) % 26 + 1;
-                result.insert(0, (char)((num - 1) + 'A'));
+                result.insert(0, (char) ((num - 1) + 'A'));
                 columnNumber = (columnNumber - num) / 26;
             }
             return result.toString();

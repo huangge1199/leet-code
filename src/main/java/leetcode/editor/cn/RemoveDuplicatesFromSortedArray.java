@@ -67,7 +67,7 @@ public class RemoveDuplicatesFromSortedArray {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int removeDuplicates(int[] nums) {
-            if(nums.length==0){
+            if (nums.length == 0) {
                 return 0;
             }
             int size = nums.length;

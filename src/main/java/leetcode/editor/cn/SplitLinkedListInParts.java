@@ -51,50 +51,51 @@ package leetcode.editor.cn;
 import com.code.leet.entiy.ListNode;
 
 //725:分隔链表
-public class SplitLinkedListInParts{
+public class SplitLinkedListInParts {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new SplitLinkedListInParts().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public ListNode[] splitListToParts(ListNode root, int k) {
-        ListNode temp = root;
-        int size =0;
-        while (temp != null) {
-            size++;
-            temp = temp.next;
-        }
-        int length = size / k;
-        int add1 = size % k;
-        temp = root;
-        ListNode[] listNodes = new ListNode[k];
-        for (int i = 0; i < k; ++i) {
-            listNodes[i] = temp;
-            ListNode head = null;
-            for (int j = 0; j < length + (i < add1 ? 1 : 0); ++j) {
-                head = temp;
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) { val = x; }
+     * }
+     */
+    class Solution {
+        public ListNode[] splitListToParts(ListNode root, int k) {
+            ListNode temp = root;
+            int size = 0;
+            while (temp != null) {
+                size++;
                 temp = temp.next;
-                if (temp == null) {
-                    break;
+            }
+            int length = size / k;
+            int add1 = size % k;
+            temp = root;
+            ListNode[] listNodes = new ListNode[k];
+            for (int i = 0; i < k; ++i) {
+                listNodes[i] = temp;
+                ListNode head = null;
+                for (int j = 0; j < length + (i < add1 ? 1 : 0); ++j) {
+                    head = temp;
+                    temp = temp.next;
+                    if (temp == null) {
+                        break;
+                    }
+                }
+                if (head != null) {
+                    head.next = null;
                 }
             }
-            if (head != null) {
-                head.next = null;
-            }
+            return listNodes;
         }
-        return listNodes;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

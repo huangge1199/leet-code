@@ -57,34 +57,34 @@ import java.util.HashMap;
 import java.util.Map;
 
 //446:等差数列划分 II - 子序列
-class ArithmeticSlicesIiSubsequence{
+class ArithmeticSlicesIiSubsequence {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new ArithmeticSlicesIiSubsequence().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int numberOfArithmeticSlices(int[] nums) {
+    class Solution {
+        public int numberOfArithmeticSlices(int[] nums) {
 
-        int count = 0;
-        int length = nums.length;
-        Map<Long, Integer>[] f = new Map[length];
-        for (int i = 0; i < length; ++i) {
-            f[i] = new HashMap<>();
-        }
-        for (int i = 0; i < length; ++i) {
-            for (int j = 0; j < i; ++j) {
-                long d = (long) nums[i] - nums[j];
-                int cnt = f[j].getOrDefault(d, 0);
-                count += cnt;
-                f[i].put(d, f[i].getOrDefault(d, 0) + cnt + 1);
+            int count = 0;
+            int length = nums.length;
+            Map<Long, Integer>[] f = new Map[length];
+            for (int i = 0; i < length; ++i) {
+                f[i] = new HashMap<>();
             }
+            for (int i = 0; i < length; ++i) {
+                for (int j = 0; j < i; ++j) {
+                    long d = (long) nums[i] - nums[j];
+                    int cnt = f[j].getOrDefault(d, 0);
+                    count += cnt;
+                    f[i].put(d, f[i].getOrDefault(d, 0) + cnt + 1);
+                }
+            }
+            return count;
         }
-        return count;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

@@ -54,41 +54,43 @@
 // 👍 7 👎 0
 
 package leetcode.editor.cn;
+
 //1869:哪种连续子字符串更长
-public class LongerContiguousSegmentsOfOnesThanZeros{
+public class LongerContiguousSegmentsOfOnesThanZeros {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new LongerContiguousSegmentsOfOnesThanZeros().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean checkZeroOnes(String s) {
-        if (s.length() == 0 || !s.contains("1")) {
-            return false;
-        }
-        if (!s.contains("0")) {
-            return true;
-        }
-        int[] lengths = new int[2];
-        int start0 = s.indexOf("0");
-        int start1 = s.indexOf("1");
-        int[] maxs = new int[2];
-        char ch = '0';
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == ch) {
-                lengths[ch - '0']++;
-            } else {
-                maxs[ch - '0'] = Math.max(maxs[ch - '0'], lengths[ch - '0']);
-                lengths[ch - '0'] = 0;
-                ch = s.charAt(i);
-                lengths[ch - '0']++;
+    class Solution {
+        public boolean checkZeroOnes(String s) {
+            if (s.length() == 0 || !s.contains("1")) {
+                return false;
             }
+            if (!s.contains("0")) {
+                return true;
+            }
+            int[] lengths = new int[2];
+            int start0 = s.indexOf("0");
+            int start1 = s.indexOf("1");
+            int[] maxs = new int[2];
+            char ch = '0';
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == ch) {
+                    lengths[ch - '0']++;
+                } else {
+                    maxs[ch - '0'] = Math.max(maxs[ch - '0'], lengths[ch - '0']);
+                    lengths[ch - '0'] = 0;
+                    ch = s.charAt(i);
+                    lengths[ch - '0']++;
+                }
+            }
+            maxs[ch - '0'] = Math.max(maxs[ch - '0'], lengths[ch - '0']);
+            return maxs[1] > maxs[0];
         }
-        maxs[ch - '0'] = Math.max(maxs[ch - '0'], lengths[ch - '0']);
-        return maxs[1]>maxs[0];
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

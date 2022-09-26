@@ -76,11 +76,11 @@ public class MinimizeDeviationInArray {
                 }
                 treeSet.add(nums[i]);
             }
-            int min = treeSet.last()- treeSet.first();
-            while (treeSet.last()%2==0){
+            int min = treeSet.last() - treeSet.first();
+            while (treeSet.last() % 2 == 0) {
                 int num = treeSet.pollLast();
-                treeSet.add(num/2);
-                min =Math.min(min,treeSet.last()- treeSet.first());
+                treeSet.add(num / 2);
+                min = Math.min(min, treeSet.last() - treeSet.first());
             }
             return min;
         }

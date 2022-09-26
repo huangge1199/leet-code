@@ -83,9 +83,9 @@ public class MaxStack1 {
 
         public void push(int x) {
             stack.push(x);
-            if(max.isEmpty()||x>max.peek()){
+            if (max.isEmpty() || x > max.peek()) {
                 max.push(x);
-            }else{
+            } else {
                 max.push(max.peek());
             }
         }
@@ -106,11 +106,11 @@ public class MaxStack1 {
         public int popMax() {
             int num = max.peek();
             Stack<Integer> temp = new Stack<>();
-            while (stack.peek()!=num){
+            while (stack.peek() != num) {
                 temp.push(pop());
             }
             pop();
-            while (!temp.isEmpty()){
+            while (!temp.isEmpty()) {
                 push(temp.pop());
             }
             return num;

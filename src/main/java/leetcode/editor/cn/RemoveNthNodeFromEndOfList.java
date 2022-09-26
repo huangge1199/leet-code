@@ -46,39 +46,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 //19:删除链表的倒数第 N 个结点
-public class RemoveNthNodeFromEndOfList{
+public class RemoveNthNodeFromEndOfList {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new RemoveNthNodeFromEndOfList().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        List<ListNode> list = new ArrayList<>();
-        ListNode temp = head;
-        while (temp != null) {
-            list.add(temp);
-            temp = temp.next;
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode() {}
+     * ListNode(int val) { this.val = val; }
+     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public ListNode removeNthFromEnd(ListNode head, int n) {
+            List<ListNode> list = new ArrayList<>();
+            ListNode temp = head;
+            while (temp != null) {
+                list.add(temp);
+                temp = temp.next;
+            }
+            if (n == list.size() && head != null) {
+                head = head.next;
+            } else if (list.size() != 1) {
+                list.get(list.size() - n - 1).next = list.get(list.size() - n).next;
+            }
+            return head;
         }
-        if (n == list.size() && head != null) {
-            head = head.next;
-        } else if (list.size() != 1) {
-            list.get(list.size() - n - 1).next = list.get(list.size() - n).next;
-        }
-        return head;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

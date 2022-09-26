@@ -56,28 +56,30 @@
 // 👍 11 👎 0
 
 package leetcode.editor.cn;
+
 //1829:每个查询的最大异或值
-public class MaximumXorForEachQuery{
+public class MaximumXorForEachQuery {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MaximumXorForEachQuery().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] getMaximumXor(int[] nums, int maximumBit) {
-        int max = (int) Math.pow(2, maximumBit) - 1;
-        int size = nums.length;
-        int[] result = new int[size];
-        int num = nums[0];
-        result[size - 1] = max - num;
-        for (int i = 1; i < size; i++) {
-            num ^= nums[i];
-            result[size - 1 - i] = max - num;
+    class Solution {
+        public int[] getMaximumXor(int[] nums, int maximumBit) {
+            int max = (int) Math.pow(2, maximumBit) - 1;
+            int size = nums.length;
+            int[] result = new int[size];
+            int num = nums[0];
+            result[size - 1] = max - num;
+            for (int i = 1; i < size; i++) {
+                num ^= nums[i];
+                result[size - 1 - i] = max - num;
+            }
+            return result;
         }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

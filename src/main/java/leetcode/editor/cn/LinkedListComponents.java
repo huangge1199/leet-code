@@ -46,44 +46,45 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //817:链表组件
-public class LinkedListComponents{
+public class LinkedListComponents {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new LinkedListComponents().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public int numComponents(ListNode head, int[] nums) {
-        int num = 0;
-        boolean bl = false;
-        List<Integer> list = Arrays.stream(nums).boxed().collect(Collectors.toList());
 
-        while (head != null) {
-            if (list.contains(head.val)) {
-                bl = true;
-            } else {
-                if (bl) {
-                    num++;
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode() {}
+     * ListNode(int val) { this.val = val; }
+     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public int numComponents(ListNode head, int[] nums) {
+            int num = 0;
+            boolean bl = false;
+            List<Integer> list = Arrays.stream(nums).boxed().collect(Collectors.toList());
+
+            while (head != null) {
+                if (list.contains(head.val)) {
+                    bl = true;
+                } else {
+                    if (bl) {
+                        num++;
+                    }
+                    bl = false;
                 }
-                bl = false;
+                head = head.next;
             }
-            head = head.next;
+            num = bl ? num + 1 : num;
+            return num;
         }
-        num = bl ? num + 1 : num;
-        return num;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

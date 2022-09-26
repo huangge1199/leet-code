@@ -94,7 +94,7 @@ public class MaximumSubarrayMinProduct {
             for (int i = 0; i < nums.length; i++) {
                 max = Math.max(nums[i] * (sum[end[i] - 1] - (start[i] == -1 ? 0 : sum[start[i]])), max);
             }
-            return (int) (max % ((int)Math.pow(10, 9) + 7));
+            return (int) (max % ((int) Math.pow(10, 9) + 7));
 //            long mod = 1000000000+7;
 //            return (int) (max % mod);
         }

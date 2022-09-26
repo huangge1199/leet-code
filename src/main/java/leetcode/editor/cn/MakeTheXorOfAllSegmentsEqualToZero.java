@@ -50,15 +50,15 @@ public class MakeTheXorOfAllSegmentsEqualToZero {
         //测试代码
         Solution solution = new MakeTheXorOfAllSegmentsEqualToZero().new Solution();
         //3
-        System.out.println(solution.minChanges(new int[]{1,2,0,3,0},1));
+        System.out.println(solution.minChanges(new int[]{1, 2, 0, 3, 0}, 1));
         //3
-        System.out.println(solution.minChanges(new int[]{3,4,5,2,1,7,3,4,7},3));
+        System.out.println(solution.minChanges(new int[]{3, 4, 5, 2, 1, 7, 3, 4, 7}, 3));
         //3
         System.out.println(solution.minChanges(new int[]{1, 2, 4, 1, 2, 5, 1, 2, 6}, 3));
         //11
-        System.out.println(solution.minChanges(new int[]{26,19,19,28,13,14,6,25,28,19,0,15,25,11}, 3));
+        System.out.println(solution.minChanges(new int[]{26, 19, 19, 28, 13, 14, 6, 25, 28, 19, 0, 15, 25, 11}, 3));
         //11
-        System.out.println(solution.minChanges(new int[]{11,20,3,18,26,30,20,7,3,0,25,9,19,21,3,23}, 5));
+        System.out.println(solution.minChanges(new int[]{11, 20, 3, 18, 26, 30, 20, 7, 3, 0, 25, 9, 19, 21, 3, 23}, 5));
     }
 
     //力扣代码

@@ -94,36 +94,36 @@ public class SudokuSolver {
                 for (int i = 0; i < left.size(); i++) {
                     List<Integer> list = left.get(i);
                     int r = 0, c = 0, o = 0;
-                    int x = list.get(0),y = list.get(1);
+                    int x = list.get(0), y = list.get(1);
                     List<Integer> tempR = rows[x];
                     List<Integer> tempC = columns[y];
                     int otherIndex = (x / 3) * 3 + y / 3;
                     List<Integer> tempO = others[otherIndex];
                     while (r < tempR.size() && c < tempC.size() && o < tempO.size()) {
-                        if(tempR.get(r).equals(tempC.get(c)) && tempC.get(c).equals(tempO.get(o))){
+                        if (tempR.get(r).equals(tempC.get(c)) && tempC.get(c).equals(tempO.get(o))) {
                             boards[x][y].add(tempC.get(c));
                         }
-                        while (tempR.get(r)<tempC.get(c)){
+                        while (tempR.get(r) < tempC.get(c)) {
                             tempR.remove(r);
                         }
-                        while (tempC.get(c)<tempR.get(r)){
+                        while (tempC.get(c) < tempR.get(r)) {
                             tempC.remove(c);
                         }
-                        while (tempO.get(o)<tempC.get(c)){
+                        while (tempO.get(o) < tempC.get(c)) {
                             tempO.remove(o);
                         }
-                        while (tempC.get(c)<tempO.get(o)){
+                        while (tempC.get(c) < tempO.get(o)) {
                             tempC.remove(c);
                         }
-                        while (tempO.get(o)<tempR.get(r)){
+                        while (tempO.get(o) < tempR.get(r)) {
                             tempO.remove(o);
                         }
-                        while (tempR.get(r)<tempO.get(o)){
+                        while (tempR.get(r) < tempO.get(o)) {
                             tempR.remove(r);
                         }
                     }
-                    if(boards[x][y].size()==1){
-                        board[x][y] = Character.forDigit(boards[x][y].get(0),10);
+                    if (boards[x][y].size() == 1) {
+                        board[x][y] = Character.forDigit(boards[x][y].get(0), 10);
                         rows[x].remove(board[x][y] - '0');
                         columns[y].remove(board[x][y] - '0');
                         others[otherIndex].remove(board[x][y] - '0');

@@ -61,7 +61,7 @@ public class RemoveDuplicatesFromSortedArrayIi {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new RemoveDuplicatesFromSortedArrayIi().new Solution();
-        solution.removeDuplicates(new int[]{1,1,1,2,2,3});
+        solution.removeDuplicates(new int[]{1, 1, 1, 2, 2, 3});
     }
 
     //力扣代码

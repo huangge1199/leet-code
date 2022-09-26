@@ -55,15 +55,17 @@
 // 👍 1 👎 0
 
 package leetcode.editor.cn;
+
 //5720:使字符串有序的最少操作次数
-public class MinimumNumberOfOperationsToMakeStringSorted{
+public class MinimumNumberOfOperationsToMakeStringSorted {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MinimumNumberOfOperationsToMakeStringSorted().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+    class Solution {
         public int makeStringSorted(String s) {
             int mode = 1000000007;
             long[] mul = new long[3000];
@@ -111,7 +113,7 @@ class Solution {
             }
             return res;
         }
-}
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

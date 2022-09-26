@@ -91,11 +91,11 @@ public class ImplementQueueUsingStacks {
          * Push element x to the back of queue.
          */
         public void push(int x) {
-            while (!stack1.empty()){
+            while (!stack1.empty()) {
                 stack2.push(stack1.pop());
             }
             stack1.push(x);
-            while (!stack2.isEmpty()){
+            while (!stack2.isEmpty()) {
                 stack1.push(stack2.pop());
             }
         }

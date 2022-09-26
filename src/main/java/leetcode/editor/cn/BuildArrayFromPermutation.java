@@ -38,25 +38,26 @@
 // Related Topics 数组 模拟 👍 2 👎 0
 
 package leetcode.editor.cn;
+
 //1920:基于排列构建数组
-class BuildArrayFromPermutation{
+class BuildArrayFromPermutation {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new BuildArrayFromPermutation().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] buildArray(int[] nums) {
-        int size = nums.length;
-        int[] arr = new int[size];
-        for (int i = 0; i < size; i++) {
-            arr[i] = nums[nums[i]];
+    class Solution {
+        public int[] buildArray(int[] nums) {
+            int size = nums.length;
+            int[] arr = new int[size];
+            for (int i = 0; i < size; i++) {
+                arr[i] = nums[nums[i]];
+            }
+            return arr;
         }
-        return arr;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

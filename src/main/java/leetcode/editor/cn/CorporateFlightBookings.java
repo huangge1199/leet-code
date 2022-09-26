@@ -48,26 +48,27 @@
 // Related Topics 数组 前缀和 👍 218 👎 0
 
 package leetcode.editor.cn;
+
 //1109:航班预订统计
-class CorporateFlightBookings{
+class CorporateFlightBookings {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new CorporateFlightBookings().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] corpFlightBookings(int[][] bookings, int n) {
-        int[] result = new int[n];
-        for (int[] booking : bookings) {
-            for (int j = booking[0] - 1; j < booking[1]; j++) {
-                result[j] += booking[2];
+    class Solution {
+        public int[] corpFlightBookings(int[][] bookings, int n) {
+            int[] result = new int[n];
+            for (int[] booking : bookings) {
+                for (int j = booking[0] - 1; j < booking[1]; j++) {
+                    result[j] += booking[2];
+                }
             }
+            return result;
         }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

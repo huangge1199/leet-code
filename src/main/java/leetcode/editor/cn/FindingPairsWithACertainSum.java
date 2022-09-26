@@ -65,14 +65,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 //1865:找出和为指定值的下标对
-public class FindingPairsWithACertainSum{
+public class FindingPairsWithACertainSum {
     public static void main(String[] args) {
         //测试代码
 //        Solution solution = new FindingPairsWithACertainSum().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class FindSumPairs {
+    class FindSumPairs {
 
         int[] nums1;
         int[] nums2;
@@ -99,7 +100,7 @@ class FindSumPairs {
             }
             return count;
         }
-}
+    }
 
 /**
  * Your FindSumPairs object will be instantiated and called as such:

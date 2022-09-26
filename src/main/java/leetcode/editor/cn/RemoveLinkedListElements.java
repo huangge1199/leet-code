@@ -39,46 +39,47 @@ package leetcode.editor.cn;
 import com.code.leet.entiy.ListNode;
 
 //203:移除链表元素
-class RemoveLinkedListElements{
+class RemoveLinkedListElements {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new RemoveLinkedListElements().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode removeElements(ListNode head, int val) {
-        ListNode temp = head;
-        if (temp == null) {
-            return head;
-        }
-        while (temp.val == val) {
-            head = temp = temp.next;
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode() {}
+     * ListNode(int val) { this.val = val; }
+     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public ListNode removeElements(ListNode head, int val) {
+            ListNode temp = head;
             if (temp == null) {
                 return head;
             }
-        }
-        while (temp != null && temp.next != null) {
-            if (temp.next.val == val) {
-                temp.next = temp.next.next;
-            } else {
-                temp = temp.next;
+            while (temp.val == val) {
+                head = temp = temp.next;
+                if (temp == null) {
+                    return head;
+                }
             }
-        }
-        return head;
+            while (temp != null && temp.next != null) {
+                if (temp.next.val == val) {
+                    temp.next = temp.next.next;
+                } else {
+                    temp = temp.next;
+                }
+            }
+            return head;
 
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

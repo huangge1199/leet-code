@@ -24,43 +24,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 //234:回文链表
-public class PalindromeLinkedList{
+public class PalindromeLinkedList {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new PalindromeLinkedList().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public boolean isPalindrome(ListNode head) {
-        boolean bl = true;
-        List<Integer> list = new ArrayList<>();
-        while (head != null) {
-            list.add(head.val);
-            head = head.next;
-        }
-        int headIndex = 0;
-        int size = list.size();
-        while (headIndex < size - headIndex - 1) {
-            if (!list.get(headIndex).equals(list.get(size - headIndex - 1))) {
-                bl = false;
-                break;
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode() {}
+     * ListNode(int val) { this.val = val; }
+     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public boolean isPalindrome(ListNode head) {
+            boolean bl = true;
+            List<Integer> list = new ArrayList<>();
+            while (head != null) {
+                list.add(head.val);
+                head = head.next;
             }
-            headIndex++;
+            int headIndex = 0;
+            int size = list.size();
+            while (headIndex < size - headIndex - 1) {
+                if (!list.get(headIndex).equals(list.get(size - headIndex - 1))) {
+                    bl = false;
+                    break;
+                }
+                headIndex++;
+            }
+            return bl;
         }
-        return bl;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

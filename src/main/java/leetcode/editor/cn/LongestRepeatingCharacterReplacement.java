@@ -40,7 +40,7 @@ class LongestRepeatingCharacterReplacement {
             int[] num = new int[26];
             int max = 0;
             int index = 0;
-            for (int i = 0;i<s.length();i++) {
+            for (int i = 0; i < s.length(); i++) {
                 num[s.charAt(i) - 'A']++;
                 max = Math.max(max, num[s.charAt(i) - 'A']);
                 if (i - index + 1 - max > k) {

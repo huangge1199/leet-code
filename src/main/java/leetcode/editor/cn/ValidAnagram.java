@@ -31,32 +31,34 @@
 // 👍 401 👎 0
 
 package leetcode.editor.cn;
+
 //242:有效的字母异位词
-class ValidAnagram{
+class ValidAnagram {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new ValidAnagram().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean isAnagram(String s, String t) {
-        if(s.length()!=t.length()){
-            return false;
-        }
-        int[] arr = new int[26];
-        for (char ch:s.toCharArray()){
-            arr[ch-'a']++;
-        }
-        for (char ch:t.toCharArray()){
-            if(arr[ch-'a']<1){
+    class Solution {
+        public boolean isAnagram(String s, String t) {
+            if (s.length() != t.length()) {
                 return false;
             }
-            arr[ch-'a']--;
+            int[] arr = new int[26];
+            for (char ch : s.toCharArray()) {
+                arr[ch - 'a']++;
+            }
+            for (char ch : t.toCharArray()) {
+                if (arr[ch - 'a'] < 1) {
+                    return false;
+                }
+                arr[ch - 'a']--;
+            }
+            return true;
         }
-        return true;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

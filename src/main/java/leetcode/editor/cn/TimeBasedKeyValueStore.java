@@ -73,12 +73,16 @@ class TimeBasedKeyValueStore {
         class Node {
             String k, v;
             int t;
-            Node (String _k, String _v, int _t) {
-                k = _k; v = _v; t = _t;
+
+            Node(String _k, String _v, int _t) {
+                k = _k;
+                v = _v;
+                t = _t;
             }
         }
 
         Map<String, List<Node>> map = new HashMap<>();
+
         public void set(String k, String v, int t) {
             List<Node> list = map.getOrDefault(k, new ArrayList<>());
             list.add(new Node(k, v, t));

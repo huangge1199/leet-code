@@ -27,41 +27,42 @@ package leetcode.editor.cn;
 import com.code.leet.entiy.ListNode;
 
 //328:奇偶链表
-public class OddEvenLinkedList{
+public class OddEvenLinkedList {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new OddEvenLinkedList().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode oddEvenList(ListNode head) {
-        if (head == null || head.next == null || head.next.next == null) {
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode() {}
+     * ListNode(int val) { this.val = val; }
+     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public ListNode oddEvenList(ListNode head) {
+            if (head == null || head.next == null || head.next.next == null) {
+                return head;
+            }
+            ListNode odd = head;
+            ListNode even = head.next;
+            ListNode evenTemp = even;
+            while (even != null && even.next != null) {
+                odd.next = even.next;
+                odd = odd.next;
+                even.next = odd.next;
+                even = even.next;
+            }
+            odd.next = evenTemp;
             return head;
         }
-        ListNode odd = head;
-        ListNode even = head.next;
-        ListNode evenTemp = even;
-        while (even != null && even.next != null) {
-            odd.next = even.next;
-            odd = odd.next;
-            even.next = odd.next;
-            even = even.next;
-        }
-        odd.next = evenTemp;
-        return head;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

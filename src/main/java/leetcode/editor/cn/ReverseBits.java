@@ -61,25 +61,27 @@
 // 👍 410 👎 0
 
 package leetcode.editor.cn;
+
 //190:颠倒二进制位
-class ReverseBits{
+class ReverseBits {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new ReverseBits().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-public class Solution {
-    // you need treat n as an unsigned value
-    public int reverseBits(int n) {
-        int result = 0;
-        for (int i = 0; i < 32 && n != 0; ++i) {
-            result |= (n & 1) << (31 - i);
-            n >>>= 1;
+    public class Solution {
+        // you need treat n as an unsigned value
+        public int reverseBits(int n) {
+            int result = 0;
+            for (int i = 0; i < 32 && n != 0; ++i) {
+                result |= (n & 1) << (31 - i);
+                n >>>= 1;
+            }
+            return result;
         }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

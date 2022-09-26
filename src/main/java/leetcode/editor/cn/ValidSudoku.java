@@ -105,9 +105,9 @@ public class ValidSudoku {
                     }
                     int num = ch - '0';
                     int otherIndex = (i / 3) * 3 + j / 3;
-                    row[i].put(num,row[i].getOrDefault(num,0) + 1);
-                    column[j].put(num,column[j].getOrDefault(num,0) + 1);
-                    other[otherIndex].put(num,other[otherIndex].getOrDefault(num,0) + 1);
+                    row[i].put(num, row[i].getOrDefault(num, 0) + 1);
+                    column[j].put(num, column[j].getOrDefault(num, 0) + 1);
+                    other[otherIndex].put(num, other[otherIndex].getOrDefault(num, 0) + 1);
                     if (row[i].get(num) > 1 || column[j].get(num) > 1 || other[otherIndex].get(num) > 1) {
                         return false;
                     }

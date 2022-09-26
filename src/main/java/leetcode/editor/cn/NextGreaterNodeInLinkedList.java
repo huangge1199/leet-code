@@ -47,49 +47,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 //1019:链表中的下一个更大节点
-public class NextGreaterNodeInLinkedList{
+public class NextGreaterNodeInLinkedList {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new NextGreaterNodeInLinkedList().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public int[] nextLargerNodes(ListNode head) {
-        List<Integer> list = new ArrayList<>();
-        List<Integer> result = new ArrayList<>();
-        List<Integer> indexs = new ArrayList<>();
-        int max = 0;
-        int index =0;
-        while (head != null) {
-            indexs.add(index);
-            if (head.val > max) {
-                int size = indexs.size();
-                for (int i = 0; i < size; i++) {
-                    if(head.val>result.get(indexs.get(i))){
-                        result.set(indexs.get(i),head.val);
-                        indexs.remove(indexs.get(i));
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) { val = x; }
+     * }
+     */
+    class Solution {
+        public int[] nextLargerNodes(ListNode head) {
+            List<Integer> list = new ArrayList<>();
+            List<Integer> result = new ArrayList<>();
+            List<Integer> indexs = new ArrayList<>();
+            int max = 0;
+            int index = 0;
+            while (head != null) {
+                indexs.add(index);
+                if (head.val > max) {
+                    int size = indexs.size();
+                    for (int i = 0; i < size; i++) {
+                        if (head.val > result.get(indexs.get(i))) {
+                            result.set(indexs.get(i), head.val);
+                            indexs.remove(indexs.get(i));
+                        }
                     }
+                    max = head.val;
                 }
-                max = head.val;
+                index++;
+                result.add(0);
+                list.add(head.val);
+                head = head.next;
             }
-            index++;
             result.add(0);
-            list.add(head.val);
-            head = head.next;
+            return result.stream().mapToInt(Integer::valueOf).toArray();
         }
-        result.add(0);
-        return result.stream().mapToInt(Integer::valueOf).toArray();
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

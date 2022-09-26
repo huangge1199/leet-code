@@ -58,11 +58,11 @@ class AssignCookies {
             int gi = 0;
             int si = 0;
             while (gi < g.length && si < s.length) {
-                if(s[si]>=g[gi]){
+                if (s[si] >= g[gi]) {
                     count++;
                     si++;
                     gi++;
-                }else{
+                } else {
                     si++;
                 }
             }

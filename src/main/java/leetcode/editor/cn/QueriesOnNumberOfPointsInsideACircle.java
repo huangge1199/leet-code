@@ -44,34 +44,36 @@
 // 👍 5 👎 0
 
 package leetcode.editor.cn;
+
 //1828:统计一个圆中点的数目
-public class QueriesOnNumberOfPointsInsideACircle{
+public class QueriesOnNumberOfPointsInsideACircle {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new QueriesOnNumberOfPointsInsideACircle().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] countPoints(int[][] points, int[][] queries) {
-        int size = queries.length;
-        int[] result = new int[size];
-        for (int i = 0; i < size; i++) {
-            int num = 0;
-            int length = points.length;
-            int c = queries[i][2];
-            for (int[] point : points) {
-                int x = Math.abs(queries[i][0] - point[0]);
-                int y = Math.abs(queries[i][1] - point[1]);
-                if (x * x + y * y <= c * c) {
-                    num++;
+    class Solution {
+        public int[] countPoints(int[][] points, int[][] queries) {
+            int size = queries.length;
+            int[] result = new int[size];
+            for (int i = 0; i < size; i++) {
+                int num = 0;
+                int length = points.length;
+                int c = queries[i][2];
+                for (int[] point : points) {
+                    int x = Math.abs(queries[i][0] - point[0]);
+                    int y = Math.abs(queries[i][1] - point[1]);
+                    if (x * x + y * y <= c * c) {
+                        num++;
+                    }
                 }
+                result[i] = num;
             }
-            result[i] = num;
+            return result;
         }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

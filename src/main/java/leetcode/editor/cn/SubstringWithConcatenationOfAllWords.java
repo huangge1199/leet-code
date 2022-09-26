@@ -72,7 +72,7 @@ public class SubstringWithConcatenationOfAllWords {
                     String word = tmp.substring(j, j + size);
                     tmpMap.put(word, tmpMap.getOrDefault(word, 0) + 1);
                 }
-                if (map.equals(tmpMap)){
+                if (map.equals(tmpMap)) {
                     list.add(i);
                 }
             }

@@ -32,12 +32,12 @@ detectSquares.add([3, 10]);
 detectSquares.add([11, 2]);
 detectSquares.add([3, 2]);
 detectSquares.count([11, 10]); // 返回 1 。你可以选择：
-                               //   - 第一个，第二个，和第三个点
-detectSquares.count([14, 8]);  // 返回 0 。查询点无法与数据结构中的这些点构成正方形。
-detectSquares.add([11, 2]);    // 允许添加重复的点。
+// - 第一个，第二个，和第三个点
+detectSquares.count([14, 8]); // 返回 0 。查询点无法与数据结构中的这些点构成正方形。
+detectSquares.add([11, 2]); // 允许添加重复的点。
 detectSquares.count([11, 10]); // 返回 2 。你可以选择：
-                               //   - 第一个，第二个，和第三个点
-                               //   - 第一个，第三个，和第四个点
+// - 第一个，第二个，和第三个点
+// - 第一个，第三个，和第四个点
 </pre>
 
 <p>&nbsp;</p>

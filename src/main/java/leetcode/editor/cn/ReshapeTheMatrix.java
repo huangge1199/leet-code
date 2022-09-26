@@ -51,7 +51,7 @@ public class ReshapeTheMatrix {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new ReshapeTheMatrix().new Solution();
-        solution.matrixReshape(new int[][]{{1,2},{3,4}},1,4);
+        solution.matrixReshape(new int[][]{{1, 2}, {3, 4}}, 1, 4);
     }
 
     //力扣代码

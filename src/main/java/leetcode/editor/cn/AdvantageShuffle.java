@@ -54,13 +54,13 @@ public class AdvantageShuffle {
             int[] copy = Arrays.copyOf(A, length);
             Arrays.sort(copy);
             int i = 0, j = 0;
-            while(i < A.length) {
-                if(copy[i] > pairs[j].getValue()){
+            while (i < A.length) {
+                if (copy[i] > pairs[j].getValue()) {
                     A[pairs[j].getKey()] = copy[i];
                     i++;
                     j++;
                 } else {
-                    A[pairs[(A.length-1) - (i-j)].getKey()] = copy[i];
+                    A[pairs[(A.length - 1) - (i - j)].getKey()] = copy[i];
                     i++;
                 }
             }

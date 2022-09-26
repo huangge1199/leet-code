@@ -95,7 +95,7 @@ public class CombinationSum {
                 use.add(candidates[i]);
                 backtrack(candidates, i, use, sum + candidates[i], target);
                 use.remove(use.size() - 1);
-                if(bl){
+                if (bl) {
                     break;
                 }
             }

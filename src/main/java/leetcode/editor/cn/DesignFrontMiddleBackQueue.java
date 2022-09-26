@@ -82,7 +82,7 @@ public class DesignFrontMiddleBackQueue {
         }
 
         public void pushMiddle(int val) {
-            list.add(list.size()/2, val);
+            list.add(list.size() / 2, val);
         }
 
         public void pushBack(int val) {
@@ -100,14 +100,14 @@ public class DesignFrontMiddleBackQueue {
             if (list.isEmpty()) {
                 return -1;
             }
-            return list.remove((list.size()-1) / 2);
+            return list.remove((list.size() - 1) / 2);
         }
 
         public int popBack() {
             if (list.isEmpty()) {
                 return -1;
             }
-            return list.remove(list.size()-1);
+            return list.remove(list.size() - 1);
         }
     }
 

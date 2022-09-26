@@ -98,7 +98,7 @@ class CheapestFlightsWithinKStops {
                         if (arr[0] != dst) {
                             use.add(arr[0]);
                             queue.add(new QueueEntity(arr[0], queueEntity.sum + arr[1], use));
-                            use.remove((Integer)arr[0]);
+                            use.remove((Integer) arr[0]);
                         }
                         sums[arr[0]] = queueEntity.sum + arr[1];
                     }

@@ -30,60 +30,61 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 //剑指 Offer 37:序列化二叉树
-public class XuLieHuaErChaShuLcof{
+public class XuLieHuaErChaShuLcof {
     public static void main(String[] args) {
         //测试代码
 //        Solution solution = new XuLieHuaErChaShuLcof().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-public class Codec {
 
-    // Encodes a tree to a single string.
-    public String serialize(TreeNode root) {
-        String result = "";
-        if (root == null) {
-            return "null,";
-        }
-        result += root.val + ",";
-        result += serialize(root.left);
-        result += serialize(root.right);
-        return result;
-    }
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     * int val;
+     * TreeNode left;
+     * TreeNode right;
+     * TreeNode(int x) { val = x; }
+     * }
+     */
+    public class Codec {
 
-    // Decodes your encoded data to tree.
-    public TreeNode deserialize(String data) {
-        if ("null,".equals(data)) {
-            return null;
+        // Encodes a tree to a single string.
+        public String serialize(TreeNode root) {
+            String result = "";
+            if (root == null) {
+                return "null,";
+            }
+            result += root.val + ",";
+            result += serialize(root.left);
+            result += serialize(root.right);
+            return result;
         }
-        String[] strs = data.split(",");
-        Queue<String> queue = new LinkedList<>();
-        for (String str : strs) {
-            queue.offer(str);
-        }
-        return des(queue);
-    }
 
-    private TreeNode des(Queue<String> queue) {
-        String value = queue.poll();
-        if ("null".equals(value)) {
-            return null;
+        // Decodes your encoded data to tree.
+        public TreeNode deserialize(String data) {
+            if ("null,".equals(data)) {
+                return null;
+            }
+            String[] strs = data.split(",");
+            Queue<String> queue = new LinkedList<>();
+            for (String str : strs) {
+                queue.offer(str);
+            }
+            return des(queue);
         }
-        TreeNode root = new TreeNode(Integer.parseInt(value));
-        root.left = des(queue);
-        root.right = des(queue);
-        return root;
+
+        private TreeNode des(Queue<String> queue) {
+            String value = queue.poll();
+            if ("null".equals(value)) {
+                return null;
+            }
+            TreeNode root = new TreeNode(Integer.parseInt(value));
+            root.left = des(queue);
+            root.right = des(queue);
+            return root;
+        }
     }
-}
 
 // Your Codec object will be instantiated and called as such:
 // Codec codec = new Codec();

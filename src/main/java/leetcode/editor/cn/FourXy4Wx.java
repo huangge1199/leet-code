@@ -28,37 +28,39 @@
 // 👍 25 👎 0
 
 package leetcode.editor.cn;
+
 //LCP 28:采购方案
-public class FourXy4Wx{
+public class FourXy4Wx {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new FourXy4Wx().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int purchasePlans(int[] nums, int target) {
-        int[] sort = new int[target];
-        long[] count = new long[target];
-        for (int num : nums) {
-            if (num < target) {
-                sort[num] += 1;
+    class Solution {
+        public int purchasePlans(int[] nums, int target) {
+            int[] sort = new int[target];
+            long[] count = new long[target];
+            for (int num : nums) {
+                if (num < target) {
+                    sort[num] += 1;
+                }
             }
-        }
-        long sum = 0;
-        for (int i = 1; i < target; i++) {
-            sum += sort[i];
-            count[i] = sum;
-        }
-        long result = 0;
-        for (int num : nums) {
-            if (target > num) {
-                result += num <= target - num ? count[target - num] - 1 : count[target - num];
+            long sum = 0;
+            for (int i = 1; i < target; i++) {
+                sum += sort[i];
+                count[i] = sum;
             }
+            long result = 0;
+            for (int num : nums) {
+                if (target > num) {
+                    result += num <= target - num ? count[target - num] - 1 : count[target - num];
+                }
+            }
+            return (int) (result / 2 % (Math.pow(10, 9) + 7));
         }
-        return (int) (result / 2 % (Math.pow(10, 9) + 7));
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

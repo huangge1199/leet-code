@@ -56,19 +56,21 @@
 // 👍 362 👎 0
 
 package leetcode.editor.cn;
+
 //231:2 的幂
-class PowerOfTwo{
+class PowerOfTwo {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new PowerOfTwo().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean isPowerOfTwo(int n) {
-        return n > 0 && Integer.bitCount(n) == 1;
+    class Solution {
+        public boolean isPowerOfTwo(int n) {
+            return n > 0 && Integer.bitCount(n) == 1;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

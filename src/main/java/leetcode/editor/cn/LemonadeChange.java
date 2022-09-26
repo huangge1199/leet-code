@@ -62,7 +62,7 @@ class LemonadeChange {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new LemonadeChange().new Solution();
-        solution.lemonadeChange(new int[]{5,5,5,5,10,5,10,10,10,20});
+        solution.lemonadeChange(new int[]{5, 5, 5, 5, 10, 5, 10, 10, 10, 20});
     }
 
     //力扣代码

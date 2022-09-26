@@ -89,7 +89,7 @@ public class BuildAnArrayWithStackOperations {
                 if (!stack.isEmpty() && stack.peek() == i) {
                     list.add("Push");
                     stack.pop();
-                    if(stack.isEmpty()){
+                    if (stack.isEmpty()) {
                         break;
                     }
                 } else {

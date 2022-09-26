@@ -86,7 +86,7 @@ package leetcode.editor.cn;
 import java.util.regex.Pattern;
 
 //65:有效数字
-public class ValidNumber{
+public class ValidNumber {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new ValidNumber().new Solution();
@@ -113,14 +113,15 @@ public class ValidNumber{
         System.out.println(solution.isNumber("95a54e53"));
         System.out.println(solution.isNumber("6+1"));
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean isNumber(String s) {
-        String pattern = "^[+-]?((\\d*\\.?\\d+)|(\\d+\\.?\\d*))([eE][+-]?\\d+)?$";
-        return Pattern.matches(pattern,s);
+    class Solution {
+        public boolean isNumber(String s) {
+            String pattern = "^[+-]?((\\d*\\.?\\d+)|(\\d+\\.?\\d*))([eE][+-]?\\d+)?$";
+            return Pattern.matches(pattern, s);
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

@@ -24,29 +24,30 @@
 // 👍 170 👎 0
 
 package leetcode.editor.cn;
+
 //400:第 N 位数字
-class NthDigit{
+class NthDigit {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new NthDigit().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int findNthDigit(int n) {
-        int[] ant = new int[]{0, 10, 190, 2890, 38890, 488890, 5888890, 68888890, 788888890};
-        int[] numBegin = new int[]{0, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000};
-        for(int i = ant.length - 1; i >= 0; i--){
-            if(n >= ant[i]){
-                int num = (n - ant[i]) / (i + 1) + numBegin[i];
-                int posi = (n - ant[i]) % (i + 1);
-                return num % (int)Math.pow(10, i + 1 - posi) / (int)Math.pow(10,  i - posi);
+    class Solution {
+        public int findNthDigit(int n) {
+            int[] ant = new int[]{0, 10, 190, 2890, 38890, 488890, 5888890, 68888890, 788888890};
+            int[] numBegin = new int[]{0, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000};
+            for (int i = ant.length - 1; i >= 0; i--) {
+                if (n >= ant[i]) {
+                    int num = (n - ant[i]) / (i + 1) + numBegin[i];
+                    int posi = (n - ant[i]) % (i + 1);
+                    return num % (int) Math.pow(10, i + 1 - posi) / (int) Math.pow(10, i - posi);
+                }
             }
+            return 0;
         }
-        return 0;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

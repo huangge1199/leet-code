@@ -26,44 +26,45 @@ package leetcode.editor.cn;
 import com.code.leet.entiy.ListNode;
 
 //面试题 02.06:回文链表
-public class PalindromeLinkedListLcci{
+public class PalindromeLinkedListLcci {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new PalindromeLinkedListLcci().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-    ListNode temp;
 
-    public boolean isPalindrome(ListNode head) {
-        temp = head;
-        return isP(head);
-    }
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) { val = x; }
+     * }
+     */
+    class Solution {
+        ListNode temp;
 
-    public boolean isP(ListNode curNode) {
-        if (curNode != null) {
-            if (isP(curNode.next)) {
-                if (curNode.val != temp.val) {
+        public boolean isPalindrome(ListNode head) {
+            temp = head;
+            return isP(head);
+        }
+
+        public boolean isP(ListNode curNode) {
+            if (curNode != null) {
+                if (isP(curNode.next)) {
+                    if (curNode.val != temp.val) {
+                        return false;
+                    }
+                    temp = temp.next;
+                    return true;
+                } else {
                     return false;
                 }
-                temp = temp.next;
-                return true;
-            } else {
-                return false;
             }
+            return true;
         }
-        return true;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

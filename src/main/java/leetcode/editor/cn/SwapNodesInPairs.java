@@ -45,47 +45,48 @@ package leetcode.editor.cn;
 import com.code.leet.entiy.ListNode;
 
 //24:两两交换链表中的节点
-public class SwapNodesInPairs{
+public class SwapNodesInPairs {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new SwapNodesInPairs().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode swapPairs(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode newHead = new ListNode(0);
-        ListNode temp = newHead;
-        while (head != null) {
-            if(head.next==null){
-                break;
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode() {}
+     * ListNode(int val) { this.val = val; }
+     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public ListNode swapPairs(ListNode head) {
+            if (head == null || head.next == null) {
+                return head;
             }
-            ListNode after = head.next.next;
-            ListNode next = head.next;
+            ListNode newHead = new ListNode(0);
+            ListNode temp = newHead;
+            while (head != null) {
+                if (head.next == null) {
+                    break;
+                }
+                ListNode after = head.next.next;
+                ListNode next = head.next;
 
-            head.next = after;
-            next.next = head;
+                head.next = after;
+                next.next = head;
 
-            temp.next = next;
-            temp = temp.next.next;
-            head = head.next;
+                temp.next = next;
+                temp = temp.next.next;
+                head = head.next;
+            }
+            return newHead.next;
         }
-        return newHead.next;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

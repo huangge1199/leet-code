@@ -39,7 +39,7 @@ class IncreasingSubsequences {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new IncreasingSubsequences().new Solution();
-        System.out.println(solution.findSubsequences(new int[]{4,6,7,7}));
+        System.out.println(solution.findSubsequences(new int[]{4, 6, 7, 7}));
     }
 
     //力扣代码
@@ -47,12 +47,13 @@ class IncreasingSubsequences {
     class Solution {
         private List<Integer> path = new ArrayList<>();
         private List<List<Integer>> res = new ArrayList<>();
+
         public List<List<Integer>> findSubsequences(int[] nums) {
-            backtracking(nums,0);
+            backtracking(nums, 0);
             return res;
         }
 
-        private void backtracking (int[] nums, int start) {
+        private void backtracking(int[] nums, int start) {
             if (path.size() > 1) {
                 res.add(new ArrayList<>(path));
             }

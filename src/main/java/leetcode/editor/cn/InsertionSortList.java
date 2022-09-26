@@ -35,54 +35,55 @@ package leetcode.editor.cn;
 import com.code.leet.entiy.ListNode;
 
 //147:对链表进行插入排序
-public class InsertionSortList{
+public class InsertionSortList {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new InsertionSortList().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode insertionSortList(ListNode head) {
-        if (head == null || head.next == null) {
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode() {}
+     * ListNode(int val) { this.val = val; }
+     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public ListNode insertionSortList(ListNode head) {
+            if (head == null || head.next == null) {
+                return head;
+            }
+            ListNode current = head.next;
+            head.next = null;
+            while (current != null) {
+                ListNode temp = head;
+                ListNode next = current.next;
+                current.next = null;
+                if (current.val < temp.val) {
+                    head = current;
+                    head.next = temp;
+                } else {
+                    while (temp.next != null) {
+                        if (current.val < temp.next.val) {
+                            current.next = temp.next;
+                            temp.next = current;
+                            break;
+                        } else {
+                            temp = temp.next;
+                        }
+                    }
+                    temp.next = temp.next == null ? current : temp.next;
+                }
+                current = next;
+            }
             return head;
         }
-        ListNode current = head.next;
-        head.next = null;
-        while (current != null) {
-            ListNode temp = head;
-            ListNode next = current.next;
-            current.next = null;
-            if (current.val < temp.val) {
-                head = current;
-                head.next = temp;
-            } else {
-                while (temp.next != null) {
-                    if (current.val < temp.next.val) {
-                        current.next = temp.next;
-                        temp.next = current;
-                        break;
-                    } else {
-                        temp = temp.next;
-                    }
-                }
-                temp.next = temp.next == null ? current : temp.next;
-            }
-            current = next;
-        }
-        return head;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

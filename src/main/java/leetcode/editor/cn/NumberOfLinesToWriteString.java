@@ -53,13 +53,13 @@ public class NumberOfLinesToWriteString {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int[] numberOfLines(int[] widths, String s) {
-            int[] arrs = new int[]{1,0};
+            int[] arrs = new int[]{1, 0};
             int sum = 0;
-            for(char ch:s.toCharArray()){
-                sum+=widths[ch-'a'];
-                if(sum>100){
+            for (char ch : s.toCharArray()) {
+                sum += widths[ch - 'a'];
+                if (sum > 100) {
                     arrs[0]++;
-                    sum = widths[ch-'a'];
+                    sum = widths[ch - 'a'];
                 }
             }
             arrs[1] = sum;

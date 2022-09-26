@@ -38,29 +38,30 @@
 // Related Topics 贪心 数组 数学 👍 95 👎 0
 
 package leetcode.editor.cn;
+
 //1217:玩筹码
-class MinimumCostToMoveChipsToTheSamePosition{
+class MinimumCostToMoveChipsToTheSamePosition {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MinimumCostToMoveChipsToTheSamePosition().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int minCostToMoveChips(int[] position) {
-        int odd = 0;
-        int dou = 0;
-        for (int j : position) {
-            if (j % 2 == 0) {
-                dou++;
-            } else {
-                odd++;
+    class Solution {
+        public int minCostToMoveChips(int[] position) {
+            int odd = 0;
+            int dou = 0;
+            for (int j : position) {
+                if (j % 2 == 0) {
+                    dou++;
+                } else {
+                    odd++;
+                }
             }
+            return Math.min(dou, odd);
         }
-        return Math.min(dou,odd);
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

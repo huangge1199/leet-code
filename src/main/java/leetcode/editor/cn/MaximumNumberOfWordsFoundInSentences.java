@@ -40,24 +40,25 @@
 // 👍 1 👎 0
 
 package leetcode.editor.cn;
+
 //5946:句子中的最多单词数
-class MaximumNumberOfWordsFoundInSentences{
+class MaximumNumberOfWordsFoundInSentences {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MaximumNumberOfWordsFoundInSentences().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int mostWordsFound(String[] sentences) {
-        int max = 0;
-        for (String str : sentences) {
-            max = Math.max(str.split(" ").length, max);
+    class Solution {
+        public int mostWordsFound(String[] sentences) {
+            int max = 0;
+            for (String str : sentences) {
+                max = Math.max(str.split(" ").length, max);
+            }
+            return max;
         }
-        return max;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

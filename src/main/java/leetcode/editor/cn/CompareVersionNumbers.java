@@ -75,7 +75,7 @@ class CompareVersionNumbers {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new CompareVersionNumbers().new Solution();
-        solution.compareVersion("0.1","1.1");
+        solution.compareVersion("0.1", "1.1");
     }
 
     //力扣代码

@@ -45,7 +45,7 @@ public class FirstMissingPositive {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new FirstMissingPositive().new Solution();
-        solution.firstMissingPositive(new int[]{1,2,0});
+        solution.firstMissingPositive(new int[]{1, 2, 0});
     }
 
     //力扣代码

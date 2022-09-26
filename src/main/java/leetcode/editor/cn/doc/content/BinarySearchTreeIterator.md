@@ -26,14 +26,14 @@
 
 <strong>解释</strong>
 BSTIterator bSTIterator = new BSTIterator([7, 3, 15, null, null, 9, 20]);
-bSTIterator.next();    // 返回 3
-bSTIterator.next();    // 返回 7
+bSTIterator.next(); // 返回 3
+bSTIterator.next(); // 返回 7
 bSTIterator.hasNext(); // 返回 True
-bSTIterator.next();    // 返回 9
+bSTIterator.next(); // 返回 9
 bSTIterator.hasNext(); // 返回 True
-bSTIterator.next();    // 返回 15
+bSTIterator.next(); // 返回 15
 bSTIterator.hasNext(); // 返回 True
-bSTIterator.next();    // 返回 20
+bSTIterator.next(); // 返回 20
 bSTIterator.hasNext(); // 返回 False
 </pre>
 

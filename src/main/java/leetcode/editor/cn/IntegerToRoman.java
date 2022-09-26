@@ -70,30 +70,32 @@
 // 👍 593 👎 0
 
 package leetcode.editor.cn;
+
 //12:整数转罗马数字
-public class IntegerToRoman{
+public class IntegerToRoman {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new IntegerToRoman().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public String intToRoman(int num) {
-        int[] values = new int[]{1000,900,500,400,100,90,50,40,10,9,5,4,1};
-        String[] labels = new String[]{"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < values.length && num > 0; i++) {
-            int value = values[i];
-            String label = labels[i];
-            while (num >= value) {
-                sb.append(label);
-                num -= value;
+    class Solution {
+        public String intToRoman(int num) {
+            int[] values = new int[]{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+            String[] labels = new String[]{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < values.length && num > 0; i++) {
+                int value = values[i];
+                String label = labels[i];
+                while (num >= value) {
+                    sb.append(label);
+                    num -= value;
+                }
             }
+            return sb.toString();
         }
-        return sb.toString();
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

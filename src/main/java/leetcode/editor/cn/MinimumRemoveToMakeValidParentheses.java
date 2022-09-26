@@ -71,20 +71,20 @@ public class MinimumRemoveToMakeValidParentheses {
             Stack<Integer> stack = new Stack<>();
             Set<Integer> remove = new HashSet<>();
             for (int i = 0; i < s.length(); i++) {
-                if(s.charAt(i)=='('){
+                if (s.charAt(i) == '(') {
                     stack.push(i);
-                }else if(s.charAt(i)==')'&&stack.isEmpty()){
+                } else if (s.charAt(i) == ')' && stack.isEmpty()) {
                     remove.add(i);
-                }else if(s.charAt(i)==')'&&!stack.isEmpty()){
+                } else if (s.charAt(i) == ')' && !stack.isEmpty()) {
                     stack.pop();
                 }
             }
-            while (!stack.isEmpty()){
+            while (!stack.isEmpty()) {
                 remove.add(stack.pop());
             }
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < s.length(); i++) {
-                if(!remove.contains(i)){
+                if (!remove.contains(i)) {
                     str.append(s.charAt(i));
                 }
             }

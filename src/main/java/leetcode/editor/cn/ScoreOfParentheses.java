@@ -80,7 +80,7 @@ public class ScoreOfParentheses {
                     if (stack.isEmpty()) {
                         sum += num;
                     } else {
-                        stack.push(stack.pop()+num);
+                        stack.push(stack.pop() + num);
                     }
                 }
             }

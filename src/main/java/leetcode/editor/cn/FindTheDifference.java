@@ -35,28 +35,28 @@
 package leetcode.editor.cn;
 
 //389:找不同
-public class FindTheDifference{
+public class FindTheDifference {
     public static void main(String[] args) {
         Solution solution = new FindTheDifference().new Solution();
-        
+
     }
 
-//leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public char findTheDifference(String s, String t) {
-        int[] chs = new int[26];
-        for (char ch:s.toCharArray()){
-            chs[ch-'a']++;
-        }
-        for (char ch:t.toCharArray()){
-            if(chs[ch-'a']==0){
-                return ch;
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public char findTheDifference(String s, String t) {
+            int[] chs = new int[26];
+            for (char ch : s.toCharArray()) {
+                chs[ch - 'a']++;
             }
-            chs[ch-'a']--;
+            for (char ch : t.toCharArray()) {
+                if (chs[ch - 'a'] == 0) {
+                    return ch;
+                }
+                chs[ch - 'a']--;
+            }
+            return 'a';
         }
-        return 'a';
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

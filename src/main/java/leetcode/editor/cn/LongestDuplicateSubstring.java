@@ -35,11 +35,12 @@ import java.util.Random;
 import java.util.Set;
 
 //Java：1044:最长重复子串
-public class LongestDuplicateSubstring{
+public class LongestDuplicateSubstring {
     public static void main(String[] args) {
         Solution solution = new LongestDuplicateSubstring().new Solution();
         // TO TEST
     }
+
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public String longestDupSubstring(String s) {

@@ -52,7 +52,7 @@ import com.code.leet.entiy.ListNode;
 import com.code.leet.entiy.TreeNode;
 
 //1367:二叉树中的列表
-public class LinkedListInBinaryTree{
+public class LinkedListInBinaryTree {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new LinkedListInBinaryTree().new Solution();
@@ -69,42 +69,42 @@ public class LinkedListInBinaryTree{
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
-    public boolean isSubPath(ListNode head, TreeNode root) {
-        if (root == null) {
-            return false;
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     * int val;
+     * TreeNode left;
+     * TreeNode right;
+     * TreeNode() {}
+     * TreeNode(int val) { this.val = val; }
+     * TreeNode(int val, TreeNode left, TreeNode right) {
+     * this.val = val;
+     * this.left = left;
+     * this.right = right;
+     * }
+     * }
+     */
+    class Solution {
+        public boolean isSubPath(ListNode head, TreeNode root) {
+            if (root == null) {
+                return false;
+            }
+            return isSubPath(head, root.left) || isSubPath(head, root.right) || dfs(head, root);
         }
-        return isSubPath(head, root.left) || isSubPath(head, root.right) || dfs(head, root);
-    }
 
-    private boolean dfs(ListNode head, TreeNode root) {
-        if (head == null) {
-            return true;
+        private boolean dfs(ListNode head, TreeNode root) {
+            if (head == null) {
+                return true;
+            }
+            if (root == null) {
+                return false;
+            }
+            if (root.val != head.val) {
+                return false;
+            }
+            return dfs(head.next, root.left) || dfs(head.next, root.right);
         }
-        if (root == null) {
-            return false;
-        }
-        if (root.val != head.val) {
-            return false;
-        }
-        return dfs(head.next, root.left) || dfs(head.next, root.right);
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

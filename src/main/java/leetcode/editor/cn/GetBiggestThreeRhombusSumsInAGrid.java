@@ -60,45 +60,46 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 //1878:矩阵中最大的三个菱形和
-public class GetBiggestThreeRhombusSumsInAGrid{
+public class GetBiggestThreeRhombusSumsInAGrid {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new GetBiggestThreeRhombusSumsInAGrid().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] getBiggestThree(int[][] grid) {
-        Set<Integer> set = new HashSet<>();
-        new TreeSet<>(Comparator.reverseOrder());
-        int xLength = grid.length;
-        int yLength = grid[0].length;
-        int size = (Math.min(xLength, yLength) + 1) / 2;
-        for (int i = 0; i < size; i++) {
-            for (int j = i; j < xLength - i; j++) {
-                for (int k = i; k < yLength - i; k++) {
-                    int sum = 0;
-                    for (int x = j - i; x <= j + i; x++) {
-                        int cha = i - Math.abs(j - x);
-                        if (Math.abs(j - x) == i) {
-                            sum += grid[x][k + cha];
-                        } else {
-                            sum += grid[x][k - cha] + grid[x][k + cha];
+    class Solution {
+        public int[] getBiggestThree(int[][] grid) {
+            Set<Integer> set = new HashSet<>();
+            new TreeSet<>(Comparator.reverseOrder());
+            int xLength = grid.length;
+            int yLength = grid[0].length;
+            int size = (Math.min(xLength, yLength) + 1) / 2;
+            for (int i = 0; i < size; i++) {
+                for (int j = i; j < xLength - i; j++) {
+                    for (int k = i; k < yLength - i; k++) {
+                        int sum = 0;
+                        for (int x = j - i; x <= j + i; x++) {
+                            int cha = i - Math.abs(j - x);
+                            if (Math.abs(j - x) == i) {
+                                sum += grid[x][k + cha];
+                            } else {
+                                sum += grid[x][k - cha] + grid[x][k + cha];
+                            }
                         }
+                        set.add(sum);
                     }
-                    set.add(sum);
                 }
             }
+            List<Integer> list = set.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+            int length = Math.min(list.size(), 3);
+            int[] result = new int[length];
+            for (int i = 0; i < length; i++) {
+                result[i] = list.get(i);
+            }
+            return result;
         }
-        List<Integer> list = set.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
-        int length = Math.min(list.size(), 3);
-        int[] result = new int[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = list.get(i);
-        }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

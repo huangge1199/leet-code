@@ -35,53 +35,54 @@ package leetcode.editor.cn;
 import com.code.leet.entiy.ListNode;
 
 //82:删除排序链表中的重复元素 II
-public class RemoveDuplicatesFromSortedListIi{
+public class RemoveDuplicatesFromSortedListIi {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new RemoveDuplicatesFromSortedListIi().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode deleteDuplicates(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode front = new ListNode(-1);
-        ListNode temp = front;
-        int same = head.val;
-        boolean flag = false;
-        while (head.next != null) {
-            if (head.val == head.next.val) {
-                head.next = head.next.next;
-                same = head.val;
-                flag = true;
-            } else if (flag && head.val == same) {
-                head = head.next;
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode() {}
+     * ListNode(int val) { this.val = val; }
+     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public ListNode deleteDuplicates(ListNode head) {
+            if (head == null || head.next == null) {
+                return head;
+            }
+            ListNode front = new ListNode(-1);
+            ListNode temp = front;
+            int same = head.val;
+            boolean flag = false;
+            while (head.next != null) {
+                if (head.val == head.next.val) {
+                    head.next = head.next.next;
+                    same = head.val;
+                    flag = true;
+                } else if (flag && head.val == same) {
+                    head = head.next;
+                } else {
+                    temp.next = head;
+                    temp = temp.next;
+                    head = head.next;
+                }
+            }
+            if (head.val == same) {
+                temp.next = null;
             } else {
                 temp.next = head;
-                temp = temp.next;
-                head = head.next;
             }
+            return front.next;
         }
-        if (head.val == same) {
-            temp.next = null;
-        } else {
-            temp.next = head;
-        }
-        return front.next;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

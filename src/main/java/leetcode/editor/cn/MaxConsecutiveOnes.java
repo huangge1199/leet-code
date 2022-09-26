@@ -46,11 +46,11 @@ public class MaxConsecutiveOnes {
                 }
                 int temp = 1;
                 i++;
-                while (i< nums.length&&nums[i]==1){
+                while (i < nums.length && nums[i] == 1) {
                     temp++;
                     i++;
                 }
-                max = Math.max(temp,max);
+                max = Math.max(temp, max);
             }
             return max;
         }

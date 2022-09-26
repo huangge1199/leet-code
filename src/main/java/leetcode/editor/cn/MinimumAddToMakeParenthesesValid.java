@@ -80,7 +80,7 @@ public class MinimumAddToMakeParenthesesValid {
                     stack.push(ch);
                 }
             }
-            while (!stack.isEmpty()){
+            while (!stack.isEmpty()) {
                 num++;
                 stack.pop();
             }

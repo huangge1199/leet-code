@@ -74,7 +74,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //138:复制带随机指针的链表
-public class CopyListWithRandomPointer{
+public class CopyListWithRandomPointer {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new CopyListWithRandomPointer().new Solution();
@@ -96,26 +96,26 @@ class Node {
 }
 */
 
-class Solution {
-    public Node copyRandomList(Node head) {
-        Map<Node, Node> map = new HashMap<>();
-        return copy(head, map);
-    }
+    class Solution {
+        public Node copyRandomList(Node head) {
+            Map<Node, Node> map = new HashMap<>();
+            return copy(head, map);
+        }
 
-    private Node copy(Node head, Map<Node, Node> map) {
-        if (head == null) {
-            return null;
+        private Node copy(Node head, Map<Node, Node> map) {
+            if (head == null) {
+                return null;
+            }
+            if (map.containsKey(head)) {
+                return map.get(head);
+            }
+            Node node = new Node(head.val);
+            map.put(head, node);
+            node.next = copy(head.next, map);
+            node.random = copy(head.random, map);
+            return node;
         }
-        if (map.containsKey(head)) {
-            return map.get(head);
-        }
-        Node node = new Node(head.val);
-        map.put(head, node);
-        node.next = copy(head.next, map);
-        node.random = copy(head.random, map);
-        return node;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

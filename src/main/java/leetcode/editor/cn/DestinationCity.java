@@ -68,7 +68,7 @@ class DestinationCity {
             for (List<String> path : paths) {
                 if (!use.contains(path.get(1))) {
                     result.add(path.get(1));
-                }else {
+                } else {
                     use.remove(path.get(1));
                 }
                 if (!result.contains(path.get(0))) {

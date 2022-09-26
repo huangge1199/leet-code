@@ -71,13 +71,13 @@ class MinimumAbsoluteDifferenceInBst {
             dfs(root);
             int min = Integer.MAX_VALUE;
             for (int i = 1; i < list.size(); i++) {
-                min = Math.min(Math.abs(list.get(i)- list.get(i-1)),min);
+                min = Math.min(Math.abs(list.get(i) - list.get(i - 1)), min);
             }
             return min;
         }
 
-        private void dfs(TreeNode node){
-            if(node==null){
+        private void dfs(TreeNode node) {
+            if (node == null) {
                 return;
             }
             dfs(node.left);

@@ -61,13 +61,13 @@ class SuperUglyNumber {
             PriorityQueue<Integer> pq = new PriorityQueue<>();
             pq.add(1);
             Set<Integer> seen = new HashSet<>();
-            for(int i=1;i<n;i++){
+            for (int i = 1; i < n; i++) {
                 int cur = pq.poll();
-                for(int p: primes){
+                for (int p : primes) {
                     // 防止爆int处理
-                    if(p > Integer.MAX_VALUE / cur)
+                    if (p > Integer.MAX_VALUE / cur)
                         break;
-                    if(!seen.contains(cur * p)){
+                    if (!seen.contains(cur * p)) {
                         seen.add(cur * p);
                         pq.add(cur * p);
                     }

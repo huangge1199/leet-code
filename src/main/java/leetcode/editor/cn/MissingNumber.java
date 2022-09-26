@@ -66,10 +66,10 @@ class MissingNumber {
         public int missingNumber(int[] nums) {
             int xor = 0;
             for (int i = 0; i <= nums.length; i++) {
-                xor^=i;
+                xor ^= i;
             }
             for (int num : nums) {
-                xor^=num;
+                xor ^= num;
             }
             return xor;
         }

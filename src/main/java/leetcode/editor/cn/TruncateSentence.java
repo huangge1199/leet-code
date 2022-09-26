@@ -48,29 +48,31 @@
 // 👍 6 👎 0
 
 package leetcode.editor.cn;
+
 //1816:截断句子
-public class TruncateSentence{
+public class TruncateSentence {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new TruncateSentence().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public String truncateSentence(String s, int k) {
-        String[] strings = s.split(" ");
-        if (strings.length == 0) {
+    class Solution {
+        public String truncateSentence(String s, int k) {
+            String[] strings = s.split(" ");
+            if (strings.length == 0) {
+                return s;
+            }
+            StringBuilder sBuilder = new StringBuilder();
+            for (int i = 0; i < k; i++) {
+                sBuilder.append(strings[i]).append(" ");
+            }
+            s = sBuilder.toString();
+            s = s.substring(0, s.length() - 1);
             return s;
         }
-        StringBuilder sBuilder = new StringBuilder();
-        for (int i = 0; i < k; i++) {
-            sBuilder.append(strings[i]).append(" ");
-        }
-        s = sBuilder.toString();
-        s = s.substring(0, s.length() - 1);
-        return s;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

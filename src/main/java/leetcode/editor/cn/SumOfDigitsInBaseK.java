@@ -32,29 +32,31 @@
 // 👍 0 👎 0
 
 package leetcode.editor.cn;
+
 //5738:K 进制表示下的各位数字总和
-public class SumOfDigitsInBaseK{
+public class SumOfDigitsInBaseK {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new SumOfDigitsInBaseK().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int sumBase(int n, int k) {
-        int sum = 0;
+    class Solution {
+        public int sumBase(int n, int k) {
+            int sum = 0;
 //        StringBuilder str = new StringBuilder();
 //        while (n > 0) {
 //            str.append(n % k);
 //            n /= k;
 //        }
-        String str = Integer.toString(n,k);
-        for (int i = 0; i < str.length(); i++) {
-            sum += str.charAt(i) - '0';
+            String str = Integer.toString(n, k);
+            for (int i = 0; i < str.length(); i++) {
+                sum += str.charAt(i) - '0';
+            }
+            return sum;
         }
-        return sum;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

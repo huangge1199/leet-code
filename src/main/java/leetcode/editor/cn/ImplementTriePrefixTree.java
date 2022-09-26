@@ -114,7 +114,7 @@ public class ImplementTriePrefixTree {
                 if (trie.son[index] == null) {
                     return false;
                 }
-                if (i == size-1 && !trie.son[index].isEnd) {
+                if (i == size - 1 && !trie.son[index].isEnd) {
                     return false;
                 }
                 trie = trie.son[index];

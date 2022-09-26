@@ -36,37 +36,39 @@
 // 👍 1053 👎 0
 
 package leetcode.editor.cn;
+
 //45:跳跃游戏 II
-public class JumpGameIi{
+public class JumpGameIi {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new JumpGameIi().new Solution();
-        System.out.println(solution.jump(new int[]{2,3,1,1,4}));
+        System.out.println(solution.jump(new int[]{2, 3, 1, 1, 4}));
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int jump(int[] nums) {
-        if(nums.length==1){
-            return 0;
-        }
-        int max = 0;
-        int[] counts = new int[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            int next = i+nums[i];
-            if(next>=nums.length-1){
-                return counts[i]+1;
+    class Solution {
+        public int jump(int[] nums) {
+            if (nums.length == 1) {
+                return 0;
             }
-            if(next>max){
-                for (int j = max+1; j <= next; j++) {
-                    counts[j] = counts[i]+1;
+            int max = 0;
+            int[] counts = new int[nums.length];
+            for (int i = 0; i < nums.length; i++) {
+                int next = i + nums[i];
+                if (next >= nums.length - 1) {
+                    return counts[i] + 1;
                 }
-                max = next;
+                if (next > max) {
+                    for (int j = max + 1; j <= next; j++) {
+                        counts[j] = counts[i] + 1;
+                    }
+                    max = next;
+                }
             }
+            return counts[nums.length - 1];
         }
-        return counts[nums.length-1];
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

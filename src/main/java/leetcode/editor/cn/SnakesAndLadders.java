@@ -82,7 +82,7 @@ class SnakesAndLadders {
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
-//        public int snakesAndLadders(int[][] board) {
+        //        public int snakesAndLadders(int[][] board) {
 //            List<Integer> list = new ArrayList<>();
 //            for (int x = board.length - 1; x >= 0; x--) {
 //                for (int y = 0; y < board[0].length; y++) {
@@ -121,8 +121,9 @@ class SnakesAndLadders {
 //            }
 //            return min;
 //        }
-int n;
+        int n;
         int[] nums;
+
         public int snakesAndLadders(int[][] board) {
             n = board.length;
             if (board[0][0] != -1) return -1;
@@ -137,6 +138,7 @@ int n;
             int ans = bfs();
             return ans;
         }
+
         int bfs() {
             Deque<Integer> d = new ArrayDeque<>();
             Map<Integer, Integer> m = new HashMap<>();

@@ -47,11 +47,11 @@ public class PerfectSquares {
             int[] counts = new int[n + 1];
             for (int i = 1; i <= n; i++) {
                 int min = Integer.MAX_VALUE;
-                int max = (int)Math.sqrt(i);
+                int max = (int) Math.sqrt(i);
                 for (int j = 1; j <= max; j++) {
                     min = Math.min(min, counts[i - j * j]);
                 }
-                counts[i] = min+1;
+                counts[i] = min + 1;
             }
             return counts[n];
         }

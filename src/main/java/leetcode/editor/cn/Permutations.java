@@ -45,7 +45,7 @@ public class Permutations {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new Permutations().new Solution();
-        solution.permute(new int[]{1,2,3});
+        solution.permute(new int[]{1, 2, 3});
     }
 
     //力扣代码

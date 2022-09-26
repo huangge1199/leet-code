@@ -55,7 +55,7 @@ public class KillProcess {
             for (Integer integer : pid) {
                 map.put(integer, new ArrayList<>());
             }
-            map.put(0,new ArrayList<>());
+            map.put(0, new ArrayList<>());
             for (int i = 0; i < ppid.size(); i++) {
                 map.get(ppid.get(i)).add(pid.get(i));
             }

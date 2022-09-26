@@ -65,46 +65,47 @@ package leetcode.editor.cn;
 import com.code.leet.entiy.ListNode;
 
 //剑指 Offer 52:两个链表的第一个公共节点
-public class LiangGeLianBiaoDeDiYiGeGongGongJieDianLcof{
+public class LiangGeLianBiaoDeDiYiGeGongGongJieDianLcof {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new LiangGeLianBiaoDeDiYiGeGongGongJieDianLcof().new Solution();
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
- */
-public class Solution {
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        ListNode pA = headA, pB = headB;
-        if(pA == null || pB == null){
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode(int x) {
+     * val = x;
+     * next = null;
+     * }
+     * }
+     */
+    public class Solution {
+        public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+            ListNode pA = headA, pB = headB;
+            if (pA == null || pB == null) {
+                return null;
+            }
+            while (pA != null || pB != null) {
+                if (pA == null) {
+                    pA = headB;
+                }
+                if (pB == null) {
+                    pB = headA;
+                }
+                if (pA == pB) {
+                    return pA;
+                }
+                pA = pA.next;
+                pB = pB.next;
+            }
             return null;
         }
-        while (pA != null || pB != null) {
-            if (pA == null) {
-                pA = headB;
-            }
-            if (pB == null) {
-                pB = headA;
-            }
-            if (pA == pB) {
-                return pA;
-            }
-            pA = pA.next;
-            pB = pB.next;
-        }
-        return null;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

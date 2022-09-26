@@ -54,29 +54,30 @@ import java.util.Map;
 import java.util.TreeMap;
 
 //436:寻找右区间
-class FindRightInterval{
+class FindRightInterval {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new FindRightInterval().new Solution();
-        TwoArray twoArray = new TwoArray("[[1,4],[2,3],[3,4]]",true);
+        TwoArray twoArray = new TwoArray("[[1,4],[2,3],[3,4]]", true);
         solution.findRightInterval(twoArray.getArr());
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] findRightInterval(int[][] intervals) {
-        TreeMap<Integer, Integer> map = new TreeMap<>();
-        for (int i = 0; i < intervals.length; i++) {
-            map.put(intervals[i][0], i);
+    class Solution {
+        public int[] findRightInterval(int[][] intervals) {
+            TreeMap<Integer, Integer> map = new TreeMap<>();
+            for (int i = 0; i < intervals.length; i++) {
+                map.put(intervals[i][0], i);
+            }
+            int[] result = new int[intervals.length];
+            for (int i = 0; i < intervals.length; i++) {
+                Integer key = map.higherKey(intervals[i][1] - 1);
+                result[i] = key == null ? -1 : map.get(key);
+            }
+            return result;
         }
-        int[] result = new int[intervals.length];
-        for(int i = 0; i < intervals.length; i++){
-            Integer key = map.higherKey(intervals[i][1]-1);
-            result[i] = key == null?-1:map.get(key);
-        }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

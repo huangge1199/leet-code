@@ -67,7 +67,7 @@ public class Triangle {
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
-//        private int min = Integer.MAX_VALUE;
+        //        private int min = Integer.MAX_VALUE;
 //
 //        public int minimumTotal(List<List<Integer>> triangle) {
 //            dfs(triangle, 0, 0, 0);

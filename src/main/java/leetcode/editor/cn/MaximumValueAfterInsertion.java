@@ -43,40 +43,42 @@
 // 👍 4 👎 0
 
 package leetcode.editor.cn;
+
 //1881:插入后的最大值
-public class MaximumValueAfterInsertion{
+public class MaximumValueAfterInsertion {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MaximumValueAfterInsertion().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public String maxValue(String n, int x) {
-        int i;
-        if (n.startsWith("-")) {
-            i = 1;
-            for (; i < n.length(); i++) {
-                if (n.charAt(i) - '0' > x) {
-                    n = n.substring(0, i) + x + n.substring(i);
-                    break;
+    class Solution {
+        public String maxValue(String n, int x) {
+            int i;
+            if (n.startsWith("-")) {
+                i = 1;
+                for (; i < n.length(); i++) {
+                    if (n.charAt(i) - '0' > x) {
+                        n = n.substring(0, i) + x + n.substring(i);
+                        break;
+                    }
+                }
+            } else {
+                i = 0;
+                for (; i < n.length(); i++) {
+                    if (n.charAt(i) - '0' < x) {
+                        n = n.substring(0, i) + x + n.substring(i);
+                        break;
+                    }
                 }
             }
-        } else {
-            i = 0;
-            for (; i < n.length(); i++) {
-                if (n.charAt(i) - '0' < x) {
-                    n = n.substring(0, i) + x + n.substring(i);
-                    break;
-                }
+            if (i == n.length()) {
+                n += x;
             }
+            return n;
         }
-        if (i == n.length()) {
-            n += x;
-        }
-        return n;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

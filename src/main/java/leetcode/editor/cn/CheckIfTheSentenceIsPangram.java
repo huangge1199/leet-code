@@ -38,26 +38,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 //1832:判断句子是否为全字母句
-public class CheckIfTheSentenceIsPangram{
+public class CheckIfTheSentenceIsPangram {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new CheckIfTheSentenceIsPangram().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean checkIfPangram(String sentence) {
-        List<Character> list = new ArrayList<>();
-        int num = 0;
-        for (char ch : sentence.toCharArray()) {
-            if (ch >= 'a' && ch <= 'z' && !list.contains(ch)) {
-                list.add(ch);
-                num++;
+    class Solution {
+        public boolean checkIfPangram(String sentence) {
+            List<Character> list = new ArrayList<>();
+            int num = 0;
+            for (char ch : sentence.toCharArray()) {
+                if (ch >= 'a' && ch <= 'z' && !list.contains(ch)) {
+                    list.add(ch);
+                    num++;
+                }
             }
+            return num == 26;
         }
-        return num==26;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

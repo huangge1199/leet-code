@@ -44,7 +44,7 @@ public class SumListsLcci {
      * }
      */
     class Solution {
-                public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
             int sum = 0;
             ListNode head = l1;
             ListNode temp = null;

@@ -54,7 +54,7 @@ public class MajorityElement {
                     }
                 }
             }
-            return nums[nums.length-1];
+            return nums[nums.length - 1];
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)

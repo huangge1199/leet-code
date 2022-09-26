@@ -38,38 +38,38 @@ import java.util.Arrays;
 import java.util.List;
 
 //56:合并区间
-class MergeIntervals{
+class MergeIntervals {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MergeIntervals().new Solution();
 //        TwoArray twoArray = new TwoArray("[[1,4],[2,3]]",true);
-        TwoArray twoArray = new TwoArray("[[1,3],[2,6],[8,10],[15,18]]",true);
+        TwoArray twoArray = new TwoArray("[[1,3],[2,6],[8,10],[15,18]]", true);
         solution.merge(twoArray.getArr());
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[][] merge(int[][] intervals) {
-        Arrays.sort(intervals, (o1, o2) -> o1[0]==o2[0]?o1[1]-o2[1]:o1[0]-o2[0]);
-        List<int[]> list = new ArrayList<>();
-        int[] bef = intervals[0];
-        for (int[] arr:intervals) {
-            if(arr[0]<=bef[1]){
-                bef[1] = Math.max(arr[1],bef[1]);
-            }else{
-                list.add(bef);
-                bef = arr;
+    class Solution {
+        public int[][] merge(int[][] intervals) {
+            Arrays.sort(intervals, (o1, o2) -> o1[0] == o2[0] ? o1[1] - o2[1] : o1[0] - o2[0]);
+            List<int[]> list = new ArrayList<>();
+            int[] bef = intervals[0];
+            for (int[] arr : intervals) {
+                if (arr[0] <= bef[1]) {
+                    bef[1] = Math.max(arr[1], bef[1]);
+                } else {
+                    list.add(bef);
+                    bef = arr;
+                }
             }
+            list.add(bef);
+            int[][] result = new int[list.size()][2];
+            for (int i = 0; i < list.size(); i++) {
+                result[i] = list.get(i);
+            }
+            return result;
         }
-        list.add(bef);
-        int[][] result = new int[list.size()][2];
-        for (int i = 0; i < list.size(); i++) {
-            result[i] = list.get(i);
-        }
-        return result;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

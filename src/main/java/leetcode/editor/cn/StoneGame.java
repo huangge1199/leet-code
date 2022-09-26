@@ -36,19 +36,21 @@
 // 👍 274 👎 0
 
 package leetcode.editor.cn;
+
 //877:石子游戏
-public class StoneGame{
+public class StoneGame {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new StoneGame().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean stoneGame(int[] piles) {
-        return true;
+    class Solution {
+        public boolean stoneGame(int[] piles) {
+            return true;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

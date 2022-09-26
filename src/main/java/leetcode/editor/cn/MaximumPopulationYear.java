@@ -34,31 +34,33 @@
 // 👍 14 👎 0
 
 package leetcode.editor.cn;
+
 //1854:人口最多的年份
-public class MaximumPopulationYear{
+public class MaximumPopulationYear {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new MaximumPopulationYear().new Solution();
     }
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int maximumPopulation(int[][] logs) {
-        int[] year = new int[100];
-        for (int[] log : logs) {
-            for (int j = log[0]; j < log[1]; j++) {
-                year[j - 1950]++;
+    class Solution {
+        public int maximumPopulation(int[][] logs) {
+            int[] year = new int[100];
+            for (int[] log : logs) {
+                for (int j = log[0]; j < log[1]; j++) {
+                    year[j - 1950]++;
+                }
             }
-        }
-        int index = 0;
-        for (int i = 0; i < 100; i++) {
-            if (year[i] > year[index]) {
-                index = i;
+            int index = 0;
+            for (int i = 0; i < 100; i++) {
+                if (year[i] > year[index]) {
+                    index = i;
+                }
             }
+            return index + 1950;
         }
-        return index + 1950;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

@@ -52,35 +52,36 @@
 // Related Topics 贪心 数组 字符串 👍 5 👎 0
 
 package leetcode.editor.cn;
+
 //1946:子字符串突变后可能得到的最大整数
-class LargestNumberAfterMutatingSubstring{
+class LargestNumberAfterMutatingSubstring {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new LargestNumberAfterMutatingSubstring().new Solution();
     }
-    
+
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public String maximumNumber(String num, int[] change) {
-        StringBuilder str = new StringBuilder();
-        int flag = 0;
-        int i = 0;
-        for (; i < num.length(); i++) {
-            int n = num.charAt(i) - '0';
-            if (n > change[n] && flag == 1) {
-                break;
+    class Solution {
+        public String maximumNumber(String num, int[] change) {
+            StringBuilder str = new StringBuilder();
+            int flag = 0;
+            int i = 0;
+            for (; i < num.length(); i++) {
+                int n = num.charAt(i) - '0';
+                if (n > change[n] && flag == 1) {
+                    break;
+                }
+                if (n < change[n]) {
+                    str.append(change[n]);
+                    flag = 1;
+                } else {
+                    str.append(n);
+                }
             }
-            if (n < change[n]) {
-                str.append(change[n]);
-                flag = 1;
-            }else{
-                str.append(n);
-            }
+            return str + num.substring(i);
         }
-        return str + num.substring(i);
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

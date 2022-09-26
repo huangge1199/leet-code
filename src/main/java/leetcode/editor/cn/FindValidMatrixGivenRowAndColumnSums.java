@@ -83,7 +83,7 @@ class FindValidMatrixGivenRowAndColumnSums {
             int[][] arrs = new int[rowSum.length][colSum.length];
             for (int i = 0; i < rowSum.length; i++) {
                 for (int j = 0; j < colSum.length; j++) {
-                    arrs[i][j] = Math.min(rowSum[i],colSum[j]);
+                    arrs[i][j] = Math.min(rowSum[i], colSum[j]);
                     rowSum[i] -= arrs[i][j];
                     colSum[j] -= arrs[i][j];
                 }

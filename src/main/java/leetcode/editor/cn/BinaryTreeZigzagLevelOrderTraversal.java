@@ -34,7 +34,7 @@ public class BinaryTreeZigzagLevelOrderTraversal {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new BinaryTreeZigzagLevelOrderTraversal().new Solution();
-        List<Integer> list = Arrays.asList(3,9,20,null,null,15,7);
+        List<Integer> list = Arrays.asList(3, 9, 20, null, null, 15, 7);
         solution.zigzagLevelOrder(new TreeNode(list));
     }
     //力扣代码
@@ -56,7 +56,8 @@ public class BinaryTreeZigzagLevelOrderTraversal {
      * }
      */
     class Solution {
-        public List<List<Integer>> zigzagLevelOrder(TreeNode root) {List<List<Integer>> ans = new LinkedList<List<Integer>>();
+        public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+            List<List<Integer>> ans = new LinkedList<List<Integer>>();
             if (root == null) {
                 return ans;
             }

@@ -44,7 +44,7 @@ public class GreatestCommonDivisorOfStrings {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new GreatestCommonDivisorOfStrings().new Solution();
-        solution.gcdOfStrings("TAUXXTAUXXTAUXXTAUXXTAUXX","TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX");
+        solution.gcdOfStrings("TAUXXTAUXXTAUXXTAUXXTAUXX", "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX");
     }
 
     //力扣代码
