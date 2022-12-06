@@ -16,6 +16,8 @@
 
 package leetcode.editor.cn;
 
+import java.util.Arrays;
+
 //283:移动零
 class MoveZeroes {
     public static void main(String[] args) {
