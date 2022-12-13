@@ -47,16 +47,31 @@ public class CheckIfTheSentenceIsPangram {
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+        //public boolean checkIfPangram(String sentence) {
+        //    List<Character> list = new ArrayList<>();
+        //    int num = 0;
+        //    for (char ch : sentence.toCharArray()) {
+        //        if (ch >= 'a' && ch <= 'z' && !list.contains(ch)) {
+        //            list.add(ch);
+        //            num++;
+        //        }
+        //    }
+        //    return num == 26;
+        //}
         public boolean checkIfPangram(String sentence) {
-            List<Character> list = new ArrayList<>();
-            int num = 0;
+            if (sentence.length() < 26) {
+                return false;
+            }
+            int[] arrs = new int[26];
             for (char ch : sentence.toCharArray()) {
-                if (ch >= 'a' && ch <= 'z' && !list.contains(ch)) {
-                    list.add(ch);
-                    num++;
+                arrs[ch - 'a']++;
+            }
+            for (int i = 0; i < 26; i++) {
+                if (arrs[i] == 0) {
+                    return false;
                 }
             }
-            return num == 26;
+            return true;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
