@@ -48,30 +48,13 @@ class DecreaseElementsToMakeArrayZigzag {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int movesToMakeZigzag(int[] nums) {
-            int count1 = 0;
-            int count2 = 0;
-            int[] arr = new int[nums.length];
-            System.arraycopy(nums, 0, arr, 0, nums.length);
-            for (int i = 1; i < nums.length; i++) {
-                if (i % 2 == 0) {
-                    if (arr[i] <= arr[i - 1]) {
-                        count1 += arr[i - 1] - arr[i] + 1;
-                    }
-                    if (nums[i] >= nums[i - 1]) {
-                        count2 += nums[i] - nums[i - 1] + 1;
-                    }
-                } else {
-                    if (nums[i] <= nums[i - 1]) {
-                        count2 += nums[i - 1] - nums[i] + 1;
-                        nums[i] = nums[i - 1] - 1;
-                    }
-                    if (arr[i] >= arr[i - 1]) {
-                        count1 += arr[i] - arr[i - 1] + 1;
-                        arr[i] = arr[i - 1] - 1;
-                    }
-                }
+            int[] s = new int[2];
+            for (int i = 0, n = nums.length; i < n; ++i) {
+                int left = i > 0 ? nums[i - 1] : Integer.MAX_VALUE;
+                int right = i < n - 1 ? nums[i + 1] : Integer.MAX_VALUE;
+                s[i % 2] += Math.max(nums[i] - Math.min(left, right) + 1, 0);
             }
-            return Math.min(count1, count2);
+            return Math.min(s[0], s[1]);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
