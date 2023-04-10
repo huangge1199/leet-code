@@ -43,16 +43,14 @@ package leetcode.editor.cn;
 
 import com.code.leet.entiy.ListNode;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 //1019:链表中的下一个更大节点
 public class NextGreaterNodeInLinkedList {
     public static void main(String[] args) {
         //测试代码
         Solution solution = new NextGreaterNodeInLinkedList().new Solution();
+        solution.nextLargerNodes(new ListNode(Arrays.asList(2,7,4,3,5)));
     }
     //力扣代码
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -94,21 +92,20 @@ public class NextGreaterNodeInLinkedList {
 //        }
         public int[] nextLargerNodes(ListNode head) {
             List<Integer> result = new ArrayList<>();
-            Queue<Integer> queue = new LinkedList<>();
-            Queue<Integer> indexs = new LinkedList<>();
+            Stack<Integer> stack = new Stack<>();
+            Stack<Integer> indexs = new Stack<>();
             int index = 0;
             while (head != null) {
-                while (!queue.isEmpty() && head.val > queue.peek()) {
-                    result.set(indexs.poll(), head.val);
-                    queue.poll();
+                while (!stack.isEmpty() && head.val > stack.peek()) {
+                    result.set(indexs.pop(), head.val);
+                    stack.pop();
                 }
-                queue.add(head.val);
+                stack.add(head.val);
                 indexs.add(index);
                 result.add(0);
                 index++;
                 head = head.next;
             }
-            result.add(0);
             return result.stream().mapToInt(Integer::valueOf).toArray();
         }
     }
