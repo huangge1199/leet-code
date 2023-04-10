@@ -44,7 +44,9 @@ package leetcode.editor.cn;
 import com.code.leet.entiy.ListNode;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 //1019:链表中的下一个更大节点
 public class NextGreaterNodeInLinkedList {
@@ -64,27 +66,46 @@ public class NextGreaterNodeInLinkedList {
      * }
      */
     class Solution {
+        //        public int[] nextLargerNodes(ListNode head) {
+//            List<Integer> list = new ArrayList<>();
+//            List<Integer> result = new ArrayList<>();
+//            List<Integer> indexs = new ArrayList<>();
+//            int max = 0;
+//            int index = 0;
+//            while (head != null) {
+//                indexs.add(index);
+//                if (head.val > max) {
+//                    int size = indexs.size();
+//                    for (int i = 0; i < size; i++) {
+//                        if (head.val > result.get(indexs.get(i))) {
+//                            result.set(indexs.get(i), head.val);
+//                            indexs.remove(indexs.get(i));
+//                        }
+//                    }
+//                    max = head.val;
+//                }
+//                index++;
+//                result.add(0);
+//                list.add(head.val);
+//                head = head.next;
+//            }
+//            result.add(0);
+//            return result.stream().mapToInt(Integer::valueOf).toArray();
+//        }
         public int[] nextLargerNodes(ListNode head) {
-            List<Integer> list = new ArrayList<>();
             List<Integer> result = new ArrayList<>();
-            List<Integer> indexs = new ArrayList<>();
-            int max = 0;
+            Queue<Integer> queue = new LinkedList<>();
+            Queue<Integer> indexs = new LinkedList<>();
             int index = 0;
             while (head != null) {
-                indexs.add(index);
-                if (head.val > max) {
-                    int size = indexs.size();
-                    for (int i = 0; i < size; i++) {
-                        if (head.val > result.get(indexs.get(i))) {
-                            result.set(indexs.get(i), head.val);
-                            indexs.remove(indexs.get(i));
-                        }
-                    }
-                    max = head.val;
+                while (!queue.isEmpty() && head.val > queue.peek()) {
+                    result.set(indexs.poll(), head.val);
+                    queue.poll();
                 }
-                index++;
+                queue.add(head.val);
+                indexs.add(index);
                 result.add(0);
-                list.add(head.val);
+                index++;
                 head = head.next;
             }
             result.add(0);
